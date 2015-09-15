@@ -1,0 +1,42 @@
+<%= form_for(@banco) do |f| %>
+  <% if @banco.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@banco.errors.count, "error") %> prohibited this banco from being saved:</h2>
+
+      <ul>
+      <% @banco.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+    <div class="col-md-4">
+        <div class="field">
+          <%= f.label :nombre %><br>
+          <%= f.text_field :nombre , autofocus:true , :class => 'form-control' %>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :direccion %><br>
+        <%= f.text_field :direccion , :class => 'form-control'%>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :telefono %><br>
+        <%= f.text_field :telefono , :class => 'form-control'%>
+      </div>
+    </div>
+    
+    <div class="col-md-10">
+      <div class="actions">
+        <%= f.submit "Agregar", :class => 'btn btn-primary'%>
+      </div>
+    </div>
+</div>
+
+<% end %>
