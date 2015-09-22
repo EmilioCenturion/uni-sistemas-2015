@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :ciudads
+
+  resources :pais
+
   resources :bancos
 
   get 'welcome/index'

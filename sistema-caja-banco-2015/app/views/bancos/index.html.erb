@@ -1,16 +1,14 @@
-<div class="container">
-<h1>Bancos</h1>
-<div id="formularioUno">
-  <%= render 'form' %>
-</div><br>
+<h1>Listing bancos</h1>
 
-<table class="table">
+<table>
   <thead>
     <tr>
       <th>Nombre</th>
       <th>Direccion</th>
       <th>Telefono</th>
-      <th></th>
+      <th>Correo</th>
+      <th>Ciudad</th>
+      <th>Pais</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,17 +19,17 @@
         <td><%= banco.nombre %></td>
         <td><%= banco.direccion %></td>
         <td><%= banco.telefono %></td>
-        <td><%= link_to edit_banco_path(banco), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'right' do %>
-        <span class="glyphicon glyphicon-pencil"></span>
-        <% end %>
-        <%= link_to banco, method: :delete, data: { confirm: 'Va eliminarlo, esta seguro?' }, class: 'btn btn-default', title: 'Borrar', 'data-toggle' => 'tooltip', 'data-placement' => 'right'  do %>
-          <span class="glyphicon glyphicon-trash"></span>
-        <% end %></td>
+        <td><%= banco.correo %></td>
+        <td><%= banco.ciudad %></td>
+        <td><%= banco.pais %></td>
+        <td><%= link_to 'Show', banco %></td>
+        <td><%= link_to 'Edit', edit_banco_path(banco) %></td>
+        <td><%= link_to 'Destroy', banco, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-</div>
 
+<%= link_to 'New Banco', new_banco_path %>
