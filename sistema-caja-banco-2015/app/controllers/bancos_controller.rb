@@ -4,7 +4,6 @@ class BancosController < ApplicationController
   # GET /bancos
   # GET /bancos.json
   def index
-    @banco = Banco.new
     @bancos = Banco.all
   end
 
@@ -70,6 +69,6 @@ class BancosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def banco_params
-      params.require(:banco).permit(:nombre, :direccion, :telefono)
+      params.require(:banco).permit(:nombre, :direccion, :telefono, :correo, :ciudad, :pais)
     end
 end

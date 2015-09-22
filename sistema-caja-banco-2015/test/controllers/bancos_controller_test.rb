@@ -18,7 +18,7 @@ class BancosControllerTest < ActionController::TestCase
 
   test "should create banco" do
     assert_difference('Banco.count') do
-      post :create, banco: { direccion: @banco.direccion, nombre: @banco.nombre, telefono: @banco.telefono }
+      post :create, banco: { ciudad: @banco.ciudad, correo: @banco.correo, direccion: @banco.direccion, nombre: @banco.nombre, pais: @banco.pais, telefono: @banco.telefono }
     end
 
     assert_redirected_to banco_path(assigns(:banco))
@@ -35,7 +35,7 @@ class BancosControllerTest < ActionController::TestCase
   end
 
   test "should update banco" do
-    patch :update, id: @banco, banco: { direccion: @banco.direccion, nombre: @banco.nombre, telefono: @banco.telefono }
+    patch :update, id: @banco, banco: { ciudad: @banco.ciudad, correo: @banco.correo, direccion: @banco.direccion, nombre: @banco.nombre, pais: @banco.pais, telefono: @banco.telefono }
     assert_redirected_to banco_path(assigns(:banco))
   end
 

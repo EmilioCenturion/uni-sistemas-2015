@@ -1,4 +1,4 @@
 json.array!(@bancos) do |banco|
-  json.extract! banco, :id, :nombre, :direccion, :telefono
+  json.extract! banco, :id, :nombre, :direccion, :telefono, :correo, :ciudad, :pais
   json.url banco_url(banco, format: :json)
 end
