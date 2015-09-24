@@ -11,31 +11,54 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
-  </div>
-  <div class="field">
-    <%= f.label :direccion %><br>
-    <%= f.text_field :direccion %>
-  </div>
-  <div class="field">
-    <%= f.label :telefono %><br>
-    <%= f.text_field :telefono %>
-  </div>
-  <div class="field">
-    <%= f.label :correo %><br>
-    <%= f.text_field :correo %>
-  </div>
-  <div class="field">
-    <%= f.label :ciudad %><br>
-    <%= f.number_field :ciudad %>
-  </div>
-  <div class="field">
-    <%= f.label :pais %><br>
-    <%= f.number_field :pais %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :nombre %><br>
+        <%= f.text_field :nombre , autofocus:true , :class => 'form-control'%>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :direccion %><br>
+        <%= f.text_field :direccion , :class => 'form-control'%>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :telefono %><br>
+        <%= f.text_field :telefono , :class => 'form-control'%>
+      </div>
+    </div>
+
+    <div class="col-md-4">  
+      <div class="field">
+        <%= f.label :correo %><br>
+        <%= f.text_field :correo , :class => 'form-control'%>
+      </div>
+    </div>
+
+    <div class="col-md-4">  
+      <div class="field">
+        <%= f.label :ciudad %><br>
+        <%= f.number_field :ciudad , :class => 'form-control'%>
+      </div>
+    </div>
+
+    <div class="col-md-4">  
+      <div class="field">
+        <%= f.label :pais %><br>
+        <%= f.number_field :pais , :class => 'form-control'%>
+      </div>
+    </div>
+
+    <div class="col-md-10">
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    </div>
+    
   </div>
 <% end %>
