@@ -28,17 +28,27 @@
                 <td><%= banco.correo %></td>
                 <td><%= banco.ciudad %></td>
                 <td><%= banco.pais %></td>
-                <td><%= link_to 'Show', banco %></td>
-                <td><%= link_to 'Edit', edit_banco_path(banco) %></td>
-                <td><%= link_to 'Destroy', banco, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td>
+                  <%= link_to banco, class: 'btn btn-default', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class= "glyphicon glyphicon-eye-open"></span>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to edit_banco_path(banco), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class= "glyphicon glyphicon-pencil"></span>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to 'Destroy', method: :delete, data: { confirm: 'Esta seguro?' }, class: 'btn btn-default', title: 'Eliminar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class= "glyphicon glyphicon-trash"></span>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>
         </table>
 
         <br>
-
-        <%= link_to 'New Banco', new_banco_path %>
       </div>
     </div>
 </div>
