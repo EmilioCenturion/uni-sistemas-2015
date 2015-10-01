@@ -39,6 +39,3 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'bootstrap-sass'
-
-gem 'jquery-datatables-rails', '~> 3.3.0'
-
