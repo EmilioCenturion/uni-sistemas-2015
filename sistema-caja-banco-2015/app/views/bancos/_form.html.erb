@@ -1,0 +1,76 @@
+<%= form_for(@banco) do |f| %>
+  <% if @banco.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@banco.errors.count, "error") %> prohibited this banco from being saved:</h2>
+
+      <ul>
+      <% @banco.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <form class="form-horizontal">
+      <div class="field col-md-5 form-group">
+        <%= f.label :nombre, :class => 'col-md-2'%>
+        <div class="col-md-10">
+          <%= f.text_field :nombre , autofocus:true , :class => 'form-control'%>
+        </div>
+      </div>
+
+      <div class="field col-md-7 form-group">
+        <%= f.label :direccion, :class => 'col-md-2' %>
+        <div class="col-md-10">
+          <%= f.text_field :direccion , :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="field col-md-4 form-group">
+        <%= f.label :telefono, :class => 'col-md-3' %>
+        <div class="col-md-9">
+          <%= f.text_field :telefono , :class => 'form-control'%>
+        </div>
+      </div>
+
+      <div class="col-md-1"></div>
+       
+      <div class="field col-md-5 form-group">
+        <%= f.label :correo, :class => 'col-md-3' %>
+        <div class="col-md-9">
+          <%= f.text_field :correo , :class => 'form-control'%>
+        </div>
+      </div>
+ 
+      <div class="field col-md-3 form-group">
+        <%= f.label :pais , :class => 'col-md-4'%>
+        <div class="col-md-8">
+          <%= f.collection_select :pais, Pai.all, :id, :name_pais, {prompt: "Seleccione un pais"} , :class => 'btn btn-default'%>
+        </div>
+      </div>
+
+      <div class="col-md-2"></div>
+ 
+      <div class="field col-md-3 form-group">
+        <%= f.label :ciudad , :class => 'col-md-4'%>
+        <div class="col-md-8">
+          <%= f.collection_select :ciudad, Ciudad.all, :id, :name_ciudad, {prompt: "Seleccione una ciudad"} ,:class => 'btn btn-default'%>
+        </div>
+      </div>
+     
+
+      <div class="col-md-10">
+        <div class="actions">
+          <% if controller.action_name == 'new' or controller.action_name == 'index' %>
+            <%= f.submit "Agregar", :class => 'btn btn-primary'%>
+            <% elsif controller.action_name == 'edit' %>
+            <%= f.submit "Editar", :class => 'btn btn-primary'%>
+          <% end %>
+          
+          <%= link_to 'Cancelar',  bancos_path , class: 'btn btn-primary' %>
+        </div>
+      </div>
+     </form> 
+  </div>
+<% end %>
