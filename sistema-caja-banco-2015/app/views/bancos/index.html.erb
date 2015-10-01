@@ -5,8 +5,8 @@
 
         <%= render 'form' %>
 
-      <div class="col-sm-12 col-md-6">
-        <table class="table table-hover">
+      <div class="col-sm-12 col-md-12">
+        <table id="table" class="table table-striped table-hover">
           <thead>
             <tr>
               <th>Nombre</th>
@@ -15,7 +15,8 @@
               <th>Correo</th>
               <th>Ciudad</th>
               <th>Pais</th>
-              <th colspan="3"></th>
+              <th></th>
+
             </tr>
           </thead>
 
@@ -28,17 +29,14 @@
                 <td><%= banco.correo %></td>
                 <td><%= banco.ciudad %></td>
                 <td><%= banco.pais %></td>
-                <td>
+
+                <td class="row">
                   <%= link_to banco, class: 'btn btn-default', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-eye-open"></span>
                   <% end %>
-                </td>
-                <td>
                   <%= link_to edit_banco_path(banco), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-pencil"></span>
                   <% end %>
-                </td>
-                <td>
                   <%= link_to banco, method: :delete, data: { confirm: 'Esta seguro?' }, class: 'btn btn-default', title: 'Eliminar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-trash"></span>
                   <% end %>
