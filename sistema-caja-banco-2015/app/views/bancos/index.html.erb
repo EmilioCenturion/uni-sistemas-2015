@@ -22,12 +22,14 @@
           <tbody>
             <% @bancos.each do |banco| %>
               <tr>
+                <% @ciudad = Ciudad.all.find(banco.ciudad).nombre%>
+                <% @pais = Pai.all.find(banco.pais).nombre%>
                 <td><%= banco.nombre %></td>
                 <td><%= banco.direccion %></td>
                 <td><%= banco.telefono %></td>
                 <td><%= banco.correo %></td>
-                <td><%= banco.ciudad %></td>
-                <td><%= banco.pais %></td>
+                <td><%= @ciudad %></td>
+                <td><%= @pais %></td>
                 <td class="row">
                   <%= link_to banco, class: 'btn btn-default', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-eye-open"></span>
