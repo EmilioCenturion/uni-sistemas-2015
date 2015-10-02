@@ -6,6 +6,7 @@ class BancosController < ApplicationController
   def index
     @banco = Banco.new
     @bancos = Banco.all
+    @pai = Pai.all
   end
 
   # GET /bancos/1
@@ -29,7 +30,7 @@ class BancosController < ApplicationController
 
     respond_to do |format|
       if @banco.save
-        format.html { redirect_to @banco, notice: 'Banco was successfully created.' }
+        format.html { redirect_to bancos_url, notice: 'Banco was successfully created.' }
         format.json { render :show, status: :created, location: @banco }
       else
         format.html { render :new }
