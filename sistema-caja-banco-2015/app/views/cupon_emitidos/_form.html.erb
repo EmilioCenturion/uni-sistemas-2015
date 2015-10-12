@@ -1,0 +1,37 @@
+<%= form_for(@cupon_emitido) do |f| %>
+  <% if @cupon_emitido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cupon_emitido.errors.count, "error") %> prohibited this cupon_emitido from being saved:</h2>
+
+      <ul>
+      <% @cupon_emitido.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nro_cupon %><br>
+    <%= f.number_field :nro_cupon %>
+  </div>
+  <div class="field">
+    <%= f.label :monto %><br>
+    <%= f.text_field :monto %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha %><br>
+    <%= f.date_select :fecha %>
+  </div>
+  <div class="field">
+    <%= f.label :tarjeta_id %><br>
+    <%= f.text_field :tarjeta_id %>
+  </div>
+  <div class="field">
+    <%= f.label :concepto %><br>
+    <%= f.text_field :concepto %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

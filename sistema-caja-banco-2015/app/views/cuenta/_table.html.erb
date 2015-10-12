@@ -1,0 +1,33 @@
+<div class="col-sm-12 col-md-12">
+  <table id="table" class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Nro de cuenta</th>
+        <th>Saldo</th>
+        <th>Banco</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @cuenta.each do |cuentum| %>
+        <tr>
+          <% @banco = Banco.all.find(cuentum.banco_id).nombre%>
+          <td><%= cuentum.nro_cuenta %></td>
+          <td><%= cuentum.saldo %></td>
+          <td><%= @banco %></td>
+          <td class="row">
+                  <%= link_to edit_cuentum_path(cuentum), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class= "glyphicon glyphicon-pencil"></span>
+                  <% end %>
+
+                  <%= link_to cuentum, method: :delete, data: { confirm: 'Esta seguro?' }, class: 'btn btn-default', title: 'Eliminar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class= "glyphicon glyphicon-trash"></span>
+                  <% end %>
+
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

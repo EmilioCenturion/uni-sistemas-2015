@@ -1,0 +1,73 @@
+<%= nested_form_for(@cuentum) do |f| %>
+  <% if @cuentum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cuentum.errors.count, "error") %> prohibited this cuentum from being saved:</h2>
+
+      <ul>
+      <% @cuentum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <form class="form-horizontal">
+      <div class="field col-md-4 form-group">
+          <%= f.label :nro_de_cuenta, :class => 'col-md-4'%>
+          <div class="col-md-8">
+            <%= f.text_field :nro_cuenta , autofocus:true , :class => 'form-control'%>
+          </div>
+      </div>
+
+      <div class="field col-md-3">
+          <%= f.collection_select :banco_id, Banco.all, :id, :name_banco, {prompt: "Seleccione un banco"} ,:class => 'btn btn-default'%>
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg" ><span class= "glyphicon glyphicon-plus"></span></button>
+      </div>
+      
+      <div class="field col-md-4 form-group">
+          <%= f.label :saldo, :class => 'col-md-2'%>
+          <div class="col-md-10">
+              <%= f.text_field :saldo , :class => 'form-control', :class => 'form-control'%>
+          </div>        
+      </div>
+
+      <!-- detalle de chequeras -->
+      <div class="container col-sm-6 col-md-6">
+      <h3>Chequeras</h3> 
+        <fieldset id="chequeras">
+          <%= f.fields_for :chequeras %>
+          <%= f.link_to_add :chequeras, class: 'btn btn-success', title: 'Agregar una chequera' do %>
+            <span class= "glyphicon glyphicon-modal-window"></span>
+          <% end %>
+      </fieldset>
+      </div>
+
+      <!-- detalle de tarjetas -->
+      <div class="container col-sm-6 col-md-6">
+      <h3>Tarjetas</h3>
+        <fieldset id="credits">
+        <%= f.fields_for :credits %>
+        <%= f.link_to_add :credits, class: 'btn btn-success', title: 'Agregar una tarjeta' do %>
+          <span class= "glyphicon glyphicon-credit-card"></span>
+        <% end %>
+      </fieldset>
+      </div>
+      
+
+      <div class="col-md-10">
+        <div class="actions">
+          <% if controller.action_name == 'new' or controller.action_name == 'index' %>
+            <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
+            <% elsif controller.action_name == 'edit' %>
+            <%= f.submit "Editar", :class => 'btn btn-primary margen'%>
+          <% end %>
+          
+          <%= link_to 'Cancelar',  cuenta_path , class: 'btn btn-primary' %>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+<% end %>

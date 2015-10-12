@@ -1,0 +1,33 @@
+<h1>Listing cheque_emitidos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nro cheque</th>
+      <th>Monto</th>
+      <th>Fecha</th>
+      <th>Chequera</th>
+      <th>Concepto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cheque_emitidos.each do |cheque_emitido| %>
+      <tr>
+        <td><%= cheque_emitido.nro_cheque %></td>
+        <td><%= cheque_emitido.monto %></td>
+        <td><%= cheque_emitido.fecha %></td>
+        <td><%= cheque_emitido.chequera %></td>
+        <td><%= cheque_emitido.concepto %></td>
+        <td><%= link_to 'Show', cheque_emitido %></td>
+        <td><%= link_to 'Edit', edit_cheque_emitido_path(cheque_emitido) %></td>
+        <td><%= link_to 'Destroy', cheque_emitido, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cheque emitido', new_cheque_emitido_path %>

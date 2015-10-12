@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nro_primero: 1
+  nro_ultimo: 1
+  cuenta_id: 
+  personal_id: 
+
+two:
+  nro_primero: 1
+  nro_ultimo: 1
+  cuenta_id: 
+  personal_id: 

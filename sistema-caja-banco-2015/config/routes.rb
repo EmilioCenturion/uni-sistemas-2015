@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  resources :cupon_emitidos
+
+  resources :cheque_emitidos
+
+  resources :motivo_movimientos
+
+  resources :cajas
+
+  resources :cuenta
+
+  resources :personals
+
   resources :ciudads
 
   resources :pais

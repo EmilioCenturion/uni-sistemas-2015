@@ -1,5 +1,5 @@
 class Ciudad < ActiveRecord::Base
-	belongs_to :Banco
+	has_many :bancos
 	def name_ciudad
 		"#{nombre}"
 	end

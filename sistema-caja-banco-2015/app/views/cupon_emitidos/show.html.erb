@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nro cupon:</strong>
+  <%= @cupon_emitido.nro_cupon %>
+</p>
+
+<p>
+  <strong>Monto:</strong>
+  <%= @cupon_emitido.monto %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @cupon_emitido.fecha %>
+</p>
+
+<p>
+  <strong>Tarjeta:</strong>
+  <%= @cupon_emitido.tarjeta %>
+</p>
+
+<p>
+  <strong>Concepto:</strong>
+  <%= @cupon_emitido.concepto %>
+</p>
+
+<%= link_to 'Edit', edit_cupon_emitido_path(@cupon_emitido) %> |
+<%= link_to 'Back', cupon_emitidos_path %>
