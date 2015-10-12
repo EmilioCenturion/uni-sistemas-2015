@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nro_cheque: 1
+  banco_id: 
+  monto: 9.99
+  fecha: 2015-10-06
+  concepto: MyString
+
+two:
+  nro_cheque: 1
+  banco_id: 
+  monto: 9.99
+  fecha: 2015-10-06
+  concepto: MyString

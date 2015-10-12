@@ -6,7 +6,6 @@ class BancosController < ApplicationController
   def index
     @banco = Banco.new
     @bancos = Banco.all
-    @pai = Pai.all
   end
 
   # GET /bancos/1
@@ -21,6 +20,7 @@ class BancosController < ApplicationController
 
   # GET /bancos/1/edit
   def edit
+    @bancos = Banco.all
   end
 
   # POST /bancos
@@ -30,7 +30,7 @@ class BancosController < ApplicationController
 
     respond_to do |format|
       if @banco.save
-        format.html { redirect_to bancos_url, notice: 'Banco was successfully created.' }
+        format.html { redirect_to bancos_url, notice: 'Creaste un nuevo banco correctamente.' }
         format.json { render :show, status: :created, location: @banco }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class BancosController < ApplicationController
   def update
     respond_to do |format|
       if @banco.update(banco_params)
-        format.html { redirect_to @banco, notice: 'Banco was successfully updated.' }
+        format.html { redirect_to bancos_url, notice: 'Editaste un banco correctamente.' }
         format.json { render :show, status: :ok, location: @banco }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class BancosController < ApplicationController
   def destroy
     @banco.destroy
     respond_to do |format|
-      format.html { redirect_to bancos_url, notice: 'Banco was successfully destroyed.' }
+      format.html { redirect_to bancos_url, notice: 'Eliminaste un banco correctamente.' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +71,6 @@ class BancosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def banco_params
-      params.require(:banco).permit(:nombre, :direccion, :telefono, :correo, :ciudad, :pais)
+      params.require(:banco).permit(:nombre, :direccion, :telefono, :correo, :ciudad_id, :pai_id)
     end
 end

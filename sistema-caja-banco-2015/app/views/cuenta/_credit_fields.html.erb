@@ -1,0 +1,17 @@
+<div class="row">
+    <form class="form-horizontal">
+    		<div class="field col-md-5 form-group">
+		      	<%= f.label :nro, :class => 'col-md-2' %>
+		      	<div class="col-md-10">
+		      		<%= f.text_field :nro_tarjeta, :class => 'form-control' %>
+		      	</div>
+		    </div>
+
+		    <div class="field col-md-6 form-group">
+          		<%= f.collection_select :personal_id, Personal.all, :id, :name_personal, {prompt: "Seleccionar personal"} ,:class => 'btn btn-default'%>
+          		<button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg" ><span class= "glyphicon glyphicon-plus"></span></button>
+      		</div>
+
+		    <%= f.link_to_remove 'X', class: 'btn btn-danger'%>
+    </form>
+</div>

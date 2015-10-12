@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nro cheque:</strong>
+  <%= @cheque_emitido.nro_cheque %>
+</p>
+
+<p>
+  <strong>Monto:</strong>
+  <%= @cheque_emitido.monto %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @cheque_emitido.fecha %>
+</p>
+
+<p>
+  <strong>Chequera:</strong>
+  <%= @cheque_emitido.chequera %>
+</p>
+
+<p>
+  <strong>Concepto:</strong>
+  <%= @cheque_emitido.concepto %>
+</p>
+
+<%= link_to 'Edit', edit_cheque_emitido_path(@cheque_emitido) %> |
+<%= link_to 'Back', cheque_emitidos_path %>

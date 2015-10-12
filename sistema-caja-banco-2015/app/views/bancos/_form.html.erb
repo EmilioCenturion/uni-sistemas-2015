@@ -15,8 +15,6 @@
 
 <! - /.modal -> 
 
-<div>
-
 <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -25,7 +23,7 @@
         <h4 class="modal-title" id="exampleModalLabel1">New message</h4>
       </div>
       <div class="modal-body">
-
+          
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -34,15 +32,10 @@
     </div>
   </div>
 </div>
-</div>
 
 <! - /.modal -> 
 
-
-
 <! - /.modal -> 
-
-<div>
 
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2">
   <div class="modal-dialog" role="document">
@@ -52,7 +45,7 @@
         <h4 class="modal-title" id="exampleModalLabel2">New message</h4>
       </div>
       <div class="modal-body">
-
+        <%= link_to "New pai", new_pai_path, :class => "btn btn-primary", "data-toggle" => "modal", "data-target" => ".bs-example-modal-lg", remote:true %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -60,7 +53,6 @@
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <! - /.modal -> 
@@ -102,7 +94,9 @@
 
         <%= f.label :pais , :class => 'col-md-2'%>
         <div class="col-md-8">
-          <%= f.collection_select :pais, Pai.all, :id, :name_pais, {prompt: "Seleccione un pais"} , :class => 'btn btn-default'%><button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal2" ><span class= "glyphicon glyphicon-plus"></span></button>
+          <%= f.collection_select :pai_id, Pai.all, :id, :name_pais, {prompt: "Seleccione un pais"} , :class => 'btn btn-default'%>
+          <%= link_to "+", new_pai_path, :class => "btn btn-primary", "data-toggle" => "modal", "data-target" => ".bs-example-modal-lg", remote:true %>
+          <!-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal2" ><span class= "glyphicon glyphicon-plus"></span></button> -->
         </div>
       </div>
 
@@ -110,7 +104,8 @@
       <div class="field col-md-5 form-group">
         <%= f.label :ciudad , :class => 'col-md-3'%>
         <div class="col-md-8">
-          <%= f.collection_select :ciudad, Ciudad.all, :id, :name_ciudad, {prompt: "Seleccione una ciudad"} ,:class => 'btn btn-default'%><button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal1" ><span class= "glyphicon glyphicon-plus"></span></button>
+          <%= f.collection_select :ciudad_id, Ciudad.all, :id, :name_ciudad, {prompt: "Seleccione una ciudad"} ,:class => 'btn btn-default'%>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" ><span class= "glyphicon glyphicon-plus"></span></button>
         </div>
       </div>
      
