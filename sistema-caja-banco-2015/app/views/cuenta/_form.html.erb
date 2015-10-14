@@ -36,27 +36,30 @@
       <div class="container col-sm-6 col-md-6">
       <h3>Chequeras</h3> 
           <%= f.fields_for :chequeras do |chequera_form| %>
-            <div class="field col-md-5 form-group">
-                <%= chequera_form.label :primer_numero, :class => 'col-md-3' %>
-                <div class="col-md-9">
-                  <%= chequera_form.text_field :nro_primero, :class => 'form-control' %>
-                </div>
-            </div>
+            <div class="col-sm-12 col-md-12">
+              <div class="field col-md-6 form-group">
+                  <%= chequera_form.label :primer_numero, :class => 'col-md-3' %>
+                  <div class="col-md-9">
+                    <%= chequera_form.text_field :nro_primero, :class => 'form-control' %>
+                  </div>
+              </div>
 
-            <div class="field col-md-5 form-group">
-                <%= chequera_form.label :ultimo_numero, :class => 'col-md-3' %>
-                <div class="col-md-9">
-                  <%= chequera_form.text_field :nro_ultimo, :class => 'form-control' %>
-                </div>
+              <div class="field col-md-6 form-group">
+                  <%= chequera_form.label :ultimo_numero, :class => 'col-md-3' %>
+                  <div class="col-md-9">
+                    <%= chequera_form.text_field :nro_ultimo, :class => 'form-control' %>
+                  </div>
+              </div>
             </div>
-            <br>
-            <div class="field col-md-6 form-group">
-                  <%= chequera_form.collection_select :personal_id, Personal.all, :id, :name_personal, {prompt: "Seleccionar personal"} ,:class => 'btn btn-default'%>
-                  <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg" ><span class= "glyphicon glyphicon-plus"></span></button>
+            <div class="col-sm-12 col-md-12">
+              <div class="field col-md-6 form-group">
+                    <%= chequera_form.collection_select :personal_id, Personal.all, :id, :name_personal, {prompt: "Seleccionar personal"} ,:class => 'btn btn-default'%>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg" ><span class= "glyphicon glyphicon-plus"></span></button>
+              </div>
+              <div class="col-md-4"></div>
+              <%= chequera_form.link_to_remove 'X', class: 'btn btn-danger'%>
             </div>
-            <div class="col-md-4"></div>
-            <%= chequera_form.link_to_remove 'X', class: 'btn btn-danger'%>
-
+            
           <% end %>
           <%= f.link_to_add :chequeras, class: 'btn btn-success', title: 'Agregar una chequera' do %>
             <span class= "glyphicon glyphicon-modal-window"></span>
@@ -68,19 +71,23 @@
       <div class="container col-sm-6 col-md-6">
       <h3>Tarjetas</h3>
         <%= f.fields_for :credits do |credit_form| %>
-          <div class="field col-md-5 form-group">
-              <%= credit_form.label :nro, :class => 'col-md-2' %>
-              <div class="col-md-10">
-                <%= credit_form.text_field :nro_tarjeta, :class => 'form-control' %>
-              </div>
+          
+          <div class="col-sm-12 col-md-12">
+            <div class="field col-md-5 form-group">
+                <%= credit_form.label :nro, :class => 'col-md-2' %>
+                <div class="col-md-10">
+                  <%= credit_form.text_field :nro_tarjeta, :class => 'form-control' %>
+                </div>
+            </div>
+
+            <div class="field col-md-6 form-group">
+                  <%= credit_form.collection_select :personal_id, Personal.all, :id, :name_personal, {prompt: "Seleccionar personal"} ,:class => 'btn btn-default'%>
+                  <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg" ><span class= "glyphicon glyphicon-plus"></span></button>
+            </div>
+
+            <%= credit_form.link_to_remove 'X', class: 'btn btn-danger'%>
           </div>
 
-          <div class="field col-md-6 form-group">
-                <%= credit_form.collection_select :personal_id, Personal.all, :id, :name_personal, {prompt: "Seleccionar personal"} ,:class => 'btn btn-default'%>
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg" ><span class= "glyphicon glyphicon-plus"></span></button>
-          </div>
-
-          <%= credit_form.link_to_remove 'X', class: 'btn btn-danger'%>
         <% end %>
         
         <%= f.link_to_add :credits, class: 'btn btn-success', title: 'Agregar una tarjeta' do %>
