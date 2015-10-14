@@ -71,6 +71,6 @@ class CuentaController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cuentum_params
-      params.require(:cuentum).permit(:nro_cuenta, :saldo, :banco_id, chequeras_attributes: [:id, :nro_primero, :nro_ultimo, :personal_id, :_destroy], credits_attributes: [:id, :nro_tarjeta, :personal_id, :_destroy])
+      params.require(:cuentum).permit(:nro_cuenta, :saldo, :banco_id, :chequeras_attributes => [:id, :nro_primero, :nro_ultimo, :personal_id, :_destroy], :credits_attributes => [:id, :nro_tarjeta, :personal_id, :_destroy])
     end
 end
