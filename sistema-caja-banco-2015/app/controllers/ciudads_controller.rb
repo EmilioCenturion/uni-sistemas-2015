@@ -5,6 +5,7 @@ class CiudadsController < ApplicationController
   # GET /ciudads.json
   def index
     @ciudads = Ciudad.all
+    @ciudad = Ciudad.new
   end
 
   # GET /ciudads/1

@@ -5,6 +5,7 @@ class PaisController < ApplicationController
   # GET /pais.json
   def index
     @pais = Pai.all
+    @pai = Pai.new
   end
 
   # GET /pais/1

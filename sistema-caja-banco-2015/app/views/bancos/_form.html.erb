@@ -13,52 +13,6 @@
 
 
 
-<! - /.modal -> 
-
-<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel1">New message</h4>
-      </div>
-      <div class="modal-body">
-          
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<! - /.modal -> 
-
-<! - /.modal -> 
-
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel2">New message</h4>
-      </div>
-      <div class="modal-body">
-        <%= link_to "New pai", new_pai_path, :class => "btn btn-primary", "data-toggle" => "modal", "data-target" => ".bs-example-modal-lg", remote:true %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<! - /.modal -> 
-
-
-
   <div class="row">
     <form class="form-horizontal">
       <div class="field col-md-5 form-group">
@@ -95,8 +49,9 @@
         <%= f.label :pais , :class => 'col-md-2'%>
         <div class="col-md-8">
           <%= f.collection_select :pai_id, Pai.all, :id, :name_pais, {prompt: "Seleccione un pais"} , :class => 'btn btn-default'%>
-          <%= link_to "+", new_pai_path, :class => "btn btn-primary", "data-toggle" => "modal", "data-target" => ".bs-example-modal-lg", remote:true %>
-          <!-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal2" ><span class= "glyphicon glyphicon-plus"></span></button> -->
+            <%= link_to "#modal-pais", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
+              <span class="glyphicon glyphicon-plus"></span>
+            <% end %>
         </div>
       </div>
 
@@ -105,7 +60,9 @@
         <%= f.label :ciudad , :class => 'col-md-3'%>
         <div class="col-md-8">
           <%= f.collection_select :ciudad_id, Ciudad.all, :id, :name_ciudad, {prompt: "Seleccione una ciudad"} ,:class => 'btn btn-default'%>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" ><span class= "glyphicon glyphicon-plus"></span></button>
+            <%= link_to "#modal-ciudad", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
+              <span class="glyphicon glyphicon-plus"></span>
+            <% end %>
         </div>
       </div>
      
@@ -124,3 +81,6 @@
      </form> 
   </div>
 <% end %>
+
+<%= render 'bancos/modals/pais' %>
+<%= render 'bancos/modals/ciudad' %>

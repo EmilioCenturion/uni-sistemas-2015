@@ -15,8 +15,8 @@
           <tbody>
             <% @bancos.each do |banco| %>
               <tr>
-                <% @ciudad = Ciudad.all.find(banco.ciudad_id).nombre%>
                 <% @pais = Pai.all.find(banco.pai_id).nombre%>
+                <% @ciudad = Ciudad.all.find(banco.ciudad_id).nombre%>
                 <td><%= banco.nombre %></td>
                 <td><%= banco.direccion %></td>
                 <td><%= banco.telefono %></td>

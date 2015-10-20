@@ -6,6 +6,8 @@ class BancosController < ApplicationController
   def index
     @banco = Banco.new
     @bancos = Banco.all
+    @pai = Pai.new
+    @ciudad = Ciudad.new
   end
 
   # GET /bancos/1
