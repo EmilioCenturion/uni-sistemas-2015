@@ -5,6 +5,7 @@ class CreateBancos < ActiveRecord::Migration
       t.string :direccion
       t.string :telefono
       t.string :correo
+      t.string :sucursal
       t.references :pai, index: true
       t.references :ciudad, index: true
 

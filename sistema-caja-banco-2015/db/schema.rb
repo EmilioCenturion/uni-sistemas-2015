@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20151009003544) do
     t.string   "direccion"
     t.string   "telefono"
     t.string   "correo"
+    t.string   "sucursal"
     t.integer  "pai_id"
     t.integer  "ciudad_id"
     t.datetime "created_at"

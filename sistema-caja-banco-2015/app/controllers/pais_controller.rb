@@ -29,7 +29,7 @@ class PaisController < ApplicationController
 
     respond_to do |format|
       if @pai.save
-        format.html { redirect_to @pai, notice: 'Pai was successfully created.' }
+        format.html { redirect_to bancos_url, notice: 'Pai was successfully created.' }
         format.json { render :show, status: :created, location: @pai }
       else
         format.html { render :new }
