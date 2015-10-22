@@ -23,6 +23,8 @@ class BancosController < ApplicationController
   # GET /bancos/1/edit
   def edit
     @bancos = Banco.all
+    @pai = Pai.find(params[:id])
+    @ciudad = Ciudad.find(params[:id])
   end
 
   # POST /bancos
@@ -73,6 +75,6 @@ class BancosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def banco_params
-      params.require(:banco).permit(:nombre, :direccion, :telefono, :correo, :ciudad_id, :pai_id)
+      params.require(:banco).permit(:nombre, :direccion, :telefono, :correo, :sucursal, :ciudad_id, :pai_id)
     end
 end

@@ -29,7 +29,7 @@ class CiudadsController < ApplicationController
 
     respond_to do |format|
       if @ciudad.save
-        format.html { redirect_to @ciudad, notice: 'Ciudad was successfully created.' }
+        format.html { redirect_to bancos_url, notice: 'Ciudad was successfully created.' }
         format.json { render :show, status: :created, location: @ciudad }
       else
         format.html { render :new }
