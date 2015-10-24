@@ -5,8 +5,31 @@ class Banco < ActiveRecord::Base
 		"#{nombre}"
 	end
 
-	validates :nombre, :presence => {:message => "No puede estar en blanco"}, :length => {minimum: 6, maximum: 30, :message => "Debe tener entre 6 y 30 caracteres"}
-	validates :direccion, :presence => {:message => "No puede estar en blanco"}, :length => {minimum: 6, :message => "Debe tener mas de 6 caracteres"}
-	validates :telefono, :presence => {:message => "No puede estar en blanco"}, :numericality => {:only_integer => true, :message => "Telefono debe ser numérico"}
+	validates :nombre, :presence => {:message => "No puede estar en blanco"}, 
+			  		   :length => {minimum: 6, :message => "Debe tener como minimo 6 caracteres"},
+			  		   :length => {maximum: 20, :message => "Debe tener como maximo 20 caracteres"}
+			  		   
+	validates :direccion, 
+					   :presence => {:message => "No puede estar en blanco"}, 
+					   :length => {minimum: 6, :message => "Debe tener como minimo 6 caracteres"},
+					   :length => {maximum: 50, :message => "Debe tener como maximo 50 caracteres"}
+
+	validates :telefono, 
+					   :presence => {:message => "No puede estar en blanco"}, 
+					   :length => {minimum: 6, :message => "No es un numero valido"},
+					   :numericality => {:only_integer => true, :message => "Debe ser un numero"}	
+
+	validates :correo, :presence => {:message => "No puede estar en blanco"},
+					   :email_format => true,
+					   :uniqueness => {:message => "El correo ya esta en uso"}
+
+	validates :sucursal, :presence => {:message => "No puede estar en blanco"},
+						 :length => {minimum: 6, :message => "Debe tener como minimo 6 caracteres"},
+			  		     :length => {maximum: 20, :message => "Debe tener como maximo 20 caracteres"}
+
+	validates :pai_id, :presence => {:message => "Tienes que seleccionar un pais"}
+	
+	validates :ciudad_id, :presence => {:message => "Tienes que seleccionar una ciudad"}
+
 
 end
