@@ -3,4 +3,7 @@ class Pai < ActiveRecord::Base
 	def name_pais
 		"#{nombre}"
 	end
+
+	validates :nombre, :uniqueness => {:message => "Ya existe este Pais"}
+	
 end

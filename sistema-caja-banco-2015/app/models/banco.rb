@@ -2,13 +2,14 @@ class Banco < ActiveRecord::Base
 	belongs_to :pai
 	belongs_to :ciudad
 	def name_banco
-		"#{nombre}"
+		"#{nombre} - #{sucursal}"
 	end
 
 	validates :nombre, :presence => {:message => "No puede estar en blanco"}, 
 			  		   :length => {minimum: 6, :message => "Debe tener como minimo 6 caracteres"},
-			  		   :length => {maximum: 20, :message => "Debe tener como maximo 20 caracteres"}
-			  		   
+			  		   :length => {maximum: 20, :message => "Debe tener como maximo 20 caracteres"},
+			  		   :format => {with: /\A[a-zA-Z]+\z/, message: 'Solo permite letras'}
+
 	validates :direccion, 
 					   :presence => {:message => "No puede estar en blanco"}, 
 					   :length => {minimum: 6, :message => "Debe tener como minimo 6 caracteres"},

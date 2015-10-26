@@ -15,74 +15,89 @@
 
   <div class="row">
     <form class="form-horizontal">
-      <div class="field col-md-5 form-group">
-  
-        <%= f.label :nombre, :class => 'col-md-2'%>
-        <div class="col-md-10">
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-6 form-group required">
+        <%= f.label :nombre, :class => 'col-md-2 control-label'%>
+        <div class="col-md-7">
           <%= f.text_field :nombre , autofocus:true , :class => 'form-control'%>
         </div>
       </div>
 
-      <div class="field col-md-7 form-group">
-        <%= f.label :direccion, :class => 'col-md-2' %>
+      <div class="field col-md-6 form-group required">
+        <%= f.label :sucursal, :class => 'col-md-2 control-label'%>
+        <div class="col-md-7">
+          <%= f.text_field :sucursal, :class => 'form-control'%>
+        </div>
+      </div>
+    </div>
+
+    <br>  
+    <br>
+    <br>  
+
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-6 form-group required">
+        <%= f.label :direccion, :class => 'col-md-2 control-label' %>
         <div class="col-md-10">
           <%= f.text_field :direccion , :class => 'form-control' %>
         </div>
       </div>
 
-      <div class="field col-md-5 form-group">
-        
-        <%= f.label :telefono, :class => 'col-md-2' %>
-        <div class="col-md-9">
-          <%= f.text_field :telefono , :class => 'form-control'%>
-        </div>
+      <div class="col-md-6 form-group required">
+        <%= f.label :pais , :class => 'col-md-2 control-label'%>
+        <%= link_to "#modal-pais", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
+              <span class="glyphicon glyphicon-plus"></span>
+            <% end %>
+            <div class="col-md-6">
+          <%= f.collection_select :pai_id, Pai.all, :id, :name_pais, {prompt: "Seleccione un pais"} , :class => 'btn btn-default'%>
+          </div>
       </div>
+    </div>
 
-       
-      <div class="field col-md-5 form-group">
-        <%= f.label :correo, :class => 'col-md-3' %>
-        <div class="col-md-9">
+      <br>  
+      <br>
+      <br>
+
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-6 form-group required">
+        <%= f.label :correo, :class => 'col-md-2 control-label' %>
+        <div class="col-md-7">
           <%= f.text_field :correo , :class => 'form-control'%>
         </div>
       </div>
 
-      <div class="field col-md-5 form-group">
-
-        <%= f.label :pais , :class => 'col-md-2'%>
-        <div class="col-md-8">
-          <%= f.collection_select :pai_id, Pai.all, :id, :name_pais, {prompt: "Seleccione un pais"} , :class => 'btn btn-default'%>
-            <%= link_to "#modal-pais", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
+      <div class="field col-md-6 form-group required">
+        <%= f.label :ciudad , :class => 'col-md-2 control-label'%>
+        <%= link_to "#modal-ciudad", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
               <span class="glyphicon glyphicon-plus"></span>
             <% end %>
-        </div>
-      </div>
-
- 
-      <div class="field col-md-5 form-group">
-        <%= f.label :ciudad , :class => 'col-md-3'%>
-        <div class="col-md-8">
+        <div class="col-md-6">
           <%= f.collection_select :ciudad_id, Ciudad.all, :id, :name_ciudad, {prompt: "Seleccione una ciudad"} ,:class => 'btn btn-default'%>
-            <%= link_to "#modal-ciudad", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
-              <span class="glyphicon glyphicon-plus"></span>
-            <% end %>
+            
         </div>
       </div>
+    </div>
+
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-6 form-group required">
+        <%= f.label :telefono, :class => 'col-md-2 control-label' %>
+        <div class="col-md-7">
+          <%= f.text_field :telefono , :class => 'form-control'%>
+        </div>
+      </div>
+    </div>
 
       <div class="field col-md-5 form-group">
-        <%= f.label :sucursal, :class => 'col-md-2'%>
-        <div class="col-md-10">
-          <%= f.text_field :sucursal, :class => 'form-control'%>
-        </div>
-      </div>
 
-     
+      </div>
+      </div>
 
       <div class="col-md-10">
         <div class="actions">
           <% if controller.action_name == 'new' or controller.action_name == 'index' %>
             <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
             <% elsif controller.action_name == 'edit' %>
-            <%= f.submit "Editar", :class => 'btn btn-primary margen'%>
+            <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
           <% end %>
           
           <%= link_to 'Cancelar',  bancos_path , class: 'btn btn-primary' %>
