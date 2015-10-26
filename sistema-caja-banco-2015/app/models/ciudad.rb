@@ -3,4 +3,7 @@ class Ciudad < ActiveRecord::Base
 	def name_ciudad
 		"#{nombre}"
 	end
+
+	validates :nombre, :uniqueness => {:message => "Ya existe esta ciudad"}
+
 end
