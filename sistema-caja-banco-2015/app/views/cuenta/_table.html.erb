@@ -17,6 +17,10 @@
           <td><%= cuentum.saldo %></td>
           <td><%= @banco %></td>
           <td class="row">
+                  <%= link_to cuentum, class: 'btn btn-default', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class= "glyphicon glyphicon-eye-open"></span>
+                  <% end %>
+
                   <%= link_to edit_cuentum_path(cuentum), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-pencil"></span>
                   <% end %>

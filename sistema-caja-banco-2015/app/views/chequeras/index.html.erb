@@ -1,0 +1,12 @@
+<div class="container white">
+  <%= render 'solapa' %>   
+    <h1> Chequeras 
+      <%= link_to new_cuentum_chequera_path, class: 'btn btn-primary', title: 'Nueva chequera', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+        <span class= "glyphicon glyphicon-plus"></span>
+      <% end %>
+    </h1>
+  
+  <br>
+    <%= render 'table' %>
+</div>
+
