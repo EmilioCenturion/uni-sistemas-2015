@@ -11,6 +11,7 @@ class CuentaController < ApplicationController
   # GET /cuenta/1
   # GET /cuenta/1.json
   def show
+    @cuenta = Cuentum.all
   end
 
   # GET /cuenta/new

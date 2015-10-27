@@ -35,9 +35,9 @@ rails g scaffold personal nombre documento:integer telefono:integer email direcc
 
 rails g scaffold cuenta nro_cuenta:integer saldo:decimal banco:references
 
-rails g model chequera nro_primero:integer nro_ultimo:integer cuentum:references personal:references
+rails g scaffold chequera nro_primero:integer nro_ultimo:integer cuentum:references personal:references
 
-rails g model credit nro_tarjeta:integer cuentum:references personal:references
+rails g scaffold credit nro_tarjeta:integer cuentum:references personal:references
 
 rails g scaffold cheque_emitido nro_cheque:integer monto:decimal fecha:date chequera:references concepto
 

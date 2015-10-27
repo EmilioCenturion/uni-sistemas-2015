@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   resources :cajas
 
-  resources :cuenta
+  resources :cuenta do
+    resources :chequeras
+    resources :credits
+  end
 
   resources :personals
 
