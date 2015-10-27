@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009003544) do
+ActiveRecord::Schema.define(version: 20151027073218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,18 @@ ActiveRecord::Schema.define(version: 20151009003544) do
   end
 
   add_index "cupon_emitidos", ["tarjeta_id"], name: "index_cupon_emitidos_on_tarjeta_id", using: :btree
+
+  create_table "motivo_movimiento_bancos", force: true do |t|
+    t.string   "descripcion"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "motivo_movimiento_cajas", force: true do |t|
+    t.string   "descripcion"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "motivo_movimientos", force: true do |t|
     t.string   "descripcion"

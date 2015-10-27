@@ -1,0 +1,21 @@
+<%= form_for(@motivo_movimiento_banco) do |f| %>
+  <% if @motivo_movimiento_banco.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@motivo_movimiento_banco.errors.count, "error") %> prohibited this motivo_movimiento_banco from being saved:</h2>
+
+      <ul>
+      <% @motivo_movimiento_banco.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_field :descripcion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

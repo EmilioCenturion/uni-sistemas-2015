@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :motivo_movimiento_cajas
+
+  resources :motivo_movimiento_bancos
+
   resources :cupon_emitidos
 
   resources :cheque_emitidos
