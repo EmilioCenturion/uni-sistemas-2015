@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Apertura caja:</strong>
+  <%= @movimiento_caja.apertura_caja %>
+</p>
+
+<p>
+  <strong>Motivo movimiento caja:</strong>
+  <%= @movimiento_caja.motivo_movimiento_caja %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @movimiento_caja.descripcion %>
+</p>
+
+<p>
+  <strong>Es ingreso:</strong>
+  <%= @movimiento_caja.es_ingreso %>
+</p>
+
+<p>
+  <strong>Monto efectivo:</strong>
+  <%= @movimiento_caja.monto_efectivo %>
+</p>
+
+<p>
+  <strong>Monto cheque:</strong>
+  <%= @movimiento_caja.monto_cheque %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @movimiento_caja.fecha %>
+</p>
+
+<%= link_to 'Edit', edit_movimiento_caja_path(@movimiento_caja) %> |
+<%= link_to 'Back', movimiento_cajas_path %>

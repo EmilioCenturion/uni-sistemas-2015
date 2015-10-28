@@ -2,20 +2,12 @@
 
 one:
   nro_caja: 1
-  apertura: 2015-10-06 20:19:13
-  cierre: 2015-10-06 20:19:13
   saldo_inicial_efectivo: 9.99
   saldo_inicial_cheque: 9.99
-  saldo_final_efectivo: 9.99
-  saldo_final_cheque: 9.99
-  usuario_id: 
+  estado: MyString
 
 two:
   nro_caja: 1
-  apertura: 2015-10-06 20:19:13
-  cierre: 2015-10-06 20:19:13
   saldo_inicial_efectivo: 9.99
   saldo_inicial_cheque: 9.99
-  saldo_final_efectivo: 9.99
-  saldo_final_cheque: 9.99
-  usuario_id: 
+  estado: MyString

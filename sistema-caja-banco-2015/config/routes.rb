@@ -1,15 +1,27 @@
 Rails.application.routes.draw do
-  resources :motivo_movimiento_cajas
+  resources :boleta_depositos
 
-  resources :motivo_movimiento_bancos
+  resources :movimiento_cajas
+
+  resources :movimiento_bancos
 
   resources :cupon_emitidos
 
+  resources :cheque_recibidos
+
+  resources :chequeras
+
+  resources :credits
+
   resources :cheque_emitidos
 
-  resources :motivo_movimientos
+  resources :apertura_cajas
 
   resources :cajas
+
+  resources :motivo_movimiento_cajas
+
+  resources :motivo_movimiento_bancos
 
   resources :cuenta do
     resources :chequeras

@@ -18,7 +18,7 @@ class CajasControllerTest < ActionController::TestCase
 
   test "should create caja" do
     assert_difference('Caja.count') do
-      post :create, caja: { apertura: @caja.apertura, cierre: @caja.cierre, nro_caja: @caja.nro_caja, saldo_final_cheque: @caja.saldo_final_cheque, saldo_final_efectivo: @caja.saldo_final_efectivo, saldo_inicial_cheque: @caja.saldo_inicial_cheque, saldo_inicial_efectivo: @caja.saldo_inicial_efectivo, usuario_id: @caja.usuario_id }
+      post :create, caja: { estado: @caja.estado, nro_caja: @caja.nro_caja, saldo_inicial_cheque: @caja.saldo_inicial_cheque, saldo_inicial_efectivo: @caja.saldo_inicial_efectivo }
     end
 
     assert_redirected_to caja_path(assigns(:caja))
@@ -35,7 +35,7 @@ class CajasControllerTest < ActionController::TestCase
   end
 
   test "should update caja" do
-    patch :update, id: @caja, caja: { apertura: @caja.apertura, cierre: @caja.cierre, nro_caja: @caja.nro_caja, saldo_final_cheque: @caja.saldo_final_cheque, saldo_final_efectivo: @caja.saldo_final_efectivo, saldo_inicial_cheque: @caja.saldo_inicial_cheque, saldo_inicial_efectivo: @caja.saldo_inicial_efectivo, usuario_id: @caja.usuario_id }
+    patch :update, id: @caja, caja: { estado: @caja.estado, nro_caja: @caja.nro_caja, saldo_inicial_cheque: @caja.saldo_inicial_cheque, saldo_inicial_efectivo: @caja.saldo_inicial_efectivo }
     assert_redirected_to caja_path(assigns(:caja))
   end
 

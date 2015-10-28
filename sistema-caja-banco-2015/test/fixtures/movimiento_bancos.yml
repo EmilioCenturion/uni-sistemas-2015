@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cuenta_id: 
+  motivo_movimiento_banco_id: 
+  descripcion: MyString
+  es_ingreso: false
+  monto_efectivo: 9.99
+  monto_cheque: 9.99
+  fecha: 2015-10-28 20:10:03
+
+two:
+  cuenta_id: 
+  motivo_movimiento_banco_id: 
+  descripcion: MyString
+  es_ingreso: false
+  monto_efectivo: 9.99
+  monto_cheque: 9.99
+  fecha: 2015-10-28 20:10:03

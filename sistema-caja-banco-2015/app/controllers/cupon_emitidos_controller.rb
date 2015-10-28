@@ -69,6 +69,6 @@ class CuponEmitidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cupon_emitido_params
-      params.require(:cupon_emitido).permit(:nro_cupon, :monto, :fecha, :tarjeta_id, :concepto)
+      params.require(:cupon_emitido).permit(:nro_cupon, :monto, :fecha, :tarjeta_id, :concepto, :proveedor_id)
     end
 end

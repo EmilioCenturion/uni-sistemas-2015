@@ -1,4 +1,4 @@
 class CuponEmitido < ActiveRecord::Base
-  belongs_to :credit_card
-  belongs_to :cuentum, :through => :credits 
+  belongs_to :tarjeta
+  belongs_to :proveedor
 end

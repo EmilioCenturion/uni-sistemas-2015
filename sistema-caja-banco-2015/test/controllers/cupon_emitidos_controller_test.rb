@@ -18,7 +18,7 @@ class CuponEmitidosControllerTest < ActionController::TestCase
 
   test "should create cupon_emitido" do
     assert_difference('CuponEmitido.count') do
-      post :create, cupon_emitido: { concepto: @cupon_emitido.concepto, fecha: @cupon_emitido.fecha, monto: @cupon_emitido.monto, nro_cupon: @cupon_emitido.nro_cupon, tarjeta_id: @cupon_emitido.tarjeta_id }
+      post :create, cupon_emitido: { concepto: @cupon_emitido.concepto, fecha: @cupon_emitido.fecha, monto: @cupon_emitido.monto, nro_cupon: @cupon_emitido.nro_cupon, proveedor_id: @cupon_emitido.proveedor_id, tarjeta_id: @cupon_emitido.tarjeta_id }
     end
 
     assert_redirected_to cupon_emitido_path(assigns(:cupon_emitido))
@@ -35,7 +35,7 @@ class CuponEmitidosControllerTest < ActionController::TestCase
   end
 
   test "should update cupon_emitido" do
-    patch :update, id: @cupon_emitido, cupon_emitido: { concepto: @cupon_emitido.concepto, fecha: @cupon_emitido.fecha, monto: @cupon_emitido.monto, nro_cupon: @cupon_emitido.nro_cupon, tarjeta_id: @cupon_emitido.tarjeta_id }
+    patch :update, id: @cupon_emitido, cupon_emitido: { concepto: @cupon_emitido.concepto, fecha: @cupon_emitido.fecha, monto: @cupon_emitido.monto, nro_cupon: @cupon_emitido.nro_cupon, proveedor_id: @cupon_emitido.proveedor_id, tarjeta_id: @cupon_emitido.tarjeta_id }
     assert_redirected_to cupon_emitido_path(assigns(:cupon_emitido))
   end
 

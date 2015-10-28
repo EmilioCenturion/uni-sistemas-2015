@@ -1,0 +1,39 @@
+<h1>Listing apertura_cajas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Caja</th>
+      <th>Apertura</th>
+      <th>Cierre</th>
+      <th>Saldo inicial efectivo</th>
+      <th>Saldo inicial cheque</th>
+      <th>Saldo final efectivo</th>
+      <th>Saldo final cheque</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @apertura_cajas.each do |apertura_caja| %>
+      <tr>
+        <td><%= apertura_caja.caja %></td>
+        <td><%= apertura_caja.apertura %></td>
+        <td><%= apertura_caja.cierre %></td>
+        <td><%= apertura_caja.saldo_inicial_efectivo %></td>
+        <td><%= apertura_caja.saldo_inicial_cheque %></td>
+        <td><%= apertura_caja.saldo_final_efectivo %></td>
+        <td><%= apertura_caja.saldo_final_cheque %></td>
+        <td><%= apertura_caja.user %></td>
+        <td><%= link_to 'Show', apertura_caja %></td>
+        <td><%= link_to 'Edit', edit_apertura_caja_path(apertura_caja) %></td>
+        <td><%= link_to 'Destroy', apertura_caja, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Apertura caja', new_apertura_caja_path %>

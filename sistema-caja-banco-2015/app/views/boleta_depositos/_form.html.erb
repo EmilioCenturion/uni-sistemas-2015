@@ -1,0 +1,41 @@
+<%= form_for(@boleta_deposito) do |f| %>
+  <% if @boleta_deposito.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@boleta_deposito.errors.count, "error") %> prohibited this boleta_deposito from being saved:</h2>
+
+      <ul>
+      <% @boleta_deposito.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nro_boleta %><br>
+    <%= f.number_field :nro_boleta %>
+  </div>
+  <div class="field">
+    <%= f.label :monto_efectivo %><br>
+    <%= f.text_field :monto_efectivo %>
+  </div>
+  <div class="field">
+    <%= f.label :monto_cheque %><br>
+    <%= f.text_field :monto_cheque %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha %><br>
+    <%= f.date_select :fecha %>
+  </div>
+  <div class="field">
+    <%= f.label :cuenta_id %><br>
+    <%= f.text_field :cuenta_id %>
+  </div>
+  <div class="field">
+    <%= f.label :apertura_caja_id %><br>
+    <%= f.text_field :apertura_caja_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

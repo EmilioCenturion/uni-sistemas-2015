@@ -69,6 +69,6 @@ class ChequeEmitidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cheque_emitido_params
-      params.require(:cheque_emitido).permit(:nro_cheque, :monto, :fecha, :chequera_id, :concepto)
+      params.require(:cheque_emitido).permit(:nro_cheque, :monto, :fecha, :chequera_id, :proveedor_id, :concepto)
     end
 end

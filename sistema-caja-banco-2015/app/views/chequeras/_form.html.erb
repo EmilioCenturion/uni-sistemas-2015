@@ -1,4 +1,4 @@
-<%= form_for [@chequera.cuentum, @chequera], validate: true do |f| %>
+<%= form_for(@chequera) do |f| %>
   <% if @chequera.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@chequera.errors.count, "error") %> prohibited this chequera from being saved:</h2>
@@ -9,41 +9,29 @@
       <% end %>
       </ul>
     </div>
-  <% end %> 
+  <% end %>
 
-  <div class="row">
-    <form class="form-horizontal">
-      <div class="field col-md-4 form-group required">
-          <%= f.label :primer_numero, :class => 'col-md-4 control-label'%>
-          <div class="col-md-8">
-            <%= f.text_field :nro_primero , autofocus:true , :class => 'form-control'%>
-          </div>
-      </div>
-
-      <div class="field col-md-4 form-group required">
-          <%= f.label :ultimo_numero, :class => 'col-md-4 control-label'%>
-          <div class="col-md-8">
-            <%= f.text_field :nro_ultimo, :class => 'form-control'%>
-          </div>
-      </div>
-
-      <div class="field col-md-4 form-group required">
-          <%= f.label :encargado, :class => 'col-md-4 control-label'%>
-          <%= f.collection_select :personal_id, Personal.all, :id, :name_personal, {prompt: "Seleccione un encargado"} ,:class => 'btn btn-default'%>
-      </div>
-
-      <div class="col-md-10">
-        <div class="actions">
-          <% if controller.action_name == 'new' or controller.action_name == 'index' %>
-            <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
-            <% elsif controller.action_name == 'edit' %>
-            <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
-          <% end %>
-          
-          <%= link_to 'Cancelar',  cuentum_chequeras_path(@chequera.cuentum) , class: 'btn btn-primary' %>
-        </div>
-      </div>
-    </form>
+  <div class="field">
+    <%= f.label :nro_primero %><br>
+    <%= f.number_field :nro_primero %>
   </div>
-
+  <div class="field">
+    <%= f.label :nro_ultimo %><br>
+    <%= f.number_field :nro_ultimo %>
+  </div>
+  <div class="field">
+    <%= f.label :cuentum_id %><br>
+    <%= f.text_field :cuentum_id %>
+  </div>
+  <div class="field">
+    <%= f.label :personal_id %><br>
+    <%= f.text_field :personal_id %>
+  </div>
+  <div class="field">
+    <%= f.label :estado %><br>
+    <%= f.text_field :estado %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

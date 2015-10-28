@@ -1,0 +1,35 @@
+<h1>Listing cheque_recibidos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nro cheque</th>
+      <th>Banco</th>
+      <th>Monto</th>
+      <th>Fecha</th>
+      <th>Concepto</th>
+      <th>Cliente</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cheque_recibidos.each do |cheque_recibido| %>
+      <tr>
+        <td><%= cheque_recibido.nro_cheque %></td>
+        <td><%= cheque_recibido.banco %></td>
+        <td><%= cheque_recibido.monto %></td>
+        <td><%= cheque_recibido.fecha %></td>
+        <td><%= cheque_recibido.concepto %></td>
+        <td><%= cheque_recibido.cliente %></td>
+        <td><%= link_to 'Show', cheque_recibido %></td>
+        <td><%= link_to 'Edit', edit_cheque_recibido_path(cheque_recibido) %></td>
+        <td><%= link_to 'Destroy', cheque_recibido, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cheque recibido', new_cheque_recibido_path %>

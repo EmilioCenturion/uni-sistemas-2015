@@ -18,7 +18,7 @@ class CreditsControllerTest < ActionController::TestCase
 
   test "should create credit" do
     assert_difference('Credit.count') do
-      post :create, credit: { cuentum_id: @credit.cuentum_id, nro_tarjeta: @credit.nro_tarjeta, personal_id: @credit.personal_id }
+      post :create, credit: { cuentum_id: @credit.cuentum_id, estado: @credit.estado, nro_tarjeta: @credit.nro_tarjeta, personal_id: @credit.personal_id }
     end
 
     assert_redirected_to credit_path(assigns(:credit))
@@ -35,7 +35,7 @@ class CreditsControllerTest < ActionController::TestCase
   end
 
   test "should update credit" do
-    patch :update, id: @credit, credit: { cuentum_id: @credit.cuentum_id, nro_tarjeta: @credit.nro_tarjeta, personal_id: @credit.personal_id }
+    patch :update, id: @credit, credit: { cuentum_id: @credit.cuentum_id, estado: @credit.estado, nro_tarjeta: @credit.nro_tarjeta, personal_id: @credit.personal_id }
     assert_redirected_to credit_path(assigns(:credit))
   end
 

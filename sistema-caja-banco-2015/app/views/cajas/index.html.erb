@@ -4,13 +4,9 @@
   <thead>
     <tr>
       <th>Nro caja</th>
-      <th>Apertura</th>
-      <th>Cierre</th>
       <th>Saldo inicial efectivo</th>
       <th>Saldo inicial cheque</th>
-      <th>Saldo final efectivo</th>
-      <th>Saldo final cheque</th>
-      <th>Usuario</th>
+      <th>Estado</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,13 +15,9 @@
     <% @cajas.each do |caja| %>
       <tr>
         <td><%= caja.nro_caja %></td>
-        <td><%= caja.apertura %></td>
-        <td><%= caja.cierre %></td>
         <td><%= caja.saldo_inicial_efectivo %></td>
         <td><%= caja.saldo_inicial_cheque %></td>
-        <td><%= caja.saldo_final_efectivo %></td>
-        <td><%= caja.saldo_final_cheque %></td>
-        <td><%= caja.usuario %></td>
+        <td><%= caja.estado %></td>
         <td><%= link_to 'Show', caja %></td>
         <td><%= link_to 'Edit', edit_caja_path(caja) %></td>
         <td><%= link_to 'Destroy', caja, method: :delete, data: { confirm: 'Are you sure?' } %></td>
