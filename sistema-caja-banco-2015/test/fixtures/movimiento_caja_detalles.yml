@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movimiento_caja_id: 
+  cheque_recibido_id: 
+
+two:
+  movimiento_caja_id: 
+  cheque_recibido_id: 

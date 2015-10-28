@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  apertura_caja_id: 
+  motivo_movimiento_caja_id: 
+  descripcion: MyString
+  es_ingreso: false
+  monto_efectivo: 9.99
+  monto_cheque: 9.99
+  fecha: 2015-10-28 20:19:16
+
+two:
+  apertura_caja_id: 
+  motivo_movimiento_caja_id: 
+  descripcion: MyString
+  es_ingreso: false
+  monto_efectivo: 9.99
+  monto_cheque: 9.99
+  fecha: 2015-10-28 20:19:16

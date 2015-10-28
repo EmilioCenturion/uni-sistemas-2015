@@ -6,16 +6,6 @@
 </p>
 
 <p>
-  <strong>Apertura:</strong>
-  <%= @caja.apertura %>
-</p>
-
-<p>
-  <strong>Cierre:</strong>
-  <%= @caja.cierre %>
-</p>
-
-<p>
   <strong>Saldo inicial efectivo:</strong>
   <%= @caja.saldo_inicial_efectivo %>
 </p>
@@ -26,18 +16,8 @@
 </p>
 
 <p>
-  <strong>Saldo final efectivo:</strong>
-  <%= @caja.saldo_final_efectivo %>
-</p>
-
-<p>
-  <strong>Saldo final cheque:</strong>
-  <%= @caja.saldo_final_cheque %>
-</p>
-
-<p>
-  <strong>Usuario:</strong>
-  <%= @caja.usuario %>
+  <strong>Estado:</strong>
+  <%= @caja.estado %>
 </p>
 
 <%= link_to 'Edit', edit_caja_path(@caja) %> |

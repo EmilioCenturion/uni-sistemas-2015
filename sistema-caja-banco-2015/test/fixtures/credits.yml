@@ -4,8 +4,10 @@ one:
   nro_tarjeta: 1
   cuentum_id: 
   personal_id: 
+  estado: MyString
 
 two:
   nro_tarjeta: 1
   cuentum_id: 
   personal_id: 
+  estado: MyString

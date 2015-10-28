@@ -18,7 +18,7 @@ class ChequerasControllerTest < ActionController::TestCase
 
   test "should create chequera" do
     assert_difference('Chequera.count') do
-      post :create, chequera: { cuentum_id: @chequera.cuentum_id, nro_primero: @chequera.nro_primero, nro_ultimo: @chequera.nro_ultimo, personal_id: @chequera.personal_id }
+      post :create, chequera: { cuentum_id: @chequera.cuentum_id, estado: @chequera.estado, nro_primero: @chequera.nro_primero, nro_ultimo: @chequera.nro_ultimo, personal_id: @chequera.personal_id }
     end
 
     assert_redirected_to chequera_path(assigns(:chequera))
@@ -35,7 +35,7 @@ class ChequerasControllerTest < ActionController::TestCase
   end
 
   test "should update chequera" do
-    patch :update, id: @chequera, chequera: { cuentum_id: @chequera.cuentum_id, nro_primero: @chequera.nro_primero, nro_ultimo: @chequera.nro_ultimo, personal_id: @chequera.personal_id }
+    patch :update, id: @chequera, chequera: { cuentum_id: @chequera.cuentum_id, estado: @chequera.estado, nro_primero: @chequera.nro_primero, nro_ultimo: @chequera.nro_ultimo, personal_id: @chequera.personal_id }
     assert_redirected_to chequera_path(assigns(:chequera))
   end
 

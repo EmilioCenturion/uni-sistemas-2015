@@ -18,7 +18,7 @@ class ChequeEmitidosControllerTest < ActionController::TestCase
 
   test "should create cheque_emitido" do
     assert_difference('ChequeEmitido.count') do
-      post :create, cheque_emitido: { chequera_id: @cheque_emitido.chequera_id, concepto: @cheque_emitido.concepto, fecha: @cheque_emitido.fecha, monto: @cheque_emitido.monto, nro_cheque: @cheque_emitido.nro_cheque }
+      post :create, cheque_emitido: { chequera_id: @cheque_emitido.chequera_id, concepto: @cheque_emitido.concepto, fecha: @cheque_emitido.fecha, monto: @cheque_emitido.monto, nro_cheque: @cheque_emitido.nro_cheque, proveedor_id: @cheque_emitido.proveedor_id }
     end
 
     assert_redirected_to cheque_emitido_path(assigns(:cheque_emitido))
@@ -35,7 +35,7 @@ class ChequeEmitidosControllerTest < ActionController::TestCase
   end
 
   test "should update cheque_emitido" do
-    patch :update, id: @cheque_emitido, cheque_emitido: { chequera_id: @cheque_emitido.chequera_id, concepto: @cheque_emitido.concepto, fecha: @cheque_emitido.fecha, monto: @cheque_emitido.monto, nro_cheque: @cheque_emitido.nro_cheque }
+    patch :update, id: @cheque_emitido, cheque_emitido: { chequera_id: @cheque_emitido.chequera_id, concepto: @cheque_emitido.concepto, fecha: @cheque_emitido.fecha, monto: @cheque_emitido.monto, nro_cheque: @cheque_emitido.nro_cheque, proveedor_id: @cheque_emitido.proveedor_id }
     assert_redirected_to cheque_emitido_path(assigns(:cheque_emitido))
   end
 

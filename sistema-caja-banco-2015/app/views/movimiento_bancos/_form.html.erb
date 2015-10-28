@@ -1,0 +1,45 @@
+<%= form_for(@movimiento_banco) do |f| %>
+  <% if @movimiento_banco.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@movimiento_banco.errors.count, "error") %> prohibited this movimiento_banco from being saved:</h2>
+
+      <ul>
+      <% @movimiento_banco.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cuenta_id %><br>
+    <%= f.text_field :cuenta_id %>
+  </div>
+  <div class="field">
+    <%= f.label :motivo_movimiento_banco_id %><br>
+    <%= f.text_field :motivo_movimiento_banco_id %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_field :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :es_ingreso %><br>
+    <%= f.check_box :es_ingreso %>
+  </div>
+  <div class="field">
+    <%= f.label :monto_efectivo %><br>
+    <%= f.text_field :monto_efectivo %>
+  </div>
+  <div class="field">
+    <%= f.label :monto_cheque %><br>
+    <%= f.text_field :monto_cheque %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha %><br>
+    <%= f.datetime_select :fecha %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

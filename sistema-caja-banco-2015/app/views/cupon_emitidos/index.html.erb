@@ -8,6 +8,7 @@
       <th>Fecha</th>
       <th>Tarjeta</th>
       <th>Concepto</th>
+      <th>Proveedor</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
         <td><%= cupon_emitido.fecha %></td>
         <td><%= cupon_emitido.tarjeta %></td>
         <td><%= cupon_emitido.concepto %></td>
+        <td><%= cupon_emitido.proveedor %></td>
         <td><%= link_to 'Show', cupon_emitido %></td>
         <td><%= link_to 'Edit', edit_cupon_emitido_path(cupon_emitido) %></td>
         <td><%= link_to 'Destroy', cupon_emitido, method: :delete, data: { confirm: 'Are you sure?' } %></td>

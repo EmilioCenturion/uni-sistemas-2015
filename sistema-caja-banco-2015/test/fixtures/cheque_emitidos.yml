@@ -3,13 +3,15 @@
 one:
   nro_cheque: 1
   monto: 9.99
-  fecha: 2015-10-07
+  fecha: 2015-10-28
   chequera_id: 
+  proveedor_id: 
   concepto: MyString
 
 two:
   nro_cheque: 1
   monto: 9.99
-  fecha: 2015-10-07
+  fecha: 2015-10-28
   chequera_id: 
+  proveedor_id: 
   concepto: MyString
