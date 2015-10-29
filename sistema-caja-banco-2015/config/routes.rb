@@ -9,10 +9,6 @@ Rails.application.routes.draw do
 
   resources :cheque_recibidos
 
-  resources :chequeras
-
-  resources :credits
-
   resources :cheque_emitidos
 
   resources :apertura_cajas

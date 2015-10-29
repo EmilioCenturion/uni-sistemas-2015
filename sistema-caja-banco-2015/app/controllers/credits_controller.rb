@@ -4,35 +4,58 @@ class CreditsController < ApplicationController
   # GET /credits
   # GET /credits.json
   def index
-    @credits = Credit.all
+    @cuentum = Cuentum.find(params[:cuentum_id])
+    @credits = @cuentum.credits
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @credits}
+    end
   end
 
   # GET /credits/1
   # GET /credits/1.json
   def show
+    @cuentum = Cuentum.find(params[:cuentum_id])
+    @credit = @cuentum.credits.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @credit }
+    end
   end
 
   # GET /credits/new
   def new
-    @credit = Credit.new
+    @cuentum = Cuentum.find(params[:cuentum_id])
+    @credit = @cuentum.credits.build
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @credit }
+    end
   end
 
   # GET /credits/1/edit
   def edit
+    @cuentum = Cuentum.find(params[:cuentum_id])
+    @credit = @cuentum.credits.find(params[:id])
   end
 
   # POST /credits
   # POST /credits.json
   def create
-    @credit = Credit.new(credit_params)
-
+    @cuentum = Cuentum.find(params[:cuentum_id])
+    @credit = @cuentum.credits.create(credit_params)
     respond_to do |format|
       if @credit.save
-        format.html { redirect_to @credit, notice: 'Credit was successfully created.' }
-        format.json { render :show, status: :created, location: @credit }
+        #1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
+        format.html { redirect_to( cuentum_credits_url, :notice => 'Comment was successfully created.') }
+        #the key :location is associated to an array in order to build the correct route to the nested resource comment
+        format.xml  { render :xml => @credit, :status => :created, :location => [@credit.cuentum, @credit] }
       else
-        format.html { render :new }
-        format.json { render json: @credit.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @credit.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -40,13 +63,17 @@ class CreditsController < ApplicationController
   # PATCH/PUT /credits/1
   # PATCH/PUT /credits/1.json
   def update
+    @cuentum = Cuentum.find(params[:cuentum_id])
+    @credit = @cuentum.credits.find(params[:id])
+
     respond_to do |format|
       if @credit.update(credit_params)
-        format.html { redirect_to @credit, notice: 'Credit was successfully updated.' }
-        format.json { render :show, status: :ok, location: @credit }
+        #1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
+        format.html { redirect_to(cuentum_credits_url, :notice => 'Comment was successfully updated.') }
+        format.xml  { head :ok }
       else
-        format.html { render :edit }
-        format.json { render json: @credit.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @credit.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -54,10 +81,14 @@ class CreditsController < ApplicationController
   # DELETE /credits/1
   # DELETE /credits/1.json
   def destroy
+    @cuentum = Cuentum.find(params[:cuentum_id])
+    @credit = @cuentum.credits.find(params[:id])
     @credit.destroy
+
     respond_to do |format|
-      format.html { redirect_to credits_url, notice: 'Credit was successfully destroyed.' }
-      format.json { head :no_content }
+      #1st argument reference the path /posts/:post_id/comments/
+      format.html { redirect_to(cuentum_credits_url) }
+      format.xml  { head :ok }
     end
   end
 
