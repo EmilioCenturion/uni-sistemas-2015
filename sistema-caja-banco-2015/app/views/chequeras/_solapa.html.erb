@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs">
+  	<li role="presentation">
+        <%= link_to 'Cuentas', @cuentum %>
+    </li>
+    <li role="presentation" class="active">
+    		<%= link_to 'Chequeras', cuentum_chequeras_path(@cuentum) %>
+    </li>
+  	<li role="presentation">
+  			<%= link_to 'Tarjetas', cuentum_credits_path(@cuentum) %>
+  	</li>       
+</ul>

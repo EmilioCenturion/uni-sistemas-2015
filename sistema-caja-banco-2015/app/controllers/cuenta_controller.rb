@@ -31,7 +31,7 @@ class CuentaController < ApplicationController
 
     respond_to do |format|
       if @cuentum.save
-        format.html { redirect_to cuenta_url, notice: 'Cuentum was successfully created.' }
+        format.html { redirect_to @cuentum, notice: 'Cuentum was successfully created.' }
         format.json { render :show, status: :created, location: @cuentum }
       else
         format.html { render :new }

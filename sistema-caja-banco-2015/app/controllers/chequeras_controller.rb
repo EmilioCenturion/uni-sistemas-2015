@@ -4,35 +4,58 @@ class ChequerasController < ApplicationController
   # GET /chequeras
   # GET /chequeras.json
   def index
-    @chequeras = Chequera.all
+    @cuentum = Cuentum.find(params[:cuentum_id])
+    @chequeras = @cuentum.chequeras
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @chequeras}
+    end
   end
 
   # GET /chequeras/1
   # GET /chequeras/1.json
   def show
+    @cuentum = Cuentum.find(params[:cuentum_id])
+    @chequera = @cuentum.chequeras.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @chequera }
+    end
   end
 
   # GET /chequeras/new
   def new
-    @chequera = Chequera.new
+    @cuentum = Cuentum.find(params[:cuentum_id])
+    @chequera = @cuentum.chequeras.build
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @chequera }
+    end
   end
 
   # GET /chequeras/1/edit
   def edit
+    @cuentum = Cuentum.find(params[:cuentum_id])
+    @chequera = @cuentum.chequeras.find(params[:id])
   end
 
   # POST /chequeras
   # POST /chequeras.json
   def create
-    @chequera = Chequera.new(chequera_params)
-
+    @cuentum = Cuentum.find(params[:cuentum_id])
+    @chequera = @cuentum.chequeras.create(chequera_params)
     respond_to do |format|
       if @chequera.save
-        format.html { redirect_to @chequera, notice: 'Chequera was successfully created.' }
-        format.json { render :show, status: :created, location: @chequera }
+        #1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
+        format.html { redirect_to( cuentum_chequeras_url, :notice => 'Comment was successfully created.') }
+        #the key :location is associated to an array in order to build the correct route to the nested resource comment
+        format.xml  { render :xml => @chequera, :status => :created, :location => [@chequera.cuentum, @chequera] }
       else
-        format.html { render :new }
-        format.json { render json: @chequera.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @chequera.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -40,13 +63,17 @@ class ChequerasController < ApplicationController
   # PATCH/PUT /chequeras/1
   # PATCH/PUT /chequeras/1.json
   def update
+    @cuentum = Cuentum.find(params[:cuentum_id])
+    @chequera = @cuentum.chequeras.find(params[:id])
+
     respond_to do |format|
       if @chequera.update(chequera_params)
-        format.html { redirect_to @chequera, notice: 'Chequera was successfully updated.' }
-        format.json { render :show, status: :ok, location: @chequera }
+        #1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
+        format.html { redirect_to(cuentum_chequeras_url, :notice => 'Comment was successfully updated.') }
+        format.xml  { head :ok }
       else
-        format.html { render :edit }
-        format.json { render json: @chequera.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @chequera.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -54,10 +81,14 @@ class ChequerasController < ApplicationController
   # DELETE /chequeras/1
   # DELETE /chequeras/1.json
   def destroy
+    @cuentum = Cuentum.find(params[:cuentum_id])
+    @chequera = @cuentum.chequeras.find(params[:id])
     @chequera.destroy
+
     respond_to do |format|
-      format.html { redirect_to chequeras_url, notice: 'Chequera was successfully destroyed.' }
-      format.json { head :no_content }
+      #1st argument reference the path /posts/:post_id/comments/
+      format.html { redirect_to(cuentum_chequeras_url) }
+      format.xml  { head :ok }
     end
   end
 

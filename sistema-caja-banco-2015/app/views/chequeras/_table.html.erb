@@ -1,0 +1,35 @@
+<div class="col-sm-12 col-md-12">
+  <table id="table" class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Primer Numero</th>
+        <th>Ultimo Numero</th>
+        <th>Nro de Cuenta</th>
+        <th>Encargado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @chequeras.each do |chequera| %>
+        <tr>
+          <% @personal = Personal.all.find(chequera.personal_id).nombre %>
+          <td><%= chequera.nro_primero %></td>
+          <td><%= chequera.nro_ultimo %></td>
+          <td><%= chequera.cuentum.nro_cuenta %></td>
+          <td><%= @personal %></td>
+          <td class="row">
+                  <%= link_to edit_cuentum_chequera_path(chequera.cuentum, chequera), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class= "glyphicon glyphicon-pencil"></span>
+                  <% end %>
+
+                  <%= link_to [chequera.cuentum, chequera], method: :delete, data: { confirm: 'Esta seguro?' }, class: 'btn btn-default', title: 'Eliminar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class= "glyphicon glyphicon-trash"></span>
+                  <% end %>
+
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

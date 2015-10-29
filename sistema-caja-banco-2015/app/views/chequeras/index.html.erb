@@ -1,33 +1,12 @@
-<h1>Listing chequeras</h1>
+<div class="container white">
+  <%= render 'solapa' %>   
+    <h1> Chequeras 
+      <%= link_to new_cuentum_chequera_path, class: 'btn btn-primary', title: 'Nueva chequera', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+        <span class= "glyphicon glyphicon-plus"></span>
+      <% end %>
+    </h1>
+  
+  <br>
+    <%= render 'table' %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nro primero</th>
-      <th>Nro ultimo</th>
-      <th>Cuentum</th>
-      <th>Personal</th>
-      <th>Estado</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @chequeras.each do |chequera| %>
-      <tr>
-        <td><%= chequera.nro_primero %></td>
-        <td><%= chequera.nro_ultimo %></td>
-        <td><%= chequera.cuentum %></td>
-        <td><%= chequera.personal %></td>
-        <td><%= chequera.estado %></td>
-        <td><%= link_to 'Show', chequera %></td>
-        <td><%= link_to 'Edit', edit_chequera_path(chequera) %></td>
-        <td><%= link_to 'Destroy', chequera, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Chequera', new_chequera_path %>

@@ -35,22 +35,31 @@ rails g scaffold personal nombre documento:integer telefono:integer email direcc
 
 rails g scaffold cuenta nro_cuenta:integer saldo:decimal banco:references
 
-rails g scaffold chequera nro_primero:integer nro_ultimo:integer cuentum:references personal:references
+rails g scaffold chequera nro_primero:integer nro_ultimo:integer cuentum:references personal:references estado
 
-rails g scaffold credit nro_tarjeta:integer cuentum:references personal:references
+rails g scaffold credit nro_tarjeta:integer cuentum:references personal:references estado
 
-rails g scaffold cheque_emitido nro_cheque:integer monto:decimal fecha:date chequera:references concepto
+rails g scaffold cheque_emitido nro_cheque:integer monto:decimal fecha:date chequera:references proveedor:references concepto 
 
-rails g scaffold cupon_emitido nro_cupon:integer monto:decimal fecha:date tarjeta:references concepto
+rails g scaffold cupon_emitido nro_cupon:integer monto:decimal fecha:date tarjeta:references concepto proveedor:references
 
-rails g scaffold nro_caja:integer apertura:datetime cierre:datetime saldo_inicial_efectivo:decimal saldo_inicial_cheque:decimal saldo_final_efectivo:decimal saldo_final_cheque:decimal usuario:references
+rails g scaffold caja nro_caja:integer saldo_inicial_efectivo:decimal saldo_inicial_cheque:decimal estado
 
-rails g model cheque_recibido nro_cheque:integer banco:references monto:decimal fecha:date concepto
+rails g scaffold apertura_caja caja:references apertura:datetime cierre:datetime saldo_inicial_efectivo:decimal saldo_inicial_cheque:decimal saldo_final_efectivo:decimal saldo_final_cheque:decimal user:references
 
-rails g scaffold motivo_movimiento descripcion
+rails g scaffold cheque_recibido nro_cheque:integer banco:references monto:decimal fecha:date concepto cliente:references
 
-rails d model boleta_deposito nro_boleta:integer monto_efectivo:decimal monto_cheque:decimal fecha:date cuenta:references caja:references cheque_recibido:references
+rails g scaffold boleta_deposito nro_boleta:integer monto_efectivo:decimal monto_cheque:decimal fecha:date cuenta:references apertura_caja:references 
 
-rails d model movimiento_caja caja:references motivo_movimiento:references es_ingreso:boolean monto_efectivo:decimal monto_cheque:decimal fecha:datetime 
-     
-rails d scaffold movimiento_banco banco:references motivo_movimiento:references es_ingreso:boolean monto_efectivo:decimal monto_cheque:decimal fecha:date
+rails g model boleta_deposito_detalle boleta_deposito:references cheque_recibido:references
+
+rails g scaffold movimiento_caja apertura_caja:references motivo_movimiento_caja:references descripcion es_ingreso:boolean monto_efectivo:decimal monto_cheque:decimal fecha:datetime 
+
+rails g model movimiento_caja_detalle movimiento_caja:references cheque_recibido:references
+
+
+rails g scaffold movimiento_banco cuenta:references motivo_movimiento_banco:references descripcion es_ingreso:boolean monto_efectivo:decimal monto_cheque:decimal fecha:datetime 
+
+rails g model movimiento_banco_detalle movimiento_banco:references cheque_recibido:references
+
+
