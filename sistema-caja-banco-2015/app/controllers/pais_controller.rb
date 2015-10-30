@@ -43,7 +43,7 @@ class PaisController < ApplicationController
   def update
     respond_to do |format|
       if @pai.update(pai_params)
-        format.html { redirect_to @pai, notice: 'Pai was successfully updated.' }
+        format.html { redirect_to pais_url, notice: 'Pai was successfully updated.' }
         format.json { render :show, status: :ok, location: @pai }
       else
         format.html { render :edit }
