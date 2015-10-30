@@ -5,6 +5,7 @@ class CajasController < ApplicationController
   # GET /cajas.json
   def index
     @cajas = Caja.all
+    @caja = Caja.new
   end
 
   # GET /cajas/1
@@ -24,11 +25,11 @@ class CajasController < ApplicationController
   # POST /cajas
   # POST /cajas.json
   def create
-    @caja = Caja.new(caja_params)
+    @caja = Caja.new
 
     respond_to do |format|
       if @caja.save
-        format.html { redirect_to @caja, notice: 'Caja was successfully created.' }
+        format.html { redirect_to cajas_url, notice: 'Caja was successfully created.' }
         format.json { render :show, status: :created, location: @caja }
       else
         format.html { render :new }

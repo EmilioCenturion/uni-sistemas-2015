@@ -1,7 +1,23 @@
 <div class="container white">
     <%= render 'solapa' %> 
 	<h1>Cuentas</h1>
-    <%= render 'form' %> 
+
+	<div class="col-md-4">
+		<strong>Nro de cuenta:</strong>
+	  	<%= @cuentum.nro_cuenta %>
+	</div>
+	<div class="col-md-4">
+		<strong>Banco:</strong>
+		<% banco = @cuentum.banco%>
+	  	<%= banco.name_banco  %>
+	</div>
+	<div class="col-md-4">
+		<strong>Saldo:</strong>
+	  	<%= @cuentum.saldo %>
+	</div>
+	
+	<%= link_to 'Cancelar',  cuenta_path , class: 'btn btn-primary margen' %>
+
 </div>
 
 <br>

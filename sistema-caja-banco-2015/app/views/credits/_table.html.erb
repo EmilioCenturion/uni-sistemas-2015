@@ -12,10 +12,10 @@
     <tbody>
       <% @credits.each do |credit| %>
         <tr>
-          <% @personal = Personal.all.find(credit.personal_id).nombre %>
           <td><%= credit.nro_tarjeta %></td>
           <td><%= credit.cuentum.nro_cuenta %></td>
-          <td><%= @personal %></td>
+          <% personal = credit.personal%>
+          <td><%= personal.name_personal  %></td>
           <td class="row">
                   <%= link_to edit_cuentum_credit_path(credit.cuentum, credit), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-pencil"></span>

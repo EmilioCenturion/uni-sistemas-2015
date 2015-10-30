@@ -13,11 +13,11 @@
     <tbody>
       <% @chequeras.each do |chequera| %>
         <tr>
-          <% @personal = Personal.all.find(chequera.personal_id).nombre %>
           <td><%= chequera.nro_primero %></td>
           <td><%= chequera.nro_ultimo %></td>
           <td><%= chequera.cuentum.nro_cuenta %></td>
-          <td><%= @personal %></td>
+          <% personal = chequera.personal%>
+          <td><%= personal.name_personal  %></td>
           <td class="row">
                   <%= link_to edit_cuentum_chequera_path(chequera.cuentum, chequera), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-pencil"></span>
