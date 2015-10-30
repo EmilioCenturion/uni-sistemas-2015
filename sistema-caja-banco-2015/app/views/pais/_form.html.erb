@@ -1,21 +1,27 @@
-<%= form_for(@pai) do |f| %>
-  <% if @pai.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@pai.errors.count, "error") %> prohibited this pai from being saved:</h2>
+<%= form_for @pai, validate: true do |f| %>
 
-      <ul>
-      <% @pai.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <form class="form-horizontal">
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-12 form-group required">
+        <%= f.label :nombre, :class => 'col-md-2 control-label'%>
+        <div class="col-md-7">
+          <%= f.text_field :nombre , autofocus:true , :class => 'form-control'%>
+        </div>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Agregar", :class => 'btn btn-primary margen' %>
+   <div class="col-md-10">
+        <div class="actions">
+          <% if controller.action_name == 'new' or controller.action_name == 'index' %>
+            <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
+            <% elsif controller.action_name == 'edit' %>
+            <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
+          <% end %>
+          
+          <%= link_to 'Cancelar',  bancos_path , class: 'btn btn-primary' %>
+        </div>
+      </div>
+  </form>
   </div>
 <% end %>

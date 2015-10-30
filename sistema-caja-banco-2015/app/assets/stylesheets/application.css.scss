@@ -39,16 +39,6 @@
 .navbar-inverse .navbar-nav>.dropdown>a:hover .caret { border-top-color: #FFFFFF}
 .navbar-inverse .navbar-nav>.dropdown>a .caret { border-bottom-color: #FFFFFF}
 .navbar-inverse .navbar-nav>.dropdown>a:hover .caret { border-bottom-color: #FFFFFF}
-footer{
-    
-    background-color:#94ADFF;
-    width: 100%;
-    height: 30px;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    color:#FFFFFF;
-}
 
 .margen{
 	margin:20px 20px 20px 10px;
@@ -76,4 +66,33 @@ body{
   content:"* ";
   font-size: absolute;
   margin-left: -15px;
+}
+
+.login{
+  max-width: 400px;
+  width: 100%;
+  margin: 130px auto 0;
+  padding-bottom: 60px;
+}
+
+.btn-blue{
+  color:#132084;
+}
+
+
+
+.login-form {
+  background-color: #282830;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  margin:0;
+}
+
+.login-form-fieldset {
+  background: #fff;
+  border-radius: 0 0 5px 5px;
+  padding: 20px;
+  position: relative;
 }
