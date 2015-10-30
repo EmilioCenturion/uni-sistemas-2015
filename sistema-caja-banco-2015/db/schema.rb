@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20151029191404) do
     t.integer  "caja_id"
     t.datetime "apertura"
     t.datetime "cierre"
-    t.decimal  "saldo_inicial_efectivo"
-    t.decimal  "saldo_inicial_cheque"
-    t.decimal  "saldo_final_efectivo"
-    t.decimal  "saldo_final_cheque"
+    t.decimal  "saldo_inicial_efectivo", default: 0.0
+    t.decimal  "saldo_inicial_cheque",   default: 0.0
+    t.decimal  "saldo_final_efectivo",   default: 0.0
+    t.decimal  "saldo_final_cheque",     default: 0.0
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 20151029191404) do
 
   create_table "boleta_depositos", force: true do |t|
     t.integer  "nro_boleta"
-    t.decimal  "monto_efectivo"
-    t.decimal  "monto_cheque"
+    t.decimal  "monto_efectivo",   default: 0.0
+    t.decimal  "monto_cheque",     default: 0.0
     t.date     "fecha"
     t.integer  "cuenta_id"
     t.integer  "apertura_caja_id"
@@ -73,16 +73,16 @@ ActiveRecord::Schema.define(version: 20151029191404) do
 
   create_table "cajas", force: true do |t|
     t.integer  "nro_caja"
-    t.decimal  "saldo_inicial_efectivo"
-    t.decimal  "saldo_inicial_cheque"
-    t.string   "estado"
+    t.decimal  "saldo_inicial_efectivo", default: 0.0
+    t.decimal  "saldo_inicial_cheque",   default: 0.0
+    t.string   "estado",                 default: "Cerrado"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "cheque_emitidos", force: true do |t|
     t.integer  "nro_cheque"
-    t.decimal  "monto"
+    t.decimal  "monto",        default: 0.0
     t.date     "fecha"
     t.integer  "chequera_id"
     t.integer  "proveedor_id"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20151029191404) do
   create_table "cheque_recibidos", force: true do |t|
     t.integer  "nro_cheque"
     t.integer  "banco_id"
-    t.decimal  "monto"
+    t.decimal  "monto",      default: 0.0
     t.date     "fecha"
     t.string   "concepto"
     t.integer  "cliente_id"
@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 20151029191404) do
 
   create_table "cuenta", force: true do |t|
     t.integer  "nro_cuenta"
-    t.decimal  "saldo"
+    t.decimal  "saldo",      default: 0.0
     t.integer  "banco_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -151,7 +151,7 @@ ActiveRecord::Schema.define(version: 20151029191404) do
 
   create_table "cupon_emitidos", force: true do |t|
     t.integer  "nro_cupon"
-    t.decimal  "monto"
+    t.decimal  "monto",        default: 0.0
     t.date     "fecha"
     t.integer  "tarjeta_id"
     t.string   "concepto"
@@ -190,8 +190,8 @@ ActiveRecord::Schema.define(version: 20151029191404) do
     t.integer  "motivo_movimiento_banco_id"
     t.string   "descripcion"
     t.boolean  "es_ingreso"
-    t.decimal  "monto_efectivo"
-    t.decimal  "monto_cheque"
+    t.decimal  "monto_efectivo",             default: 0.0
+    t.decimal  "monto_cheque",               default: 0.0
     t.datetime "fecha"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -215,8 +215,8 @@ ActiveRecord::Schema.define(version: 20151029191404) do
     t.integer  "motivo_movimiento_caja_id"
     t.string   "descripcion"
     t.boolean  "es_ingreso"
-    t.decimal  "monto_efectivo"
-    t.decimal  "monto_cheque"
+    t.decimal  "monto_efectivo",            default: 0.0
+    t.decimal  "monto_cheque",              default: 0.0
     t.datetime "fecha"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -15,14 +15,14 @@
           <tbody>
             <% @bancos.each do |banco| %>
               <tr>
-                <% @pais = Pai.all.find(banco.pai_id).nombre%>
-                <% @ciudad = Ciudad.all.find(banco.ciudad_id).nombre%>
                 <td><%= banco.nombre %></td>
                 <td><%= banco.direccion %></td>
                 <td><%= banco.telefono %></td>
                 <td><%= banco.correo %></td>
-                <td><%= @ciudad %></td>
-                <td><%= @pais %></td>
+                <% ciudad = banco.ciudad %>
+                <td><%= ciudad.name_ciudad  %></td>
+                <% pais = banco.pai %>
+                <td><%= pais.name_pais  %></td>
                 <td class="row">
                   <%= link_to edit_banco_path(banco), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-pencil"></span>

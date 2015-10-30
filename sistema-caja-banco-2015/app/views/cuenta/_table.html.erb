@@ -12,10 +12,10 @@
     <tbody>
       <% @cuenta.each do |cuentum| %>
         <tr>
-          <% @banco = Banco.all.find(cuentum.banco_id).nombre%>
           <td><%= cuentum.nro_cuenta %></td>
           <td><%= cuentum.saldo %></td>
-          <td><%= @banco %></td>
+          <% banco = cuentum.banco%>
+          <td><%= banco.name_banco  %></td>
           <td class="row">
                   <%= link_to cuentum, class: 'btn btn-default', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-eye-open"></span>

@@ -5,8 +5,8 @@ class CreateMovimientoBancos < ActiveRecord::Migration
       t.references :motivo_movimiento_banco, index: true
       t.string :descripcion
       t.boolean :es_ingreso
-      t.decimal :monto_efectivo
-      t.decimal :monto_cheque
+      t.decimal :monto_efectivo, default: 0 
+      t.decimal :monto_cheque, default: 0 
       t.datetime :fecha
 
       t.timestamps
