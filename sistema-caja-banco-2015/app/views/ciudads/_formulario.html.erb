@@ -1,6 +1,8 @@
 <% modal ||= false %>
 <% remote = modal ? true : false %>
-<%= form_for(@pai, validate: true, remote: remote, html: {role: :form, 'data-model' => 'pais'}) do |f| %>
+
+
+<%= form_for(@ciudad, validate: true, remote: remote, html: {role: :form, 'data-model' => 'ciudads'}) do |f| %>
 
  <div class="row">
     <form class="form-horizontal">
@@ -28,3 +30,5 @@
   </form>
   </div>
 <% end %>
+
+
