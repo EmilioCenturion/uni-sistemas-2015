@@ -18,6 +18,9 @@ class BancosController < ApplicationController
   # GET /bancos/new
   def new
     @banco = Banco.new
+    @bancos = Banco.all
+     @pai = Pai.new
+    @ciudad = Ciudad.new
   end
 
   # GET /bancos/1/edit
@@ -30,6 +33,7 @@ class BancosController < ApplicationController
   # POST /bancos
   # POST /bancos.json
   def create
+     @bancos = Banco.all
     @banco = Banco.new(banco_params)
 
     respond_to do |format|
