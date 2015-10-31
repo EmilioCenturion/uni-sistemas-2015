@@ -19,7 +19,7 @@
             <td><%= caja.saldo_inicial_efectivo + caja.saldo_inicial_cheque %></td>
             <td>
                 <% if caja.estado == 'Cerrado' %>
-                  <%= link_to new_apertura_caja_path, class: 'btn btn-success', title: 'Abrir caja', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <%= button_to new_apertura_caja_path, class: 'btn btn-success', title: 'Abrir caja', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                           <span class= "glyphicon glyphicon-home"></span>
                   <% end %>
                 <% elsif caja.estado == 'Abierto' %>
