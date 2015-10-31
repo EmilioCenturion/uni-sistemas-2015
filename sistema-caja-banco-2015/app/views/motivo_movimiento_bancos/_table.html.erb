@@ -1,0 +1,35 @@
+      <div class="col-sm-12 col-md-12">
+        <table id="table" class="table table-striped table-hover">
+           <thead>
+    <tr>
+      <th>id</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+          <tbody>
+    <% @motivo_movimiento_bancos.each do |motivo_movimiento_banco| %>
+      <tr>
+         <td><%= motivo_movimiento_banco.id %></td>
+        <td><%= motivo_movimiento_banco.descripcion %></td>
+                         <td class="row">
+                    <%= link_to motivo_movimiento_banco, class: 'btn btn-default', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class= "glyphicon glyphicon-eye-open"></span>
+                  <% end %>
+
+                  <%= link_to edit_motivo_movimiento_banco_path(motivo_movimiento_banco), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class= "glyphicon glyphicon-pencil"></span>
+                  <% end %>
+                  <%= link_to motivo_movimiento_banco, method: :delete, data: { confirm: 'Esta seguro que desea eliminar este registro?' }, class: 'btn btn-default', title: 'Eliminar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class= "glyphicon glyphicon-trash"></span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <br>
+      </div>
+   
