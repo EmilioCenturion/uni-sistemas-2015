@@ -6,6 +6,7 @@ class BancosController < ApplicationController
   def index
     @banco = Banco.new
     @bancos = Banco.all
+    @pais = Pai.all
     @pai = Pai.new
     @ciudad = Ciudad.new
   end
@@ -28,6 +29,7 @@ class BancosController < ApplicationController
     @bancos = Banco.all
     @pai = Pai.find(params[:id])
     @ciudad = Ciudad.find(params[:id])
+    @pais = Pai.all
   end
 
   # POST /bancos
@@ -41,7 +43,7 @@ class BancosController < ApplicationController
         format.html { redirect_to bancos_url, notice: 'Creaste un nuevo banco correctamente.' }
         format.json { render :show, status: :created, location: @banco }
       else
-        format.html { render :new }
+        format.html { render :new}
         format.json { render json: @banco.errors, status: :unprocessable_entity }
       end
     end
