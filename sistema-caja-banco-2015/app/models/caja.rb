@@ -4,8 +4,14 @@ class Caja < ActiveRecord::Base
 
 	before_save :set_nro_caja
 
+
+
 	protected
 		def set_nro_caja
-			self.nro_caja = Caja.last.nro_caja + 1
+			if Caja.last.nil?
+				self.nro_caja = 1
+			else
+				self.nro_caja = Caja.last.nro_caja + 1
+			end
 		end
 end

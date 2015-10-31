@@ -26,13 +26,19 @@
         </div>
       </div>
 
-      <div class="col-md-6 form-group required">
+      <div  class="col-md-6 form-group required">
         <%= f.label :pais , :class => 'col-md-2 control-label'%>
         <%= link_to "#modal-pais", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
               <span class="glyphicon glyphicon-plus"></span>
             <% end %>
-            <div class="col-md-6">
-          <%= f.collection_select :pai_id, Pai.all, :id, :name_pais, {prompt: "Seleccione un pais"} , :class => 'btn btn-default'%>
+            <div  class="col-md-6">
+              <select id="pais_ingreso" name="banco[pai_id]" class="btn btn-default">
+                 <% @pais.each do |pai| %>
+                    <%= render partial: "pais/coleccion", locals: {pai: pai} %>
+  
+                <% end %>
+              </select>
+          
           </div>
       </div>
     </div>
@@ -51,8 +57,12 @@
               <span class="glyphicon glyphicon-plus"></span>
             <% end %>
         <div class="col-md-6">
-          <%= f.collection_select :ciudad_id, Ciudad.all, :id, :name_ciudad, {prompt: "Seleccione una ciudad"} ,:class => 'btn btn-default'%>
-            
+          <select id="ciudad_ingreso" name="banco[ciudad_id]" class="btn btn-default">
+                 <% @ciudads.each do |ciudad| %>
+                    <%= render partial: "ciudads/coleccion", locals: {ciudad: ciudad} %>
+  
+                <% end %>
+              </select>
         </div>
       </div>
     </div>
@@ -81,9 +91,10 @@
   </div>
 <% end %>
 
+
+
 <%= render 'bancos/modals/pais' %>
 <%= render 'bancos/modals/ciudad' %>
-
 
 
 

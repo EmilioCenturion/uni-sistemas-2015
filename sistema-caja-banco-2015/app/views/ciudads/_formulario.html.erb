@@ -1,0 +1,34 @@
+<% modal ||= false %>
+<% remote = modal ? true : false %>
+
+
+<%= form_for(@ciudad, validate: true, remote: remote, html: {role: :form, 'data-model' => 'ciudads'}) do |f| %>
+
+ <div class="row">
+    <form class="form-horizontal">
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-12 form-group required">
+        <%= f.label :nombre, :class => 'col-md-2 control-label'%>
+        <div class="col-md-7">
+          <%= f.text_field :nombre , autofocus:true , :class => 'form-control'%>
+        </div>
+      </div>
+    </div>
+
+     <div class="col-md-10">
+        <div class="actions">
+          <% if controller.action_name == 'new' or controller.action_name == 'index' %>
+            <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
+            <% elsif controller.action_name == 'edit' %>
+            <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
+          <% end %>
+          
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+      </div>
+        </div>
+      </div>
+  </form>
+  </div>
+<% end %>
+
+

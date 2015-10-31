@@ -10,14 +10,14 @@
   <%= csrf_meta_tags %>
   
 </head>
-<body class"relleno">
+<body>
 
 	
   <% if user_signed_in? %>
     <%= render 'layouts/menubar'%>
     <%= yield %>
   <%else%>
-	 <%= render 'devise/sessions/iniciar'%>   
+	 <%= yield %>  
   <%end%>
 	
 

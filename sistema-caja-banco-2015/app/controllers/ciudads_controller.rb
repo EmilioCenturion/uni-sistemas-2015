@@ -31,9 +31,11 @@ class CiudadsController < ApplicationController
       if @ciudad.save
         format.html { redirect_to bancos_url, notice: 'Ciudad was successfully created.' }
         format.json { render :show, status: :created, location: @ciudad }
+        format.js   { render action: 'show', status: :created, location: @ciudad }
       else
         format.html { render :new }
         format.json { render json: @ciudad.errors, status: :unprocessable_entity }
+        format.js   { render json: @ciudad.errors, status: :unprocessable_entity }
       end
     end
   end

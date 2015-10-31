@@ -1,0 +1,6 @@
+
+<% if Pai.last == pai %>
+	<option value= <%= pai.id %> selected="selected"><%= pai.nombre%></option>
+<% else %>
+	<option value= <%= pai.id %>><%= pai.nombre%></option>
+<% end %>
