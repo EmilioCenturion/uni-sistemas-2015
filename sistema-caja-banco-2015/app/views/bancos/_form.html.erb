@@ -57,8 +57,12 @@
               <span class="glyphicon glyphicon-plus"></span>
             <% end %>
         <div class="col-md-6">
-          <%= f.collection_select :ciudad_id, Ciudad.all, :id, :name_ciudad, {prompt: "Seleccione una ciudad"} ,:class => 'btn btn-default'%>
-            
+          <select id="ciudad_ingreso" name="banco[ciudad_id]" class="btn btn-default">
+                 <% @ciudads.each do |ciudad| %>
+                    <%= render partial: "ciudads/coleccion", locals: {ciudad: ciudad} %>
+  
+                <% end %>
+              </select>
         </div>
       </div>
     </div>
@@ -87,8 +91,10 @@
   </div>
 <% end %>
 
-<%
-=begin %>
+
+
+
+
 <%= render 'bancos/modals/pais' %>
 <%= render 'bancos/modals/ciudad' %>
 <%
@@ -113,5 +119,4 @@
     </div>
   </div>
 </div>
-
 
