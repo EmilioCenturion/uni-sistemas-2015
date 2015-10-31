@@ -9,8 +9,10 @@ class Caja < ActiveRecord::Base
 	protected
 		def set_nro_caja
 			if Caja.last.nil?
+				
 				self.nro_caja = 1
 			else
+
 				self.nro_caja = Caja.last.nro_caja + 1
 			end
 		end
