@@ -1,4 +1,4 @@
-<%= form_for(@motivo_movimiento_caja) do |f| %>
+<%= form_for(@motivo_movimiento_caja), validate: true, do |f| %>
   <% if @motivo_movimiento_caja.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@motivo_movimiento_caja.errors.count, "error") %> prohibited this motivo_movimiento_caja from being saved:</h2>

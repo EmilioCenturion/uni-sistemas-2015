@@ -4,6 +4,8 @@ class AperturaCaja < ActiveRecord::Base
   has_many :movimiento_cajas
   has_many :boleta_depositos
 
+  validates :caja_id, :presence => {:message => "Debe seleccionar una caja"}
+
   before_create :create_apertura
 
 

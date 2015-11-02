@@ -1,3 +1,4 @@
+
 class BancosController < ApplicationController
   before_action :set_banco, only: [:show, :edit, :update, :destroy]
 
@@ -32,10 +33,9 @@ class BancosController < ApplicationController
     @pai = Pai.find(params[:id])
     @ciudad = Ciudad.find(params[:id])
     @pais = Pai.all
-
     @ciudads = Ciudad.all
+  end
 
-end
   # POST /bancos
   # POST /bancos.json
   def create
@@ -88,3 +88,4 @@ end
       params.require(:banco).permit(:nombre, :direccion, :telefono, :correo, :sucursal, :ciudad_id, :pai_id)
     end
 end
+
