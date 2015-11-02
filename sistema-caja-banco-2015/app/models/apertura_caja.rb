@@ -4,11 +4,12 @@ class AperturaCaja < ActiveRecord::Base
   has_many :movimiento_cajas
   has_many :boleta_depositos
 
-  before_create :create_apertura
+  before_create :bc_apertura
 
+ 
 
 	protected
-		def create_apertura
+		def bc_apertura
 			caja = Caja.find(self.caja_id)
 			self.saldo_inicial_cheque = caja.saldo_inicial_cheque
 			self.saldo_final_cheque = caja.saldo_inicial_cheque
@@ -18,3 +19,4 @@ class AperturaCaja < ActiveRecord::Base
 			Caja.update(caja, :estado => 'Abierto')
 		end
 end
+

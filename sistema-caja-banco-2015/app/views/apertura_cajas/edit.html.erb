@@ -1,6 +1,7 @@
-<h1>Editing apertura_caja</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @apertura_caja %> |
-<%= link_to 'Back', apertura_cajas_path %>
+<div class="container white">
+    <%= form_for(@apertura_caja) do |f| %>
+    	<% AperturaCaja.update(@apertura_caja.id, :cierre => Time.now) %>
+    	<% Caja.update(@apertura_caja.caja_id, :estado => 'Cerrado', :saldo_inicial_efectivo => @apertura_caja.saldo_final_efectivo, :saldo_inicial_cheque => @apertura_caja.saldo_final_cheque)%>
+    <%end%>
+    <% controller.redirect_to new_apertura_caja_path %>
+</div>
