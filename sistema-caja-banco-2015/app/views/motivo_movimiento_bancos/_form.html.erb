@@ -1,13 +1,15 @@
 <%= form_for @motivo_movimiento_banco, validate: true do |f| %>
-<div class="row">
-    <form class="form-horizontal">
-    <div class="field col-md-12 form-group">
-      <div class="field col-md-12 form-group required">
-        <%= f.label :descripcion, :class => 'col-md-2 control-label'%>
-        <div class="col-md-7">
-          <%= f.text_field :descripcion , autofocus:true , :class => 'form-control'%>
-        </div>
-      </div>
+
+  <% if @motivo_movimiento_banco.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@motivo_movimiento_banco.errors.count, "error") %> prohibited this motivo_movimiento_banco from being saved:</h2>
+
+      <ul>
+      <% @motivo_movimiento_banco.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+
     </div>
 
    <div class="col-md-10">

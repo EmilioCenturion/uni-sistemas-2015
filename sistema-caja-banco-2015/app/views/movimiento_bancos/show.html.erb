@@ -2,12 +2,13 @@
 
 <p>
   <strong>Cuenta:</strong>
-  <%= @movimiento_banco.cuenta %>
+  <% cuentum = Cuentum.find(@movimiento_banco.cuenta_id) %>
+  <%= cuentum.nro_cuenta %>
 </p>
 
 <p>
   <strong>Motivo movimiento banco:</strong>
-  <%= @movimiento_banco.motivo_movimiento_banco %>
+  <%= @movimiento_banco.motivo_movimiento_banco.descripcion %>
 </p>
 
 <p>
