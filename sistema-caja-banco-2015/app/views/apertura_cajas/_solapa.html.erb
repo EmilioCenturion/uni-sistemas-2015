@@ -1,20 +1,20 @@
 <ul class="nav nav-tabs">
-  	<li role="presentation" class="active">
+    <li role="presentation" class="active">
       <%= link_to 'Caja', @apertura_caja %>
     </li>
-  	<% if controller.action_name == 'new'%>
-      	<li role="presentation">
-      		<a href="/" class="btn disabled">Movimiento de Caja</a>
-      	</li>
-    		<li role="presentation">
-    			<a href="/" class="btn disabled">Boleta de Deposito</a>
-    		</li>        
-  	<% else %>
-      	<li role="presentation">
-      		<%= link_to 'Movimientos de Caja', apertura_caja_movimiento_cajas_path(@apertura_caja) %>
-      	</li>
-    		<li role="presentation">
-    			<%= link_to 'Boletas de Deposito', apertura_caja_boleta_depositos_path(@apertura_caja) %>
-    		</li>       
+    <% if controller.action_name == 'new' or @apertura_caja.cierre.nil? == false %>
+        <li role="presentation">
+          <a href="/" class="btn disabled">Movimiento de Caja</a>
+        </li>
+        <li role="presentation">
+          <a href="/" class="btn disabled">Boleta de Deposito</a>
+        </li>        
+    <% else %>
+        <li role="presentation">
+          <%= link_to 'Movimientos de Caja', apertura_caja_movimiento_cajas_path(@apertura_caja) %>
+        </li>
+        <li role="presentation">
+          <%= link_to 'Boletas de Deposito', apertura_caja_boleta_depositos_path(@apertura_caja) %>
+        </li>       
     <% end %>
 </ul>
