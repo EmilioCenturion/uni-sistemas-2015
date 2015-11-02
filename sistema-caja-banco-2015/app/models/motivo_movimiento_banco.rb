@@ -1,4 +1,4 @@
 class MotivoMovimientoBanco < ActiveRecord::Base
-	validates 	:descripcion, 	:presence => {:message => "No puede estar en blanco"},
-								:uniqueness => {:message => "Ya existe este motivo"}
+
+	has_many :movimiento_bancos
 end

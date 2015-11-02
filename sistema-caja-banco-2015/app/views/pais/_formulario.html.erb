@@ -1,9 +1,9 @@
 <% modal ||= false %>
 <% remote = modal ? true : false %>
 
-<%= form_for(@pai, validate: true, remote: remote, html: {role: :form, 'data-model' => 'pais'}) do |f| %>
+<%= form_for(@pai, remote: remote, html: {role: :form, 'data-model' => 'pai'}) do |f| %>
 
- <div class="row">
+  <div class="row">
     <form class="form-horizontal">
     <div class="field col-md-12 form-group">
       <div class="field col-md-12 form-group required">
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-     <div class="col-md-10">
+   <div class="col-md-10">
         <div class="actions">
           <% if controller.action_name == 'new' or controller.action_name == 'index' %>
             <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
@@ -22,8 +22,8 @@
             <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
           <% end %>
 
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-      </div>
+          
+          <%= link_to 'Cancelar',  bancos_path , class: 'btn btn-primary' %>
         </div>
       </div>
   </form>
