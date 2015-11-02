@@ -32,10 +32,7 @@ class BancosController < ApplicationController
     @pai = Pai.find(params[:id])
     @ciudad = Ciudad.find(params[:id])
     @pais = Pai.all
-<<<<<<< HEAD
-=======
     @ciudads = Ciudad.all
->>>>>>> ergo-program-master
   end
 
   # POST /bancos
