@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :boleta_depositos
+  resources :clientes
 
-  resources :movimiento_cajas
+  devise_for :users
 
   resources :movimiento_bancos
 
@@ -12,9 +11,12 @@ Rails.application.routes.draw do
 
   resources :cheque_emitidos
 
-  resources :apertura_cajas
+  resources :apertura_cajas do
+    resources :movimiento_cajas
+    resources :boleta_depositos
+  end
 
-  resources :cajas
+  resources :cajas 
 
   resources :motivo_movimiento_cajas
 

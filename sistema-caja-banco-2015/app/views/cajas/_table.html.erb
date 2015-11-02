@@ -6,7 +6,7 @@
           <th>Saldo en efectivo</th>
           <th>Saldo en cheque</th>
           <th>Total</th>
-          <th>Accion</th>
+          <th>Estado</th>
         </tr>
       </thead>
 
@@ -17,15 +17,7 @@
             <td><%= caja.saldo_inicial_efectivo %></td>
             <td><%= caja.saldo_inicial_cheque %></td>
             <td><%= caja.saldo_inicial_efectivo + caja.saldo_inicial_cheque %></td>
-            <td>
-                <% if caja.estado == 'Cerrado' %>
-                  <%= button_to new_apertura_caja_path, class: 'btn btn-success', title: 'Abrir caja', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
-                          <span class= "glyphicon glyphicon-home"></span>
-                  <% end %>
-                <% elsif caja.estado == 'Abierto' %>
-                      <button type="button" class="btn btn-default" disabled="disabled"><span class="glyphicon glyphicon-home"></span></button>
-                <% end %>
-            </td>
+            <td><%= caja.estado %></td>
           </tr>
         <% end %>
       </tbody>

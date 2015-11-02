@@ -1,4 +1,4 @@
-<%= form_for(@movimiento_caja) do |f| %>
+<%= nested_form_for [@movimiento_caja.apertura_caja, @movimiento_caja] do |f| %>
   <% if @movimiento_caja.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@movimiento_caja.errors.count, "error") %> prohibited this movimiento_caja from being saved:</h2>
@@ -11,35 +11,85 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :apertura_caja_id %><br>
-    <%= f.text_field :apertura_caja_id %>
-  </div>
-  <div class="field">
-    <%= f.label :motivo_movimiento_caja_id %><br>
-    <%= f.text_field :motivo_movimiento_caja_id %>
-  </div>
-  <div class="field">
-    <%= f.label :descripcion %><br>
-    <%= f.text_field :descripcion %>
-  </div>
-  <div class="field">
-    <%= f.label :es_ingreso %><br>
-    <%= f.check_box :es_ingreso %>
-  </div>
-  <div class="field">
-    <%= f.label :monto_efectivo %><br>
-    <%= f.text_field :monto_efectivo %>
-  </div>
-  <div class="field">
-    <%= f.label :monto_cheque %><br>
-    <%= f.text_field :monto_cheque %>
-  </div>
-  <div class="field">
-    <%= f.label :fecha %><br>
-    <%= f.datetime_select :fecha %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <form class="form-horizontal">
+      <div class="col-md-12">
+        <div class="field col-md-4 form-group required">
+          <%= f.label :motivo_movimiento_caja_id, 'Motivo', :class => 'col-md-3 control-label'%>
+          <%= f.collection_select :motivo_movimiento_caja_id, MotivoMovimientoCaja.all, :id, :descripcion, {prompt: "Seleccione un motivo"} ,:class => 'btn btn-default'%>
+        </div>
+        <div class="field col-md-4 form-group required">
+            <%= f.label :es_ingreso, 'Tipo', :class => 'col-md-3 control-label'%>
+            <select name="movimiento_caja[es_ingreso]" class="btn btn-default">
+              <option value="" selected="selected">Seleccione una opcion</option>
+              <option value="true">Ingreso</option>
+              <option value="false">Egreso</option>
+            </select>
+        </div>
+        <div class="field col-md-4 form-group">
+          <strong>Fecha:</strong>
+          <%= Time.now %>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="field col-md-4 form-group">
+          <%= f.label :monto_efectivo,'Efectivo' , :class => 'col-md-3 control-label'%>
+          <div class="col-md-8">
+            <%= f.text_field :monto_efectivo, :class => 'form-control'%>
+          </div>
+        </div>
+      </div>
+      
+      <div class="field col-md-6 form-group">
+        <%= f.label :descripcion, :class => 'col-md-2 control-label' %>
+        <div class="col-md-7">
+            <%= f.text_area :descripcion, :class => 'form-control'%>
+          </div>
+      </div>
+      <br>
+
+      <%# nested form de cheques recibidos%>
+      <table class="tab table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Nro. de cheque</th>
+            <th>Banco</th>
+            <th>Monto</th>
+            <th>Fecha</th>
+            <th>Concepto</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= f.fields_for :cheque_recibidos, :wrapper => false do |cheque_recibidos_form| %>
+            <tr class="fields">
+              <td><%= cheque_recibidos_form.collection_select :cliente_id, Cliente.all, :id, :name_cliente, {prompt: "Seleccione un cliente"} ,:class => 'btn btn-default'%></td>
+              <td><%= cheque_recibidos_form.number_field :nro_cheque, :class => 'form-control'%></td>
+              <td><%= cheque_recibidos_form.collection_select :banco_id, Banco.all, :id, :name_banco, {prompt: "Seleccione un banco"} ,:class => 'btn btn-default'%></td>
+              <td><%= cheque_recibidos_form.text_field :monto, :class => 'form-control' %></td>
+              <td><%= cheque_recibidos_form.date_select :fecha %></td>
+              <td><%= cheque_recibidos_form.text_field :concepto,:class => 'form-control' %></td>
+              <td><%= cheque_recibidos_form.link_to_remove "X", :class => 'btn btn-danger'%></td>
+            </tr>
+          <% end %>
+          <tr>
+             <td><%= f.link_to_add "Agregar cheque", :cheque_recibidos, :class => 'insert_in_table btn btn-default' %></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      
+      <div class="col-md-10 ">
+        <div class="actions">
+          <% if controller.action_name == 'new' or controller.action_name == 'index' %>
+            <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
+          <% elsif controller.action_name == 'edit' %>
+              <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
+          <% end %>
+          <%= link_to 'Cancelar',  apertura_caja_movimiento_cajas_path(@apertura_caja) , class: 'btn btn-primary margen' %>
+        </div>
+      </div>
+    </form>
   </div>
 <% end %>

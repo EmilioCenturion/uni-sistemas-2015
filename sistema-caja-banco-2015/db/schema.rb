@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029191404) do
+ActiveRecord::Schema.define(version: 20151102002209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,16 +97,19 @@ ActiveRecord::Schema.define(version: 20151029191404) do
   create_table "cheque_recibidos", force: true do |t|
     t.integer  "nro_cheque"
     t.integer  "banco_id"
-    t.decimal  "monto",      default: 0.0
+    t.decimal  "monto",              default: 0.0
     t.date     "fecha"
     t.string   "concepto"
     t.integer  "cliente_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "movimiento_caja_id"
+    t.boolean  "depositado"
   end
 
   add_index "cheque_recibidos", ["banco_id"], name: "index_cheque_recibidos_on_banco_id", using: :btree
   add_index "cheque_recibidos", ["cliente_id"], name: "index_cheque_recibidos_on_cliente_id", using: :btree
+  add_index "cheque_recibidos", ["movimiento_caja_id"], name: "index_cheque_recibidos_on_movimiento_caja_id", using: :btree
 
   create_table "chequeras", force: true do |t|
     t.integer  "nro_primero"
@@ -126,6 +129,22 @@ ActiveRecord::Schema.define(version: 20151029191404) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "clientes", force: true do |t|
+    t.string   "nombre"
+    t.string   "representante"
+    t.string   "ruc"
+    t.integer  "telefono"
+    t.string   "email"
+    t.string   "direccion"
+    t.integer  "pai_id"
+    t.integer  "ciudad_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "clientes", ["ciudad_id"], name: "index_clientes_on_ciudad_id", using: :btree
+  add_index "clientes", ["pai_id"], name: "index_clientes_on_pai_id", using: :btree
 
   create_table "credits", force: true do |t|
     t.integer  "nro_tarjeta"

@@ -11,39 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :caja_id %><br>
-    <%= f.text_field :caja_id %>
-  </div>
-  <div class="field">
-    <%= f.label :apertura %><br>
-    <%= f.datetime_select :apertura %>
-  </div>
-  <div class="field">
-    <%= f.label :cierre %><br>
-    <%= f.datetime_select :cierre %>
-  </div>
-  <div class="field">
-    <%= f.label :saldo_inicial_efectivo %><br>
-    <%= f.text_field :saldo_inicial_efectivo %>
-  </div>
-  <div class="field">
-    <%= f.label :saldo_inicial_cheque %><br>
-    <%= f.text_field :saldo_inicial_cheque %>
-  </div>
-  <div class="field">
-    <%= f.label :saldo_final_efectivo %><br>
-    <%= f.text_field :saldo_final_efectivo %>
-  </div>
-  <div class="field">
-    <%= f.label :saldo_final_cheque %><br>
-    <%= f.text_field :saldo_final_cheque %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <form class="form-horizontal">
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-5 form-group required">
+          <%= f.label :caja, :class => 'col-md-2 control-label'%>
+          <%= f.collection_select :caja_id, Caja.where(:estado => 'Cerrado'), :id, :name_caja, {prompt: "Seleccione una caja"} ,:class => 'btn btn-default'%>
+        </div>
+ 
+        <div class="field col-md-3 form-group">
+          <strong>Apertura:</strong>
+          <%= Time.now %>
+        </div>
+
+        <div class="field col-md-3 form-group">
+          <strong>Cajero:</strong>
+          <%= current_user.username %> 
+        </div>  
+        <div class="actions col-md-10 form-group">
+          <% if controller.action_name == 'new' %>
+            <%= f.submit "Abrir caja", :class => 'btn btn-primary margen'%>
+          <% end %>
+          
+          <%= link_to 'Cancelar',  new_apertura_caja_path , class: 'btn btn-primary margen' %>
+        </div>
+      </div>
+    </form>
   </div>
 <% end %>
+  
+  
+  
+

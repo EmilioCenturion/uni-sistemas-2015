@@ -1,37 +1,11 @@
-<h1>Listing movimiento_cajas</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Apertura caja</th>
-      <th>Motivo movimiento caja</th>
-      <th>Descripcion</th>
-      <th>Es ingreso</th>
-      <th>Monto efectivo</th>
-      <th>Monto cheque</th>
-      <th>Fecha</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @movimiento_cajas.each do |movimiento_caja| %>
-      <tr>
-        <td><%= movimiento_caja.apertura_caja %></td>
-        <td><%= movimiento_caja.motivo_movimiento_caja %></td>
-        <td><%= movimiento_caja.descripcion %></td>
-        <td><%= movimiento_caja.es_ingreso %></td>
-        <td><%= movimiento_caja.monto_efectivo %></td>
-        <td><%= movimiento_caja.monto_cheque %></td>
-        <td><%= movimiento_caja.fecha %></td>
-        <td><%= link_to 'Show', movimiento_caja %></td>
-        <td><%= link_to 'Edit', edit_movimiento_caja_path(movimiento_caja) %></td>
-        <td><%= link_to 'Destroy', movimiento_caja, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Movimiento caja', new_movimiento_caja_path %>
+<div class="container white">
+  <%= render 'solapa' %>   
+    <h1> Movimientos de Caja 
+      <%= link_to new_apertura_caja_movimiento_caja_path, class: 'btn btn-primary', title: 'Nuevo Movimiento', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+        <span class= "glyphicon glyphicon-plus"></span>
+      <% end %>
+    </h1>
+  
+  <br>
+  <%= render 'table' %> 
+</div>
