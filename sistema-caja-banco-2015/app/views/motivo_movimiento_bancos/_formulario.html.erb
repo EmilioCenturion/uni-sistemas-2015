@@ -1,6 +1,18 @@
 <% modal ||= false %>
 <% remote = modal ? true : false %>
-<%= form_for(@motivo_movimiento_banco, remote: remote, html: {role: :form, 'data-model' => 'motivo_movimiento_banco'}) do |f| %>
+<%= form_for(@motivo_movimiento_banco, remote: remote, html: {role: :form, 'data-model' => 'motivo_movimiento_banco'}, validate: true) do |f| %>
+ <% if @motivo_movimiento_banco.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@motivo_movimiento_banco.errors.count, "error") %> prohibited this motivo_movimiento_banco from being saved:</h2>
+
+      <ul>
+      <% @motivo_movimiento_banco.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+    
 
   <div class="row">
     <form class="form-horizontal">

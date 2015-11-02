@@ -3,6 +3,16 @@ class MovimientoCaja < ActiveRecord::Base
   belongs_to :motivo_movimiento_caja
   has_many :cheque_recibidos
 
+  validates :motivo_movimiento_caja_id, :presence => {:message => "No puede estar en blanco"}
+
+  validates :monto_efectivo,  :presence => {:message => "No puede estar en blanco"},
+                              :length => { in: 1..30 , message: "Debe tener entre 1 y 30 caracteres"},
+                              :numericality => {:only_double => true, :message => "Debe ser un numero"}
+
+  validates :descripcion, :presence => {:message => "No puede estar en blanco"},
+                          :length => { in: 8..50 , message: "Debe tener entre 8 y 50 caracteres"},
+                          :format => {with: /[a-zA-ZÃ?ï¿½Ã?Â±Ã?Â¡Ã?Â©Ã?Â­Ã?Â³Ã?Âº]/, message: 'Solo permite letras'}
+
   accepts_nested_attributes_for :cheque_recibidos, allow_destroy: true
 
   before_create :bc_movimiento

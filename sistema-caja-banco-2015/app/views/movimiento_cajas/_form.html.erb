@@ -1,4 +1,4 @@
-<%= nested_form_for [@movimiento_caja.apertura_caja, @movimiento_caja] do |f| %>
+<%= nested_form_for [@movimiento_caja.apertura_caja, @movimiento_caja], validate: true do |f| %>
   <% if @movimiento_caja.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@movimiento_caja.errors.count, "error") %> prohibited this movimiento_caja from being saved:</h2>
@@ -13,38 +13,42 @@
 
   <div class="row">
     <form class="form-horizontal">
-      <div class="col-md-12">
-        <div class="field col-md-4 form-group required">
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-4 form-group required">
           <%= f.label :motivo_movimiento_caja_id, 'Motivo', :class => 'col-md-3 control-label'%>
           <%= f.collection_select :motivo_movimiento_caja_id, MotivoMovimientoCaja.all, :id, :descripcion, {prompt: "Seleccione un motivo"} ,:class => 'btn btn-default'%>
         </div>
+
         <div class="field col-md-4 form-group required">
             <%= f.label :es_ingreso, 'Tipo', :class => 'col-md-3 control-label'%>
             <select name="movimiento_caja[es_ingreso]" class="btn btn-default">
-              <option value="" selected="selected">Seleccione una opcion</option>
-              <option value="true">Ingreso</option>
+              <option value="true" selected="selected">Ingreso</option>
               <option value="false">Egreso</option>
             </select>
         </div>
+
         <div class="field col-md-4 form-group">
           <strong>Fecha:</strong>
           <%= Time.now %>
         </div>
       </div>
-      <div class="col-md-12">
-        <div class="field col-md-4 form-group">
+     
+
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group required">
           <%= f.label :monto_efectivo,'Efectivo' , :class => 'col-md-3 control-label'%>
           <div class="col-md-8">
             <%= f.text_field :monto_efectivo, :class => 'form-control'%>
           </div>
         </div>
-      </div>
       
       <div class="field col-md-6 form-group">
         <%= f.label :descripcion, :class => 'col-md-2 control-label' %>
         <div class="col-md-7">
             <%= f.text_area :descripcion, :class => 'form-control'%>
           </div>
+        </div>
+      </div>
       </div>
       <br>
 
