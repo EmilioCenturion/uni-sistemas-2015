@@ -10,13 +10,11 @@ class AperturaCajasController < ApplicationController
   # GET /apertura_cajas/1
   # GET /apertura_cajas/1.json
   def show
-    @apertura_cajas = AperturaCaja.all
   end
 
   # GET /apertura_cajas/new
   def new
     @apertura_caja = AperturaCaja.new
-    @apertura_cajas = AperturaCaja.all
   end
 
   # GET /apertura_cajas/1/edit
@@ -43,8 +41,8 @@ class AperturaCajasController < ApplicationController
   # PATCH/PUT /apertura_cajas/1.json
   def update
     respond_to do |format|
-      if @apertura_caja.update
-        format.html { redirect_to apertura_cajas_url, notice: 'Apertura caja was successfully updated.' }
+      if @apertura_caja.update(apertura_caja_params)
+        format.html { redirect_to @apertura_caja, notice: 'Apertura caja was successfully updated.' }
         format.json { render :show, status: :ok, location: @apertura_caja }
       else
         format.html { render :edit }
@@ -73,5 +71,4 @@ class AperturaCajasController < ApplicationController
     def apertura_caja_params
       params.require(:apertura_caja).permit(:caja_id, :apertura, :cierre, :saldo_inicial_efectivo, :saldo_inicial_cheque, :saldo_final_efectivo, :saldo_final_cheque, :user_id)
     end
-
 end

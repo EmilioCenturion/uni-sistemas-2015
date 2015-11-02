@@ -1,7 +1,11 @@
 class Chequera < ActiveRecord::Base
   belongs_to :cuentum
   belongs_to :personal
+  has_many :cheque_emitidos
 
+   def name_chequera
+    "#{self.cuentum.banco.nombre} - cta.#{self.cuentum.nro_cuenta} - #{nro_primero} al #{nro_ultimo}"
+  end
   validates :nro_primero, :presence => {:message => "No puede estar en blanco"}, 
   						  
   						  :numericality => {:only_integer => true, :message => "Solo se aceptan numeros"}

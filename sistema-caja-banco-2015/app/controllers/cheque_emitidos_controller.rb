@@ -5,6 +5,8 @@ class ChequeEmitidosController < ApplicationController
   # GET /cheque_emitidos.json
   def index
     @cheque_emitidos = ChequeEmitido.all
+    @cheque_emitido = ChequeEmitido.new
+  
   end
 
   # GET /cheque_emitidos/1
@@ -19,11 +21,13 @@ class ChequeEmitidosController < ApplicationController
 
   # GET /cheque_emitidos/1/edit
   def edit
+    @cheque_emitidos = ChequeEmitido.all
   end
 
   # POST /cheque_emitidos
   # POST /cheque_emitidos.json
   def create
+    @cheque_emitidos = ChequeEmitido.all
     @cheque_emitido = ChequeEmitido.new(cheque_emitido_params)
 
     respond_to do |format|

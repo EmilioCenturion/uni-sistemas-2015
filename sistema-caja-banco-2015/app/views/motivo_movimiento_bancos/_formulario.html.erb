@@ -2,24 +2,23 @@
 <% remote = modal ? true : false %>
 <%= form_for(@motivo_movimiento_banco, remote: remote, html: {role: :form, 'data-model' => 'motivo_movimiento_banco'}) do |f| %>
 
-  <div class="row">
-    <form class="form-horizontal">
-    <div class="field col-md-12 form-group">
-      <div class="field col-md-12 form-group required">
-        <%= f.label :descripcion, :class => 'col-md-3 control-label' %>
-          <div class="col-md-7">
-            <%= f.text_field :descripcion, autofocus:true , :class => 'form-control' %>
-          </div>
-      </div>
-    </div>
+  <% if @motivo_movimiento_banco.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@motivo_movimiento_banco.errors.count, "error") %> prohibited this motivo_movimiento_banco from being saved:</h2>
 
-    <div class="col-md-10">
-      <div class="actions">
-        <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-      </div>
+      <ul>
+      <% @motivo_movimiento_banco.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
     </div>
-  </form>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_field :descripcion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
   </div>
 <% end %>
-

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :proveedors
+
   resources :clientes
 
   devise_for :users

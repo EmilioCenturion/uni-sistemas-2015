@@ -1,41 +1,69 @@
-<%= form_for(@cheque_emitido) do |f| %>
-  <% if @cheque_emitido.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cheque_emitido.errors.count, "error") %> prohibited this cheque_emitido from being saved:</h2>
+<%= form_for @cheque_emitido, validate: true do |f| %>
+  
+    <div class="row">
+    <form class="form-horizontal">
 
-      <ul>
-      <% @cheque_emitido.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <div class="field col-md-12 form-group">
+   <div class="field col-md-6 form-group required">
+    <%= f.label :chequera_id,  :class => 'col-md-3 control-label'%>
+    <div class="field col-md-9 form-group">
+         <%= f.collection_select :chequera_id, Chequera.where(:estado => 'Activo'), :id, :name_chequera, {prompt: "Seleccione una chequera"} ,:class => 'btn btn-default col-md-10'%>
+  </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :nro_cheque %><br>
-    <%= f.number_field :nro_cheque %>
+  <div class="field col-md-6 form-group required">
+    <%= f.label :nro_cheque, :class => 'col-md-3 control-label' %>
+    <div class="col-md-6">
+    <%= f.text_field :nro_cheque, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :monto %><br>
-    <%= f.text_field :monto %>
   </div>
-  <div class="field">
-    <%= f.label :fecha %><br>
-    <%= f.date_select :fecha %>
+</div>
+
+
+  <div class="field col-md-12 form-group"> 
+  <div class="field col-md-6 form-group required">
+    <%= f.label :proveedor_id, :class => 'col-md-3 control-label' %>
+    <div class="field col-md-9 form-group">
+     <%= f.collection_select :proveedor_id, Proveedor.all, :id, :name_proveedor, {prompt: "Seleccione un proveedor"} ,:class => 'btn btn-default col-md-20'%>
   </div>
-  <div class="field">
-    <%= f.label :chequera_id %><br>
-    <%= f.text_field :chequera_id %>
   </div>
-  <div class="field">
-    <%= f.label :proveedor_id %><br>
-    <%= f.text_field :proveedor_id %>
+  
+
+   <div class="field col-md-6 form-group required">
+    <%= f.label :fecha, :class=> 'col-md-3 control-label' %>
+    <div class="col-md-6">
+    <%= f.date_select :fecha, :order => [:day, :month, :year], :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :concepto %><br>
-    <%= f.text_field :concepto %>
+</div>
+
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+<div class="field col-md-12 form-group">
+ <div class="field col-md-6 form-group required">
+    <%= f.label :concepto, :class => 'col-md-3 control-label' %>
+    <div class="col-md-9"> 
+    <%= f.text_field :concepto, :class => 'form-control' %>
   </div>
-<% end %>
+  </div>
+  
+  <div class="field col-md-6 form-goup required">
+    <%= f.label :monto, :class => 'col-md-3 control-label' %>
+    <div class="col-md-6">
+    <%= f.text_field :monto, :class => 'form-control' %>
+  </div>
+  </div>
+
+</div>
+     <div class="col-md-10">
+        <div class="actions">
+          <% if controller.action_name == 'new' or controller.action_name == 'index' %>
+            <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
+            <% elsif controller.action_name == 'edit' %>
+            <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
+          <% end %>
+          
+          <%= link_to 'Cancelar',  bancos_path , class: 'btn btn-primary margen' %>
+        </div>
+      </div>
+      </div>
+    <% end %>

@@ -36,6 +36,7 @@ class MovimientoBancosController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @movimiento_banco.errors, status: :unprocessable_entity }
+        format.js   { render json: @movimiento_banco.errors, status: :unprocessable_entity }
       end
     end
   end

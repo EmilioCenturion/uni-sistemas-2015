@@ -32,9 +32,10 @@ class BancosController < ApplicationController
     @pai = Pai.find(params[:id])
     @ciudad = Ciudad.find(params[:id])
     @pais = Pai.all
-    @ciudads = Ciudad.all
-  end
 
+    @ciudads = Ciudad.all
+
+end
   # POST /bancos
   # POST /bancos.json
   def create

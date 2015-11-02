@@ -63,4 +63,5 @@ rails g scaffold movimiento_banco cuenta:references motivo_movimiento_banco:refe
 
 rails g model movimiento_banco_detalle movimiento_banco:references cheque_recibido:references
 
+rails g scaffold proveedor nombre representante ruc direccion telefono:integer ciudad:references pai:references 
 

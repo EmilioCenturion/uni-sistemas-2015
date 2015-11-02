@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102002209) do
+ActiveRecord::Schema.define(version: 20151102222957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20151102002209) do
     t.integer  "caja_id"
     t.datetime "apertura"
     t.datetime "cierre"
-    t.decimal  "saldo_inicial_efectivo", default: 0.0
-    t.decimal  "saldo_inicial_cheque",   default: 0.0
-    t.decimal  "saldo_final_efectivo",   default: 0.0
-    t.decimal  "saldo_final_cheque",     default: 0.0
+    t.decimal  "saldo_inicial_efectivo"
+    t.decimal  "saldo_inicial_cheque"
+    t.decimal  "saldo_final_efectivo"
+    t.decimal  "saldo_final_cheque"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 20151102002209) do
 
   create_table "boleta_depositos", force: true do |t|
     t.integer  "nro_boleta"
-    t.decimal  "monto_efectivo",   default: 0.0
-    t.decimal  "monto_cheque",     default: 0.0
+    t.decimal  "monto_efectivo"
+    t.decimal  "monto_cheque"
     t.date     "fecha"
     t.integer  "cuenta_id"
     t.integer  "apertura_caja_id"
@@ -73,16 +73,16 @@ ActiveRecord::Schema.define(version: 20151102002209) do
 
   create_table "cajas", force: true do |t|
     t.integer  "nro_caja"
-    t.decimal  "saldo_inicial_efectivo", default: 0.0
-    t.decimal  "saldo_inicial_cheque",   default: 0.0
-    t.string   "estado",                 default: "Cerrado"
+    t.decimal  "saldo_inicial_efectivo"
+    t.decimal  "saldo_inicial_cheque"
+    t.string   "estado"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "cheque_emitidos", force: true do |t|
     t.integer  "nro_cheque"
-    t.decimal  "monto",        default: 0.0
+    t.decimal  "monto"
     t.date     "fecha"
     t.integer  "chequera_id"
     t.integer  "proveedor_id"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20151102002209) do
   create_table "cheque_recibidos", force: true do |t|
     t.integer  "nro_cheque"
     t.integer  "banco_id"
-    t.decimal  "monto",              default: 0.0
+    t.decimal  "monto"
     t.date     "fecha"
     t.string   "concepto"
     t.integer  "cliente_id"
@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(version: 20151102002209) do
 
   create_table "cuenta", force: true do |t|
     t.integer  "nro_cuenta"
-    t.decimal  "saldo",      default: 0.0
+    t.decimal  "saldo"
     t.integer  "banco_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -170,7 +170,7 @@ ActiveRecord::Schema.define(version: 20151102002209) do
 
   create_table "cupon_emitidos", force: true do |t|
     t.integer  "nro_cupon"
-    t.decimal  "monto",        default: 0.0
+    t.decimal  "monto"
     t.date     "fecha"
     t.integer  "tarjeta_id"
     t.string   "concepto"
@@ -209,8 +209,8 @@ ActiveRecord::Schema.define(version: 20151102002209) do
     t.integer  "motivo_movimiento_banco_id"
     t.string   "descripcion"
     t.boolean  "es_ingreso"
-    t.decimal  "monto_efectivo",             default: 0.0
-    t.decimal  "monto_cheque",               default: 0.0
+    t.decimal  "monto_efectivo"
+    t.decimal  "monto_cheque"
     t.datetime "fecha"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -234,8 +234,8 @@ ActiveRecord::Schema.define(version: 20151102002209) do
     t.integer  "motivo_movimiento_caja_id"
     t.string   "descripcion"
     t.boolean  "es_ingreso"
-    t.decimal  "monto_efectivo",            default: 0.0
-    t.decimal  "monto_cheque",              default: 0.0
+    t.decimal  "monto_efectivo"
+    t.decimal  "monto_cheque"
     t.datetime "fecha"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -264,6 +264,21 @@ ActiveRecord::Schema.define(version: 20151102002209) do
 
   add_index "personals", ["ciudad_id"], name: "index_personals_on_ciudad_id", using: :btree
   add_index "personals", ["pai_id"], name: "index_personals_on_pai_id", using: :btree
+
+  create_table "proveedors", force: true do |t|
+    t.string   "nombre"
+    t.string   "representante"
+    t.string   "ruc"
+    t.string   "direccion"
+    t.integer  "telefono"
+    t.integer  "ciudad_id"
+    t.integer  "pai_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "proveedors", ["ciudad_id"], name: "index_proveedors_on_ciudad_id", using: :btree
+  add_index "proveedors", ["pai_id"], name: "index_proveedors_on_pai_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

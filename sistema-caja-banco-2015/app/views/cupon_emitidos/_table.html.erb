@@ -1,0 +1,38 @@
+      <div class="col-sm-12 col-md-12">
+        <table id="table" class="table table-striped table-hover">
+          <thead>
+    <tr>
+      <th>Nro cheque</th>
+      <th>Monto</th>
+      <th>Fecha</th>
+      <th>Tarjeta</th>
+      <th>Proveedor</th>
+      <th>Concepto</th>
+      <th></th>
+    </tr>
+  </thead>
+
+    <tbody>
+    <% @cupon_emitidos.each do |cupon_emitido| %>
+      <tr>
+        <td><%= cupon_emitido.nro_cheque %></td>
+        <td><%= cupon_emitido.monto %></td>
+        <td><%= cupon_emitido.fecha %></td>
+        <td><%= cupon_emitido.chequera %></td>
+        <td><%= cupon_emitido.proveedor %></td>
+        <td><%= cupon_emitido.concepto %></td>
+                <td class="row">
+                  <%= link_to edit_cupon_emitido_path(cupon_emitido), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class= "glyphicon glyphicon-pencil"></span>
+                  <% end %>
+                  <%= link_to cupon_emitido, method: :delete, data: { confirm: 'Esta seguro que desea eliminar este registro?' }, class: 'btn btn-default', title: 'Eliminar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                  <span class= "glyphicon glyphicon-trash"></span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <br>
+      </div>

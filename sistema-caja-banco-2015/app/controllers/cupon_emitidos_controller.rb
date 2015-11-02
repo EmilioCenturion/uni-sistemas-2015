@@ -5,6 +5,7 @@ class CuponEmitidosController < ApplicationController
   # GET /cupon_emitidos.json
   def index
     @cupon_emitidos = CuponEmitido.all
+    @cupon_emitido = CuponEmitido.new
   end
 
   # GET /cupon_emitidos/1
@@ -19,11 +20,13 @@ class CuponEmitidosController < ApplicationController
 
   # GET /cupon_emitidos/1/edit
   def edit
+    @cheque_emitidos = ChequeEmitido.all
   end
 
   # POST /cupon_emitidos
   # POST /cupon_emitidos.json
   def create
+      @cheque_emitidos = ChequeEmitido.all
     @cupon_emitido = CuponEmitido.new(cupon_emitido_params)
 
     respond_to do |format|
