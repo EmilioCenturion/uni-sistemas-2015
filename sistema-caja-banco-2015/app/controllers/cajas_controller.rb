@@ -38,9 +38,6 @@ class CajasController < ApplicationController
     end
   end
 
-  def apertura
-    
-  end
 
   # PATCH/PUT /cajas/1
   # PATCH/PUT /cajas/1.json

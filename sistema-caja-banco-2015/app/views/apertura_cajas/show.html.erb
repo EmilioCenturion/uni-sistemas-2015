@@ -1,44 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="container white">
+  <%= render 'solapa' %>
+  <h1>Caja Nro. <%=@apertura_caja.caja.nro_caja%></h1>
+  <div class="row">
+    <form class="form-horizontal">
+      <div class="field col-md-1 form-group">  
+      </div>
+      <div class="field col-md-11 form-group">
+        <div class="field col-md-5 form-group">
+            <strong>Cajero/a: </strong>
+            <%= current_user.username %>
+        </div>
+        <div class="field col-md-5 form-group">
+            <strong>Apertura: </strong>
+            <%= @apertura_caja.apertura %>
+        </div>
 
-<p>
-  <strong>Caja:</strong>
-  <%= @apertura_caja.caja %>
-</p>
+        <div class="field col-md-5 form-group">
+            <strong>Saldo inicial efectivo: </strong>
+            <%= @apertura_caja.saldo_inicial_efectivo %>
+        </div>
+        <div class="field col-md-5 form-group">
+            <strong>Saldo final efectivo: </strong>
+            <%= @apertura_caja.saldo_final_efectivo %>
+        </div>
 
-<p>
-  <strong>Apertura:</strong>
-  <%= @apertura_caja.apertura %>
-</p>
-
-<p>
-  <strong>Cierre:</strong>
-  <%= @apertura_caja.cierre %>
-</p>
-
-<p>
-  <strong>Saldo inicial efectivo:</strong>
-  <%= @apertura_caja.saldo_inicial_efectivo %>
-</p>
-
-<p>
-  <strong>Saldo inicial cheque:</strong>
-  <%= @apertura_caja.saldo_inicial_cheque %>
-</p>
-
-<p>
-  <strong>Saldo final efectivo:</strong>
-  <%= @apertura_caja.saldo_final_efectivo %>
-</p>
-
-<p>
-  <strong>Saldo final cheque:</strong>
-  <%= @apertura_caja.saldo_final_cheque %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @apertura_caja.user %>
-</p>
-
-<%= link_to 'Edit', edit_apertura_caja_path(@apertura_caja) %> |
-<%= link_to 'Back', apertura_cajas_path %>
+        <div class="field col-md-5 form-group">
+            <strong>Saldo inicial cheque: </strong>
+            <%= @apertura_caja.saldo_inicial_cheque %>
+        </div>
+        <div class="field col-md-5 form-group">
+            <strong>Saldo final cheque: </strong>
+            <%= @apertura_caja.saldo_final_cheque %>
+        </div>
+        <% AperturaCaja.update(@apertura_caja.id, :user_id => current_user.id) %>
+      </div>
+    </form>
+  </div>
+</div>

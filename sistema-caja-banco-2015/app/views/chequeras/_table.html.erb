@@ -6,6 +6,7 @@
         <th>Ultimo Numero</th>
         <th>Nro de Cuenta</th>
         <th>Encargado</th>
+        <th>Estado</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -18,6 +19,7 @@
           <td><%= chequera.cuentum.nro_cuenta %></td>
           <% personal = chequera.personal%>
           <td><%= personal.name_personal  %></td>
+          <td><%= chequera.estado %></td>
           <td class="row">
                   <%= link_to edit_cuentum_chequera_path(chequera.cuentum, chequera), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-pencil"></span>

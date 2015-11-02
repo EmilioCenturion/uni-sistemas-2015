@@ -66,4 +66,13 @@ $(document).ready(function() {
 	    }
 	});
 });
-
+jQuery(function ($) {
+  window.NestedFormEvents.prototype.insertFields = function(content, assoc, link) {
+    if($(link).hasClass('insert_in_table')){
+      return $(content).insertBefore($(link).parent().parent());
+    }
+    else{
+      return $(content).insertBefore(link);
+    }
+  };
+});
