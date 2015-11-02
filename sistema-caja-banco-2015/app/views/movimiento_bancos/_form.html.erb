@@ -1,4 +1,4 @@
-<%= form_for(@movimiento_banco) do |f| %>
+<%= form_for @movimiento_banco, validate: true do |f| %>
   <% if @movimiento_banco.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@movimiento_banco.errors.count, "error") %> prohibited this movimiento_banco from being saved:</h2>
@@ -11,35 +11,80 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :cuenta_id %><br>
-    <%= f.text_field :cuenta_id %>
-  </div>
-  <div class="field">
-    <%= f.label :motivo_movimiento_banco_id %><br>
-    <%= f.text_field :motivo_movimiento_banco_id %>
-  </div>
-  <div class="field">
-    <%= f.label :descripcion %><br>
-    <%= f.text_field :descripcion %>
-  </div>
-  <div class="field">
-    <%= f.label :es_ingreso %><br>
-    <%= f.check_box :es_ingreso %>
-  </div>
-  <div class="field">
-    <%= f.label :monto_efectivo %><br>
-    <%= f.text_field :monto_efectivo %>
-  </div>
-  <div class="field">
-    <%= f.label :monto_cheque %><br>
-    <%= f.text_field :monto_cheque %>
-  </div>
-  <div class="field">
-    <%= f.label :fecha %><br>
-    <%= f.datetime_select :fecha %>
-  </div>
+  <br>
+  <br>
+   <div class="row">
+    <form class="form-horizontal">
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-4 form-group required">
+        <%= f.label :cuenta_id, :class => 'control-label col-md-4' %>
+        <div class="col-md-8">
+          <%= f.collection_select :cuenta_id, Cuentum.all, :id, :nro_cuenta, {prompt: "Seleccione una cuenta"} , :class => 'btn btn-default'%>
+        </div>
+      </div>
+
+      <div class="field col-md-4 form-group required">
+        <%= f.label :motivo_movimiento_banco_id, "Motivo", :class => 'control-label col-md-3' %>
+        <%= link_to "#motivo_movimiento_bancos", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
+              <span class="glyphicon glyphicon-plus"></span>
+            <% end %>
+
+        <div class="col-md-7">
+          <select id="motivo_movimiento_banco" name="movimiento_banco[motivo_movimiento_banco_id]" class="btn btn-default">
+            <% @motivo_movimiento_bancos.each do |motivo_movimiento_banco| %>
+              <%= render partial: "motivo_movimiento_bancos/coleccion", locals: {motivo_movimiento_banco: motivo_movimiento_banco} %>
+  
+            <% end %>
+          </select>
+        </div>
+      </div>
+
+      <div class="field col-md-4 form-group required">
+        <%= f.label :es_ingreso, "Tipo", :class => 'control-label col-md-3' %>
+        <div class="col-md-3">
+          <select name="movimiento_banco[es_ingreso]" class="btn btn-default">
+            <option value= "true" selected="selected" >Ingreso</option>
+            <option value= "false" >Egreso</option>
+          </select>
+        </div>
+      </div>
+    </div>
+     
+
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-6 form-group required">
+        <%= f.label :monto_efectivo, "Monto en Efectivo", :class => 'control-label col-md-4' %>
+        <div class="col-md-7">
+          <%= f.text_field :monto_efectivo , :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="field col-md-6 form-group required">
+        <%= f.label :monto_cheque, "Monto en Cheque", :class => 'control-label col-md-4' %>
+        <div class="col-md-7">
+          <%= f.text_field :monto_cheque, :class => 'form-control' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-6 form-group">
+        <%= f.label :descripcion, :class => 'control-label col-md-4' %>
+        <div class="col-md-8">
+          <%= f.text_area :descripcion , :class => 'form-control' %>
+        </div>  
+      </div>
+
+    <div class="field col-md-6 form-group required">
+        <strong>Fecha:</strong>
+        <%= Time.now %>
+      </div>
+    </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
   </div>
+</div>
 <% end %>
+
+<%= render 'movimiento_bancos/modals/movimiento_banco' %>

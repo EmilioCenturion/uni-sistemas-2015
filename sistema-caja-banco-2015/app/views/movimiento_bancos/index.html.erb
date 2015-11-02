@@ -1,37 +1,9 @@
-<h1>Listing movimiento_bancos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Cuenta</th>
-      <th>Motivo movimiento banco</th>
-      <th>Descripcion</th>
-      <th>Es ingreso</th>
-      <th>Monto efectivo</th>
-      <th>Monto cheque</th>
-      <th>Fecha</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @movimiento_bancos.each do |movimiento_banco| %>
-      <tr>
-        <td><%= movimiento_banco.cuenta %></td>
-        <td><%= movimiento_banco.motivo_movimiento_banco %></td>
-        <td><%= movimiento_banco.descripcion %></td>
-        <td><%= movimiento_banco.es_ingreso %></td>
-        <td><%= movimiento_banco.monto_efectivo %></td>
-        <td><%= movimiento_banco.monto_cheque %></td>
-        <td><%= movimiento_banco.fecha %></td>
-        <td><%= link_to 'Show', movimiento_banco %></td>
-        <td><%= link_to 'Edit', edit_movimiento_banco_path(movimiento_banco) %></td>
-        <td><%= link_to 'Destroy', movimiento_banco, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="container white">
+  <h1>Agregar Movimiento para Bancos</h1>
+  <%= render 'form' %>
+</div>
 <br>
-
-<%= link_to 'New Movimiento banco', new_movimiento_banco_path %>
+<div class="container white">
+	<br>
+    <%= render 'table' %>
+</div>

@@ -1,0 +1,5 @@
+<% if MotivoMovimientoBanco.last == motivo_movimiento_banco %>
+	<option value= <%= motivo_movimiento_banco.id %> selected="selected"><%= motivo_movimiento_banco.descripcion %></option>
+<% else %>
+	<option value= <%= motivo_movimiento_banco.id %>><%= motivo_movimiento_banco.descripcion %></option>
+<% end %>
