@@ -6,6 +6,7 @@ class Cuentum < ActiveRecord::Base
   has_many :cheque_emitidos, :through => :chequeras
   has_many :movimiento_bancos
   has_many :boleta_depositos
+  
 
 
   validates :nro_cuenta, :presence => {:message => "No puede estar en blanco"},

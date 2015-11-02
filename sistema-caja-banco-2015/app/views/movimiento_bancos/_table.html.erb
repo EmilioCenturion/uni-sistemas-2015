@@ -1,0 +1,41 @@
+      <div class="col-sm-12 col-md-12">
+        <table id="table" class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Cuenta</th>
+              <th>Motivo movimiento banco</th>
+              <th>Descripcion</th>
+              <th>Es ingreso</th>
+              <th>Monto efectivo</th>
+              <th>Monto cheque</th>
+              <th>Fecha</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @movimiento_bancos.each do |movimiento_banco| %>
+              <tr>
+                <% cuentum = Cuentum.find(movimiento_banco.cuenta_id) %>
+                <td><%= cuentum.nro_cuenta %></td>
+                <% motivo_movimiento_banco = movimiento_banco.motivo_movimiento_banco %>
+                <td><%= motivo_movimiento_banco.descripcion %></td>
+                <td><%= movimiento_banco.descripcion %></td>
+                <% if movimiento_banco.es_ingreso %>
+                  <td>Ingreso</td>
+                <% else %>
+                  <td>Egreso</td>
+                <% end %> 
+                </td>
+                <td><%= movimiento_banco.monto_efectivo %></td>
+                <td><%= movimiento_banco.monto_cheque %></td>
+                <td><%= movimiento_banco.fecha %></td>
+                <td class="row">
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <br>
+      </div>

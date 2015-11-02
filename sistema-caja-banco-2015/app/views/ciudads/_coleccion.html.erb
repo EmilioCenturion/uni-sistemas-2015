@@ -1,0 +1,5 @@
+<% if Ciudad.last == ciudad %>
+	<option value= <%= ciudad.id %> selected="selected"><%= ciudad.nombre%></option>
+<% else %>
+	<option value= <%= ciudad.id %>><%= ciudad.nombre%></option>
+<% end %>

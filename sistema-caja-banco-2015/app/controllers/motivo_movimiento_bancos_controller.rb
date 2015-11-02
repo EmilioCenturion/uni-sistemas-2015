@@ -5,6 +5,7 @@ class MotivoMovimientoBancosController < ApplicationController
   # GET /motivo_movimiento_bancos.json
   def index
     @motivo_movimiento_bancos = MotivoMovimientoBanco.all
+    @motivo_movimiento_banco = MotivoMovimientoBanco.new
   end
 
   # GET /motivo_movimiento_bancos/1
@@ -30,9 +31,11 @@ class MotivoMovimientoBancosController < ApplicationController
       if @motivo_movimiento_banco.save
         format.html { redirect_to @motivo_movimiento_banco, notice: 'Motivo movimiento banco was successfully created.' }
         format.json { render :show, status: :created, location: @motivo_movimiento_banco }
+        format.js   { render action: 'show', status: :created, location: @motivo_movimiento_banco }
       else
         format.html { render :new }
         format.json { render json: @motivo_movimiento_banco.errors, status: :unprocessable_entity }
+        format.js   { render json: @motivo_movimiento_banco.errors, status: :unprocessable_entity }
       end
     end
   end

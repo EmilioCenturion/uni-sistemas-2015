@@ -31,9 +31,11 @@ class PaisController < ApplicationController
       if @pai.save
         format.html { redirect_to bancos_url, notice: 'Pai was successfully created.' }
         format.json { render :show, status: :created, location: @pai }
+        format.js   { render action: 'show', status: :created, location: @pai }
       else
         format.html { render :new }
         format.json { render json: @pai.errors, status: :unprocessable_entity }
+        format.js   { render json: @pai.errors, status: :unprocessable_entity }
       end
     end
   end
