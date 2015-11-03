@@ -1,4 +1,4 @@
-<%= form_for(@boleta_deposito) do |f| %>
+<%= nested_form_for [@boleta_deposito.apertura_caja, @boleta_deposito], validate: true do |f| %>
   <% if @boleta_deposito.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@boleta_deposito.errors.count, "error") %> prohibited this boleta_deposito from being saved:</h2>
@@ -11,31 +11,67 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nro_boleta %><br>
-    <%= f.number_field :nro_boleta %>
-  </div>
-  <div class="field">
-    <%= f.label :monto_efectivo %><br>
-    <%= f.text_field :monto_efectivo %>
-  </div>
-  <div class="field">
-    <%= f.label :monto_cheque %><br>
-    <%= f.text_field :monto_cheque %>
-  </div>
-  <div class="field">
-    <%= f.label :fecha %><br>
-    <%= f.date_select :fecha %>
-  </div>
-  <div class="field">
-    <%= f.label :cuenta_id %><br>
-    <%= f.text_field :cuenta_id %>
-  </div>
-  <div class="field">
-    <%= f.label :apertura_caja_id %><br>
-    <%= f.text_field :apertura_caja_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <div class="row">
+    <form class="form-horizontal">
+      <div class="field col-md-12">
+        <div class="field col-md-4 form-group required">
+          <%= f.label :cuenta_id, 'Cuenta',:class => ' control-label'%>
+          <%= f.collection_select :cuenta_id, Cuentum.all, :id, :nro_cuenta, {prompt: "Seleccione una cuenta"} ,:class => 'btn btn-default', autofocus:true%>
+        </div>
+        <div class="field col-md-4 form-group required">
+          <%= f.label :nro_boleta, 'Boleta Nro', :class => 'col-md-4 control-label'%>
+          <div class="field col-md-8">
+            <%= f.number_field :nro_boleta, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="field col-md-4 form-group required">
+          <%= f.label :fecha, :class => 'control-label'%>
+          <%= f.date_select :fecha, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="field col-md-12">
+        <div class="field col-md-4 form-group">
+          <%= f.label :monto_efectivo, 'Efectivo' ,  :class => 'col-md-3'%>
+          <div class="field col-md-8">
+            <%= f.text_field :monto_efectivo ,  :class => 'form-control'%>
+          </div>
+        </div>
+      </div>
+
+    <br>
+
+    <%# nested form de boletas de deposito%>
+    <div class="field col-md-7">
+      <table class="tab table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Cheques a Depositar</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= f.fields_for :boleta_deposito_detalles, :wrapper => false do |detalle| %>
+            <tr class="fields">
+              <td><%= detalle.collection_select :cheque_recibido_id, ChequeRecibido.where(:depositado != 'true'), :id, :name_cheque_recibido, {prompt: "Seleccione un cheque"} ,:class => 'btn btn-default'%></td>
+              <td><%= detalle.link_to_remove "X", :class => 'btn btn-danger'%></td>
+            </tr>
+          <% end %>
+          <tr>
+             <td><%= f.link_to_add "Agregar cheque", :boleta_deposito_detalles, :class => 'insert_in_table btn btn-default' %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      <div class="col-md-10 ">
+        <div class="actions">
+          <% if controller.action_name == 'new' or controller.action_name == 'index' %>
+            <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
+          <% elsif controller.action_name == 'edit' %>
+              <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
+          <% end %>
+          <%= link_to 'Cancelar',  apertura_caja_boleta_depositos_path(@apertura_caja) , class: 'btn btn-primary margen' %>
+        </div>
+      </div>
+    </form>
+  </div>    
 <% end %>
