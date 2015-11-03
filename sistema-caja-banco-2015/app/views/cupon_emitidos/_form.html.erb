@@ -4,12 +4,14 @@
     <form class="form-horizontal">
 
     <div class="field col-md-12 form-group">
-   <div class="field col-md-6 form-group required">
-    <%= f.label :tarjeta_id,  :class => 'col-md-3 control-label'%>
-    <div class="field col-md-9 form-group">
-      <%= f.collection_select :tarjeta_id, Credit.where(:estado => 'Activo'), :id, :name_tarjeta, {prompt: "Seleccione una tarjeta"} ,:class => 'btn btn-default col-md-40'%>
+   <div class="field col-md-5 form-group required">
+    <%= f.label :tarjeta_id,  :class => 'col-md-4 control-label'%>
+    <div class="field col-md-8 form-group">
+      <%= f.collection_select :tarjeta_id, Credit.where(:estado => 'Activo'), :id, :name_tarjeta, {prompt: "Seleccione una tarjeta"} ,:class => 'btn btn-default', autofocus:true%>
     </div>
   </div>
+
+  <div class="col-md-1"></div>
 
   <div class="field col-md-6 form-group required">
     <%= f.label :nro_cupon, :class => 'col-md-3 control-label' %>
@@ -52,13 +54,8 @@
 </div>
      <div class="col-md-10">
         <div class="actions">
-          <% if controller.action_name == 'new' or controller.action_name == 'index' %>
-            <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
-            <% elsif controller.action_name == 'edit' %>
-            <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
-          <% end %>
-          
-          <%= link_to 'Cancelar',  bancos_path , class: 'btn btn-primary margen' %>
+          <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
+          <%= link_to 'Cancelar',  cupon_emitidos_path , class: 'btn btn-primary margen' %>
         </div>
       </div>
       </div>

@@ -4,6 +4,6 @@ class Proveedor < ActiveRecord::Base
   has_many :cheque_emitidos
 
   def name_proveedor
-  	"#{representante} - #{nombre}"
+  	"#{nombre} - #{ruc}"
   end
 end

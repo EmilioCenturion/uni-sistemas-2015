@@ -26,12 +26,12 @@ class CuponEmitidosController < ApplicationController
   # POST /cupon_emitidos
   # POST /cupon_emitidos.json
   def create
-      @cheque_emitidos = ChequeEmitido.all
+    @cheque_emitidos = ChequeEmitido.all
     @cupon_emitido = CuponEmitido.new(cupon_emitido_params)
 
     respond_to do |format|
       if @cupon_emitido.save
-        format.html { redirect_to @cupon_emitido, notice: 'Cupon emitido was successfully created.' }
+        format.html { redirect_to cupon_emitidos_url, notice: 'Cupon emitido was successfully created.' }
         format.json { render :show, status: :created, location: @cupon_emitido }
       else
         format.html { render :new }

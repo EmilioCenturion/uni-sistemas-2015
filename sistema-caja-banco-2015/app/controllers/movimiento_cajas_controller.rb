@@ -4,6 +4,8 @@ class MovimientoCajasController < ApplicationController
   # GET /movimiento_cajas
   # GET /movimiento_cajas.json
   def index
+    @motivo_movimiento_cajas = MotivoMovimientoCaja.all
+    @motivo_movimiento_caja = MotivoMovimientoCaja.new
     @apertura_caja = AperturaCaja.find(params[:apertura_caja_id])
     @movimiento_cajas = @apertura_caja.movimiento_cajas
 
@@ -27,6 +29,8 @@ class MovimientoCajasController < ApplicationController
 
   # GET /movimiento_cajas/new
   def new
+    @motivo_movimiento_cajas = MotivoMovimientoCaja.all
+    @motivo_movimiento_caja = MotivoMovimientoCaja.new
     @apertura_caja = AperturaCaja.find(params[:apertura_caja_id])
     @movimiento_caja = @apertura_caja.movimiento_cajas.build
 

@@ -5,6 +5,7 @@ class MotivoMovimientoCajasController < ApplicationController
   # GET /motivo_movimiento_cajas.json
   def index
     @motivo_movimiento_cajas = MotivoMovimientoCaja.all
+    @motivo_movimiento_caja = MotivoMovimientoCaja.new
   end
 
   # GET /motivo_movimiento_cajas/1
@@ -30,9 +31,11 @@ class MotivoMovimientoCajasController < ApplicationController
       if @motivo_movimiento_caja.save
         format.html { redirect_to @motivo_movimiento_caja, notice: 'Motivo movimiento caja was successfully created.' }
         format.json { render :show, status: :created, location: @motivo_movimiento_caja }
+        format.js   { render action: 'show', status: :created, location: @motivo_movimiento_caja }
       else
         format.html { render :new }
         format.json { render json: @motivo_movimiento_caja.errors, status: :unprocessable_entity }
+        format.js   { render json: @motivo_movimiento_caja.errors, status: :unprocessable_entity }
       end
     end
   end
