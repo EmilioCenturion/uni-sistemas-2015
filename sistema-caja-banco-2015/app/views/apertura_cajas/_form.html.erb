@@ -17,7 +17,7 @@
         <div class="field col-md-4 form-group required">
           <%= f.label :caja, :class => 'col-md-2 control-label'%>
           <div class="col-md-10">
-            <%= f.collection_select :caja_id, Caja.where(:estado => 'Cerrado'), :id, :name_caja, {prompt: "Seleccione una caja"} ,:class => 'btn btn-default'%>
+            <%= f.collection_select :caja_id, Caja.where(:estado => 'Cerrado'), :id, :name_caja, {prompt: "Seleccione una caja"} ,:class => 'btn btn-default', autofocus:true %>
           </div>
         </div>
  

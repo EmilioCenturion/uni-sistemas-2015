@@ -16,6 +16,7 @@
     <div class="field col-md-12 form-group">
       <div class="field col-md-4 form-group required">
           <%= f.label :motivo_movimiento_caja_id, 'Motivo', :class => 'col-md-3 control-label'%>
+
           <%= link_to "#motivo_movimiento_cajas", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
               <span class="glyphicon glyphicon-plus"></span>
             <% end %>
@@ -27,6 +28,7 @@
             <% end %>
           </select>
         </div>
+
         </div>
         <div class="field col-md-4 form-group required">
             <%= f.label :es_ingreso, 'Tipo', :class => 'col-md-3 control-label'%>

@@ -4,35 +4,58 @@ class BoletaDepositosController < ApplicationController
   # GET /boleta_depositos
   # GET /boleta_depositos.json
   def index
-    @boleta_depositos = BoletaDeposito.all
+    @apertura_caja = AperturaCaja.find(params[:apertura_caja_id])
+    @boleta_depositos = @apertura_caja.boleta_depositos
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @boleta_depositos }
+    end
   end
 
   # GET /boleta_depositos/1
   # GET /boleta_depositos/1.json
   def show
+    @apertura_caja = AperturaCaja.find(params[:apertura_caja_id])
+    @boleta_deposito = @apertura_caja.boleta_depositos.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @boleta_deposito }
+    end
   end
 
   # GET /boleta_depositos/new
   def new
-    @boleta_deposito = BoletaDeposito.new
+    @apertura_caja = AperturaCaja.find(params[:apertura_caja_id])
+    @boleta_deposito = @apertura_caja.boleta_depositos.build
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @boleta_deposito }
+    end
   end
 
   # GET /boleta_depositos/1/edit
   def edit
+    @apertura_caja = AperturaCaja.find(params[:apertura_caja_id])
+    @boleta_deposito = @apertura_caja.boleta_depositos.find(params[:id])
   end
 
   # POST /boleta_depositos
   # POST /boleta_depositos.json
   def create
-    @boleta_deposito = BoletaDeposito.new(boleta_deposito_params)
-
+    @apertura_caja = AperturaCaja.find(params[:apertura_caja_id])
+    @boleta_deposito = @apertura_caja.boleta_depositos.create(boleta_deposito_params)
     respond_to do |format|
       if @boleta_deposito.save
-        format.html { redirect_to @boleta_deposito, notice: 'Boleta deposito was successfully created.' }
-        format.json { render :show, status: :created, location: @boleta_deposito }
+        #1st argument of redirect_to is an array, in order to build the correct route to the nested resource boleta_deposito
+        format.html { redirect_to(apertura_caja_boleta_depositos_url, :notice => 'boleta_deposito was successfully created.') }
+        #the key :location is associated to an array in order to build the correct route to the nested resource boleta_deposito
+        format.xml  { render :xml => @boleta_deposito, :status => :created, :location => [@boleta_deposito.apertura_caja, @boleta_deposito] }
       else
-        format.html { render :new }
-        format.json { render json: @boleta_deposito.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @boleta_deposito.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -40,13 +63,17 @@ class BoletaDepositosController < ApplicationController
   # PATCH/PUT /boleta_depositos/1
   # PATCH/PUT /boleta_depositos/1.json
   def update
+    @apertura_caja = AperturaCaja.find(params[:apertura_caja_id])
+    @boleta_deposito = @apertura_caja.boleta_depositos.find(params[:id])
+
     respond_to do |format|
-      if @boleta_deposito.update(boleta_deposito_params)
-        format.html { redirect_to @boleta_deposito, notice: 'Boleta deposito was successfully updated.' }
-        format.json { render :show, status: :ok, location: @boleta_deposito }
+      if @boleta_deposito.update_attributes(params[:boleta_deposito])
+        #1st argument of redirect_to is an array, in order to build the correct route to the nested resource boleta_deposito
+        format.html { redirect_to([@boleta_deposito.apertura_caja, @boleta_deposito], :notice => 'boleta_deposito was successfully updated.') }
+        format.xml  { head :ok }
       else
-        format.html { render :edit }
-        format.json { render json: @boleta_deposito.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @boleta_deposito.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -54,10 +81,14 @@ class BoletaDepositosController < ApplicationController
   # DELETE /boleta_depositos/1
   # DELETE /boleta_depositos/1.json
   def destroy
+    @apertura_caja = AperturaCaja.find(params[:apertura_caja_id])
+    @boleta_deposito = @apertura_caja.boleta_depositos.find(params[:id])
     @boleta_deposito.destroy
+
     respond_to do |format|
-      format.html { redirect_to boleta_depositos_url, notice: 'Boleta deposito was successfully destroyed.' }
-      format.json { head :no_content }
+      #1st argument reference the path /apertura_cajas/:apertura_caja_id/boleta_depositos/
+      format.html { redirect_to(apertura_caja_boleta_depositos_url) }
+      format.xml  { head :ok }
     end
   end
 
@@ -69,6 +100,6 @@ class BoletaDepositosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def boleta_deposito_params
-      params.require(:boleta_deposito).permit(:nro_boleta, :monto_efectivo, :monto_cheque, :fecha, :cuenta_id, :apertura_caja_id)
+      params.require(:boleta_deposito).permit(:nro_boleta, :monto_efectivo, :monto_cheque, :fecha, :cuenta_id, :apertura_caja_id, boleta_deposito_detalles_attributes: [:id, :cheque_recibido_id])
     end
 end

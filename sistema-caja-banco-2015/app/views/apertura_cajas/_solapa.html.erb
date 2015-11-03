@@ -2,7 +2,7 @@
     <li role="presentation" class="active">
       <%= link_to 'Caja', @apertura_caja %>
     </li>
-    <% if controller.action_name == 'new' or @apertura_caja.cierre.nil? == false %>
+    <% if controller.action_name == 'new' or @apertura_caja.cierre.nil? == false%>
         <li role="presentation">
           <a href="/" class="btn disabled">Movimiento de Caja</a>
         </li>
