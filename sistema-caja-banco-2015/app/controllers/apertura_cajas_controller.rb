@@ -10,11 +10,13 @@ class AperturaCajasController < ApplicationController
   # GET /apertura_cajas/1
   # GET /apertura_cajas/1.json
   def show
+    @apertura_cajas = AperturaCaja.all
   end
 
   # GET /apertura_cajas/new
   def new
     @apertura_caja = AperturaCaja.new
+    @apertura_cajas = AperturaCaja.all
   end
 
   # GET /apertura_cajas/1/edit

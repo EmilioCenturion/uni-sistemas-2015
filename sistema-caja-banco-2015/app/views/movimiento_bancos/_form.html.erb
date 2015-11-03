@@ -19,7 +19,7 @@
       <div class="field col-md-4 form-group required">
         <%= f.label :cuenta_id, :class => 'control-label col-md-4' %>
         <div class="col-md-8">
-          <%= f.collection_select :cuenta_id, Cuentum.all, :id, :nro_cuenta, {prompt: "Seleccione una cuenta"} , :class => 'btn btn-default'%>
+          <%= f.collection_select :cuenta_id, Cuentum.all, :id, :nro_cuenta, {prompt: "Seleccione una cuenta"} , :class => 'btn btn-default', autofocus:true%>
         </div>
       </div>
 

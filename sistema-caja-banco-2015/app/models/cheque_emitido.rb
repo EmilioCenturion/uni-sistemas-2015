@@ -10,9 +10,7 @@ class ChequeEmitido < ActiveRecord::Base
 			  		   
 	validates :monto, 
 					   :presence => {:message => "No puede estar en blanco"},
-					   :numericality => {:only_integer => true, :message => "Debe ser un numero"},
-					   :format => {:multiline => true, with: /^\d*$/, message: 'No puede ser negativo'}
-						
+					   :numericality => {:only_double => true, :message => "Debe ser un numero"}						
 
 
 
@@ -20,7 +18,18 @@ class ChequeEmitido < ActiveRecord::Base
 						 :length => {in: 6..30, :message => "Debe estar entre 6 y 30 caracteres"}
 			  		     
 
-	 validates :proveedor_id, :presence => {:message => "Seleccione un proveedor"}
+	validates :proveedor_id, :presence => {:message => "Seleccione un proveedor"}
+
+	before_create :bc_cheque
 	
+	protected
+  	def bc_cheque
+  		motivo = MotivoMovimientoBanco.find_by(:descripcion => 'Pago a proveedores')
+  		if motivo.nil? 
+  			motivo = MotivoMovimientoBanco.create(:descripcion => 'Pago a proveedores')
+  		end
+  		MovimientoBanco.create(:cuenta_id => self.chequera.cuentum_id, :motivo_movimiento_banco_id => motivo.id, :descripcion => self.concepto, :es_ingreso => false, :monto_efectivo => 0, :monto_cheque => self.monto, :fecha => Time.now)
+
+  	end
 	
 end

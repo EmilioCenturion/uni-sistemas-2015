@@ -8,7 +8,6 @@
       <th>Chequera</th>
       <th>Proveedor</th>
       <th>Concepto</th>
-      <th></th>
     </tr>
   </thead>
 
@@ -26,14 +25,6 @@
          <td><%= proveedor.name_proveedor %></td>
         
         <td><%= cheque_emitido.concepto %></td>
-                <td class="row">
-                  <%= link_to edit_cheque_emitido_path(cheque_emitido), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
-                  <span class= "glyphicon glyphicon-pencil"></span>
-                  <% end %>
-                  <%= link_to cheque_emitido, method: :delete, data: { confirm: 'Esta seguro que desea eliminar este registro?' }, class: 'btn btn-default', title: 'Eliminar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
-                  <span class= "glyphicon glyphicon-trash"></span>
-                  <% end %>
-                </td>
               </tr>
             <% end %>
           </tbody>
