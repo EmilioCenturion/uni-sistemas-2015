@@ -12,25 +12,20 @@
       </ul>
     </div>
     <% end %>
-    
 
-  <% if @motivo_movimiento_banco.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@motivo_movimiento_banco.errors.count, "error") %> prohibited this motivo_movimiento_banco from being saved:</h2>
-
-      <ul>
-      <% @motivo_movimiento_banco.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <form class="form-horizontal">
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-12 form-group required">
+        <%= f.label :descripcion, :class => 'col-md-3 control-label' %>
+        <div class="col-md-9">
+          <%= f.text_field :descripcion, autofocus:true , :class => 'form-control' %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :descripcion %><br>
-    <%= f.text_field :descripcion %>
+  <div class="actions col-md-10">
+    <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </form> 
+   </div>
 <% end %>
