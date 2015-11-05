@@ -10,13 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- * require_tree .
  * require_self
  *= require dataTables/jquery.dataTables
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require bootstrap-datepicker
+ *= require jquery-ui
+ *= require jquery-ui/datepicker
+ * require_tree .
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'bootstrap-datepicker';
 
 
 .navbar-inverse { background-color: #051391}
@@ -95,4 +99,8 @@ body{
   border-radius: 0 0 5px 5px;
   padding: 20px;
   position: relative;
+}
+
+.datepicker-dropdown {
+  background-color: #fff;
 }

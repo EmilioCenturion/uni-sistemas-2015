@@ -55,3 +55,8 @@ gem 'jquery-turbolinks'
 
 # reportes en pdf
 gem 'thinreports-rails'
+
+gem 'bootstrap-datepicker-rails'
+
+gem 'jquery-ui-rails'
+

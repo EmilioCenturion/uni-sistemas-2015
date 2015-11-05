@@ -72,7 +72,6 @@
             <th>Banco</th>
             <th>Monto</th>
             <th>Fecha</th>
-            <th>Concepto</th>
             <th>Accion</th>
           </tr>
         </thead>
@@ -83,8 +82,9 @@
               <td><%= cheque_recibidos_form.number_field :nro_cheque, :class => 'form-control'%></td>
               <td><%= cheque_recibidos_form.collection_select :banco_id, Banco.all, :id, :name_banco, {prompt: "Seleccione un banco"} ,:class => 'btn btn-default'%></td>
               <td><%= cheque_recibidos_form.text_field :monto, :class => 'form-control' %></td>
-              <td><%= cheque_recibidos_form.date_select :fecha %></td>
-              <td><%= cheque_recibidos_form.text_field :concepto,:class => 'form-control' %></td>
+              <td ><div class="input-group">
+            <%= f.text_field :fecha, :class => 'datepicker form-control' %><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+    </div></td>
               <td><%= cheque_recibidos_form.link_to_remove "X", :class => 'btn btn-danger'%></td>
             </tr>
           <% end %>
