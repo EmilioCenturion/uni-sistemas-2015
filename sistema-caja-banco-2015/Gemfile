@@ -42,10 +42,16 @@ gem 'bootstrap-sass'
 
 gem 'jquery-datatables-rails', '~> 3.3.0'
 
+# Nested_form se usa para los formularios anidados en una misma vista
 gem 'nested_form'
 
+# validaciones
 gem 'client_side_validations', :git => 'https://github.com/DavyJonesLocker/client_side_validations.git'
 
+# control de usuarios
 gem 'devise'
 
 gem 'jquery-turbolinks'
+
+# reportes en pdf
+gem 'thinreports-rails'

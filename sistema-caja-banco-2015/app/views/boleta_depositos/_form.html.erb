@@ -52,7 +52,7 @@
         <tbody>
           <%= f.fields_for :boleta_deposito_detalles, :wrapper => false do |detalle| %>
             <tr class="fields">
-              <td><%= detalle.collection_select :cheque_recibido_id, ChequeRecibido.where(:depositado != 'true'), :id, :name_cheque_recibido, {prompt: "Seleccione un cheque"} ,:class => 'btn btn-default'%></td>
+              <td><%= detalle.collection_select :cheque_recibido_id, ChequeRecibido.where("depositado != 'true'"), :id, :name_cheque_recibido, {prompt: "Seleccione un cheque"} ,:class => 'btn btn-default'%></td>
               <td><%= detalle.link_to_remove "X", :class => 'btn btn-danger'%></td>
             </tr>
           <% end %>
