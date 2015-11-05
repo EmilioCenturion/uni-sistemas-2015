@@ -32,9 +32,9 @@
 
    <div class="field col-md-6 form-group required">
     <%= f.label :fecha, :class=> 'col-md-3 control-label' %>
-    <div class="col-md-6">
-    <%= f.date_select :fecha, :order => [:day, :month, :year], :class => 'form-control' %>
-  </div>
+    <div class="input-group col-md-6">
+            <%= f.text_field :fecha, :class => 'datepicker form-control' %><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+    </div>
 </div>
 
   </div>

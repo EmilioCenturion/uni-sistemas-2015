@@ -49,3 +49,7 @@ gem 'client_side_validations', :git => 'https://github.com/DavyJonesLocker/clien
 gem 'devise'
 
 gem 'jquery-turbolinks'
+
+gem 'bootstrap-datepicker-rails'
+
+gem 'jquery-ui-rails'
