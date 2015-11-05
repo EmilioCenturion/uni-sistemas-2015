@@ -2,7 +2,7 @@ class MovimientoCaja < ActiveRecord::Base
   belongs_to :apertura_caja
   belongs_to :motivo_movimiento_caja
   has_many :cheque_recibidos
-
+  
   validates :motivo_movimiento_caja_id, :presence => {:message => "Seleccione un motivo"}
 
   validates :monto_efectivo,  :presence => {:message => "No puede estar en blanco"},
@@ -22,11 +22,13 @@ class MovimientoCaja < ActiveRecord::Base
 	protected
 		def bc_movimiento
 			self.fecha = Time.now
-			monto_cheque = 0
-			self.cheque_recibidos.each do |cheque|
-				monto_cheque = monto_cheque + cheque.monto
+			if self.monto_cheque == 0 
+				monto_cheque = 0
+				self.cheque_recibidos.each do |cheque|
+					monto_cheque = monto_cheque + cheque.monto
+				end
+				self.monto_cheque = monto_cheque 
 			end
-			self.monto_cheque = monto_cheque 
 		end
 
 		def ac_movimiento
