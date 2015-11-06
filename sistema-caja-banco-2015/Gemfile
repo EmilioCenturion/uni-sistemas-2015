@@ -47,7 +47,7 @@ gem 'nested_form'
 
 # validaciones
 gem 'client_side_validations', :git => 'https://github.com/DavyJonesLocker/client_side_validations.git'
-
+ gem 'client_side_validations-simple_form', github: 'DavyJonesLocker/client_side_validations-simple_form'
 # control de usuarios
 gem 'devise'
 

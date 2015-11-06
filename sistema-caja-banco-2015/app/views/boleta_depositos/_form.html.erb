@@ -21,7 +21,7 @@
         <div class="field col-md-4 form-group required">
           <%= f.label :nro_boleta, 'Boleta Nro', :class => 'col-md-4 control-label'%>
           <div class="field col-md-8">
-            <%= f.number_field :nro_boleta, :class => 'form-control' %>
+            <%= f.text_field :nro_boleta, :maxlength => 17, :class => 'form-control' %>
           </div>
         </div>
         <div class="field col-md-4 form-group required">
@@ -33,7 +33,7 @@
         <div class="field col-md-4 form-group">
           <%= f.label :monto_efectivo, 'Efectivo' ,  :class => 'col-md-3'%>
           <div class="field col-md-8">
-            <%= f.text_field :monto_efectivo ,  :class => 'form-control'%>
+            <%= f.text_field :monto_efectivo, :maxlength => 17,  :class => 'form-control '%>
           </div>
         </div>
       </div>

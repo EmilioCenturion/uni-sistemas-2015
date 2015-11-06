@@ -3,7 +3,19 @@ class BoletaDeposito < ActiveRecord::Base
   belongs_to :apertura_caja
   has_many :boleta_deposito_detalles
 
+  validates :cuenta_id, :presence => {:message => "Seleccione una cuenta"}
+
+  validates :nro_boleta, :presence => {:message => "No puede estar en blanco"},
+                         :numericality => {:only_double => true, :greater_than_or_equal_to => 0, :message => "Debe ser un numero"},
+                         :length => {minimum: 5, :message => "No es un numero valido"}
+                         
+  validates :monto_efectivo,  :presence => {:message => "No puede estar en blanco"},
+                         :numericality => {:only_double => true, :greater_than_or_equal_to => 0, :message => "Debe ser un numero"}
+                      
+
   accepts_nested_attributes_for :boleta_deposito_detalles, allow_destroy: true
+
+
 
   before_create :bc_boleta_deposito
   after_create :ac_boleta_deposito
