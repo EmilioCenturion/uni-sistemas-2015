@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+  
   resources :proveedors
 
   resources :clientes
@@ -37,7 +39,7 @@ Rails.application.routes.draw do
 
   resources :bancos
 
-  get 'welcome/index'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

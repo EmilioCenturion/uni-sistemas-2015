@@ -57,6 +57,3 @@ gem 'jquery-turbolinks'
 gem 'thinreports-rails'
 
 gem 'bootstrap-datepicker-rails'
-
-gem 'jquery-ui-rails'
-
