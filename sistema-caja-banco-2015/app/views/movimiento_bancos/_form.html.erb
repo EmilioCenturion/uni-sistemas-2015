@@ -55,14 +55,14 @@
       <div class="field col-md-6 form-group required">
         <%= f.label :monto_efectivo, "Monto en Efectivo", :class => 'control-label col-md-4' %>
         <div class="col-md-7">
-          <%= f.text_field :monto_efectivo , :class => 'form-control' %>
+          <%= f.text_field :monto_efectivo , :maxlength => 30, :class => 'form-control' %>
         </div>
       </div>
 
       <div class="field col-md-6 form-group required">
         <%= f.label :monto_cheque, "Monto en Cheque", :class => 'control-label col-md-4' %>
         <div class="col-md-7">
-          <%= f.text_field :monto_cheque, :class => 'form-control' %>
+          <%= f.text_field :monto_cheque, :maxlength => 30, :class => 'form-control' %>
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@
       <div class="field col-md-6 form-group">
         <%= f.label :descripcion, :class => 'control-label col-md-4' %>
         <div class="col-md-8">
-          <%= f.text_area :descripcion , :class => 'form-control' %>
+          <%= f.text_area :descripcion , :maxlength => 80, :class => 'form-control' %>
         </div>  
       </div>
 

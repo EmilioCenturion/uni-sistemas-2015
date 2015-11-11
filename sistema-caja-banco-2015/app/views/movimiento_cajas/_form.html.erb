@@ -50,14 +50,14 @@
         <div class="field col-md-6 form-group required">
           <%= f.label :monto_efectivo,'Efectivo' , :class => 'col-md-3 control-label'%>
           <div class="col-md-8">
-            <%= f.text_field :monto_efectivo, :class => 'form-control'%>
+            <%= f.text_field :monto_efectivo, :maxlength => 35, :class => 'form-control'%>
           </div>
         </div>
       
       <div class="field col-md-6 form-group">
         <%= f.label :descripcion, :class => 'col-md-2 control-label' %>
         <div class="col-md-7">
-            <%= f.text_area :descripcion, :class => 'form-control'%>
+            <%= f.text_area :descripcion, :maxlength => 80, :class => 'form-control'%>
           </div>
         </div>
       </div>

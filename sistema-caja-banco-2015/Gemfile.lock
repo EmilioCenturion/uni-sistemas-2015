@@ -1,4 +1,3 @@
-
 GIT
   remote: https://github.com/DavyJonesLocker/client_side_validations.git
   revision: c96871aaa8ba63d72e44d7046390b05e42611ef1
@@ -178,3 +177,5 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
 
+BUNDLED WITH
+   1.10.6

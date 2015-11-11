@@ -1,18 +1,19 @@
 <ul class="nav nav-tabs">
-  	<li role="presentation" class="active"><a href="/cuenta">Cuentas</a></li>
-  	<% if controller.action_name == 'index'%>
-    	<li role="presentation">
-    		<a href="/" class="btn disabled">Chequeras</a>
-    	</li>
-  		<li role="presentation">
-  			<a href="/" class="btn disabled">Tarjetas</a>
-  		</li>        
-	<% else %>
-    	<li role="presentation">
-    		<%= link_to 'Chequeras', cuentum_chequeras_path(@cuentum) %>
-    	</li>
-  		<li role="presentation">
-  			<%= link_to 'Tarjetas', cuentum_credits_path(@cuentum) %>
-  		</li>       
+    <li role="presentation" class="active"><a href="/cuenta">Cuentas</a></li>
+    <% if controller.action_name == 'edit' or controller.action_name == 'show' %>
+      <li role="presentation">
+        <%= link_to 'Chequeras', cuentum_chequeras_path(@cuentum) %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'Tarjetas', cuentum_credits_path(@cuentum) %>
+      </li>              
+   <% else %>
+       <li role="presentation">
+          <a href="/" class="btn disabled">Chequeras</a>
+        </li>
+        <li role="presentation">
+          <a href="/" class="btn disabled">Tarjetas</a>
+        </li>  
     <% end %>
 </ul>
+  

@@ -1,7 +1,7 @@
 <% modal ||= false %>
 <% remote = modal ? true : false %>
 
-<%= form_for(@pai, remote: remote, html: {role: :form, 'data-model' => 'pai'}) do |f| %>
+<%= form_for(Pai.new, remote: remote, html: {role: :form, 'data-model' => 'pai'}) do |f| %>
 
   <div class="row">
     <form class="form-horizontal">
@@ -9,7 +9,7 @@
       <div class="field col-md-12 form-group required">
         <%= f.label :nombre, :class => 'col-md-2 control-label'%>
         <div class="col-md-7">
-          <%= f.text_field :nombre , autofocus:true , :class => 'form-control'%>
+          <%= f.text_field :nombre , autofocus:true , :maxlength => 30, :class => 'form-control'%>
         </div>
       </div>
     </div>

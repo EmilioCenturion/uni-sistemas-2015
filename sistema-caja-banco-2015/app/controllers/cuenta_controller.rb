@@ -27,6 +27,7 @@ class CuentaController < ApplicationController
   # POST /cuenta
   # POST /cuenta.json
   def create
+    @cuenta = Cuentum.all
     @cuentum = Cuentum.new(cuentum_params)
 
     respond_to do |format|

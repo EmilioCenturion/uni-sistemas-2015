@@ -7,7 +7,7 @@ class Banco < ActiveRecord::Base
 
 	
 	validates :nombre, :presence => {:message => "No puede estar en blanco"}, 
-			  		   :length => { in: 6..20 , message: "Debe tener entre 6 y 20 caracteres"},
+			  		   :length => { in: 4..30 , message: "Debe tener entre 4 y 20 caracteres"},
 			  		   :format => {with: /[a-zA-ZÃ�ï¿½Ã�Â±Ã�Â¡Ã�Â©Ã�Â­Ã�Â³Ã�Âº]/, message: 'Solo permite letras'}
 			  		   
 	validates :direccion, 
@@ -28,7 +28,7 @@ class Banco < ActiveRecord::Base
 					   :uniqueness => {:message => "El correo ya esta en uso, vuelva a intentarlo"}
 
 	validates :sucursal, :presence => {:message => "No puede estar en blanco"},
-						 :length => { in: 6..20 , message: "Debe tener entre 6 y 20 caracteres"},
+						 :length => { in: 6..30 , message: "Debe tener entre 6 y 20 caracteres"},
 			  		     :uniqueness => { :scope => :nombre, message: "Esta sucursal ya existe, vuelva a intentarlo" }
 
 	validates :pai_id, :presence => {:message => "Tienes que seleccionar un pais"}

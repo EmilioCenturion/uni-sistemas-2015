@@ -40,6 +40,8 @@ class BancosController < ApplicationController
   # POST /bancos.json
   def create
      @bancos = Banco.all
+      @pais = Pai.all
+     @ciudads = Ciudad.all
     @banco = Banco.new(banco_params)
 
     respond_to do |format|

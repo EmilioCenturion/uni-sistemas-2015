@@ -2,7 +2,7 @@
 <% remote = modal ? true : false %>
 
 
-<%= form_for(@ciudad, validate: true, remote: remote, html: {role: :form, 'data-model' => 'ciudads'}) do |f| %>
+<%= form_for(Ciudad.new, validate: true, remote: remote, html: {role: :form, 'data-model' => 'ciudads'}) do |f| %>
 
  <div class="row">
     <form class="form-horizontal">
@@ -10,7 +10,7 @@
       <div class="field col-md-12 form-group required">
         <%= f.label :nombre, :class => 'col-md-2 control-label'%>
         <div class="col-md-7">
-          <%= f.text_field :nombre , autofocus:true , :class => 'form-control'%>
+          <%= f.text_field :nombre , autofocus:true , :maxlength => 30, :class => 'form-control'%>
         </div>
       </div>
     </div>
@@ -30,5 +30,3 @@
   </form>
   </div>
 <% end %>
-
-

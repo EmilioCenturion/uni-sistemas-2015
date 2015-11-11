@@ -6,14 +6,14 @@
       <div class="field col-md-6 form-group required">
         <%= f.label :nombre, :class => 'col-md-2 control-label'%>
         <div class="col-md-7">
-          <%= f.text_field :nombre , autofocus:true , :class => 'form-control'%>
+          <%= f.text_field :nombre , autofocus:true, :maxlength => 30 , :class => 'form-control'%>
         </div>
       </div>
 
       <div class="field col-md-6 form-group required">
         <%= f.label :sucursal, :class => 'col-md-2 control-label'%>
         <div class="col-md-7">
-          <%= f.text_field :sucursal, :class => 'form-control'%>
+          <%= f.text_field :sucursal,:maxlength => 30, :class => 'form-control'%>
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
       <div class="field col-md-6 form-group required">
         <%= f.label :direccion, :class => 'col-md-2 control-label' %>
         <div class="col-md-10">
-          <%= f.text_field :direccion , :class => 'form-control' %>
+          <%= f.text_field :direccion , :maxlength => 50, :class => 'form-control' %>
         </div>
       </div>
 
@@ -47,7 +47,7 @@
       <div class="field col-md-6 form-group required">
         <%= f.label :correo, :class => 'col-md-2 control-label' %>
         <div class="col-md-7">
-          <%= f.text_field :correo , :class => 'form-control'%>
+          <%= f.text_field :correo, :maxlength => 30, :class => 'form-control'%>
         </div>
       </div>
 
@@ -71,7 +71,7 @@
       <div class="field col-md-6 form-group required">
         <%= f.label :telefono, :class => 'col-md-2 control-label' %>
         <div class="col-md-7">
-          <%= f.text_field :telefono , :class => 'form-control'%>
+          <%= f.text_field :telefono, :maxlength => 30, :class => 'form-control'%>
         </div>
       </div>
     </div>

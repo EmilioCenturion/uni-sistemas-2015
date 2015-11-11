@@ -6,14 +6,14 @@
           <div class="field col-md-6 form-group required">
               <%= f.label :primer_numero, :class => 'col-md-3 control-label'%>
               <div class="col-md-5">
-                <%= f.text_field :nro_primero , autofocus:true , :class => 'form-control'%>
+                <%= f.text_field :nro_primero , autofocus:true, :maxlength => 20, :class => 'form-control'%>
               </div>
           </div>
 
           <div class="field col-md-4 form-group required">
               <%= f.label :ultimo_numero, :class => 'col-md-5 control-label'%>
               <div class="col-md-7">
-                <%= f.text_field :nro_ultimo, :class => 'form-control'%>
+                <%= f.text_field :nro_ultimo, :maxlength => 20, :class => 'form-control'%>
               </div>
           </div>
       </div>

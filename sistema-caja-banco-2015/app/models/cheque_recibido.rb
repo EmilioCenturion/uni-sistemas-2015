@@ -5,7 +5,8 @@ class ChequeRecibido < ActiveRecord::Base
 
 validates :nro_cheque,  :presence => {:message => "No puede estar en blanco"},
                         :numericality => {:only_double => true, :message => "Debe ser un numero"},
-                        :length => {minimum: 8, :message => "No es un numero valido"}
+                        :length => {minimum: 8, :message => "No es un numero valido"},
+                        :uniqueness => { :scope => :banco_id, message: "Este cheque ya existe" }
                         
   validates :banco_id, :presence => {:message => "Seleccione un banco"}
 
