@@ -13,13 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require jquery_nested_form
 //= require bootstrap-datepicker
-//= require jquery-ui
-//= require jquery-ui/datepicker
+//= require rails.validations
 //= require_tree .
 
 
@@ -27,23 +25,7 @@
 $(document).ready(function() {
 	
 	
-	$('.datepicker').datepicker({
-		closeText: 'Cerrar',
-	 	prevText: '<Ant',
-	 	nextText: 'Sig>',
-	 	currentText: 'Hoy',
-	 	monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-	 	monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
-	 	dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-	 	dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
-	 	dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
-	 	weekHeader: 'Sm',
-	 	dateFormat: 'dd/mm/yy',
-	 	firstDay: 1,
-	 	isRTL: false,
-	 	showMonthAfterYear: false,
-	 	yearSuffix: ''
-});
+	$('.input-group.date').datepicker();
 	
 
 	$("#btn1").click(function(){

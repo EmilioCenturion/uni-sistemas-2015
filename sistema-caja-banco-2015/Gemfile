@@ -1,3 +1,4 @@
+
 source 'https://rubygems.org'
 
 
@@ -47,7 +48,7 @@ gem 'nested_form'
 
 # validaciones
 gem 'client_side_validations', :git => 'https://github.com/DavyJonesLocker/client_side_validations.git'
- gem 'client_side_validations-simple_form', github: 'DavyJonesLocker/client_side_validations-simple_form'
+
 # control de usuarios
 gem 'devise'
 
@@ -57,6 +58,4 @@ gem 'jquery-turbolinks'
 gem 'thinreports-rails'
 
 gem 'bootstrap-datepicker-rails'
-
-gem 'jquery-ui-rails'
 
