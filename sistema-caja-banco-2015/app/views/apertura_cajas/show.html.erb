@@ -1,39 +1,27 @@
 <div class="container white">
-  <%= render 'solapa' %>
-  <h1>Caja Nro. <%=@apertura_caja.caja.nro_caja%> <%= link_to new_apertura_caja_path, class: 'btn btn-primary', title: 'Nueva apertura', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+  <h2>Caja Nro. <%=@apertura_caja.caja.nro_caja%> <%= link_to new_apertura_caja_path, class: 'btn btn-primary', title: 'Nueva apertura', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
         <span class= "glyphicon glyphicon-plus"></span>
       <% end %>
-  </h1>
+  </h2>
   <div class="row">
     <form class="form-horizontal">
-      <div class="field col-md-1 form-group">  
-      </div>
-      <div class="field col-md-11 form-group">
-        <div class="field col-md-5 form-group">
-            <strong>Cajero/a: </strong>
-            <%= current_user.username %>
+      <div class="field col-md-1 form-group"></div>
+      <div class="field col-md-11 form-group"> 
+        <div class="field col-md-4 form-group">
+            <big>Saldo inicial efectivo: <%= @apertura_caja.saldo_inicial_efectivo %></big>
         </div>
-        <div class="field col-md-5 form-group">
-            <strong>Apertura: </strong>
-            <%= @apertura_caja.apertura %>
+        <div class="field col-md-4 form-group">
+            <big>Saldo inicial cheque: <%= @apertura_caja.saldo_inicial_cheque %></big> 
         </div>
 
-        <div class="field col-md-5 form-group">
-            <strong>Saldo inicial efectivo: </strong>
-            <%= @apertura_caja.saldo_inicial_efectivo %>
+        <div class="field col-md-4 form-group">
+            <big>Apertura: <%= @apertura_caja.apertura %></big>
         </div>
-        <div class="field col-md-5 form-group">
-            <strong>Saldo final efectivo: </strong>
-            <%= @apertura_caja.saldo_final_efectivo %>
+        <div class="field col-md-4 form-group">
+            <big><strong>Saldo final efectivo: <%= @apertura_caja.saldo_final_efectivo %></strong></big>
         </div>
-
-        <div class="field col-md-5 form-group">
-            <strong>Saldo inicial cheque: </strong>
-            <%= @apertura_caja.saldo_inicial_cheque %>
-        </div>
-        <div class="field col-md-5 form-group">
-            <strong>Saldo final cheque: </strong>
-            <%= @apertura_caja.saldo_final_cheque %>
+        <div class="field col-md-4 form-group">
+            <big><strong>Saldo final cheque: <%= @apertura_caja.saldo_final_cheque %></strong></big>
         </div>
         <% AperturaCaja.update(@apertura_caja.id, :user_id => current_user.id) %>
         
@@ -53,6 +41,7 @@
 </div>
 <br>
 <div class="container white">
+  <%= render 'solapa' %>
   <br>
-  <%= render 'table' %>
+  <%= render 'table_movimiento' %>
 </div>

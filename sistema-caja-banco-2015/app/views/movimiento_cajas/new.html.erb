@@ -1,7 +1,46 @@
 <div class="container white">
-  <%= render 'solapa' %>   
-  	<h1> Movimientos de Caja </h1>
- 
-    <%= render 'form' %>
+  <h2>Caja Nro. <%=@apertura_caja.caja.nro_caja%> <%= link_to new_apertura_caja_path, class: 'btn btn-primary', title: 'Nueva apertura', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+        <span class= "glyphicon glyphicon-plus"></span>
+      <% end %>
+  </h2>
+  <div class="row">
+    <form class="form-horizontal">
+      <div class="field col-md-1 form-group"></div>
+      <div class="field col-md-11 form-group"> 
+        <div class="field col-md-4 form-group">
+            <big>Saldo inicial efectivo: <%= @apertura_caja.saldo_inicial_efectivo %></big>
+        </div>
+        <div class="field col-md-4 form-group">
+            <big>Saldo inicial cheque: <%= @apertura_caja.saldo_inicial_cheque %></big> 
+        </div>
 
+        <div class="field col-md-4 form-group">
+            <big>Apertura: <%= @apertura_caja.apertura %></big>
+        </div>
+        <div class="field col-md-4 form-group">
+            <big><strong>Saldo final efectivo: <%= @apertura_caja.saldo_final_efectivo %></strong></big>
+        </div>
+        <div class="field col-md-4 form-group">
+            <big><strong>Saldo final cheque: <%= @apertura_caja.saldo_final_cheque %></strong></big>
+        </div>
+        
+        <div class="field col-md-10 form-group">
+          <% if @apertura_caja.saldo_final_cheque < 0 or @apertura_caja.saldo_final_efectivo < 0 %>
+            <button class="btn btn-primary" disabled="disabled" title="No se puede cerrar una caja con saldos negativos">Cerrar caja</button>
+          <% elsif @apertura_caja.cierre.nil? == false %>
+            <strong>Estado: </strong>
+            <%= 'Caja Cerrada' %>
+          <% else %>
+            <%= link_to 'Cerrar caja', edit_apertura_caja_path(@apertura_caja), :class => 'btn btn-primary', data: { confirm: 'Esta seguro que desea cerrar la caja?' }%>
+          <%end%>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br>
+<div class="container white">
+  <%= render 'solapa' %>
+  <br>
+  <%= render 'form' %>
 </div>

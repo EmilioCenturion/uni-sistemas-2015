@@ -8,7 +8,7 @@ class BoletaDeposito < ActiveRecord::Base
   validates :nro_boleta, :presence => {:message => "No puede estar en blanco"},
                          :numericality => {:only_double => true, :greater_than_or_equal_to => 0, :message => "Debe ser un numero"},
                          :length => {minimum: 5, :message => "No es un numero valido"},
-                         :uniqueness => {:message: => "Esta boleta ya existe" }
+                         :uniqueness => {:message => "Esta boleta ya existe" }
                          
   validates :monto_efectivo,  :presence => {:message => "No puede estar en blanco"},
                          :numericality => {:only_double => true, :greater_than_or_equal_to => 0, :message => "Debe ser un numero"}
