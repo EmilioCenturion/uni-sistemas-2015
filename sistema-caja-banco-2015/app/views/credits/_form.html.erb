@@ -24,10 +24,10 @@
 
       <div class="col-md-10">
         <div class="actions">
-          <% if controller.action_name == 'new' or controller.action_name == 'index' %>
-            <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
-            <% elsif controller.action_name == 'edit' %>
+         <% if controller.action_name == 'edit'  %>
             <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
+          <% else %>
+              <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
           <% end %>
           
           <%= link_to 'Cancelar',  cuentum_credits_path(@credit.cuentum) , class: 'btn btn-primary' %>

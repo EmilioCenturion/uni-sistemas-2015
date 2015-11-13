@@ -1,16 +1,4 @@
 <%= nested_form_for [@boleta_deposito.apertura_caja, @boleta_deposito], validate: true do |f| %>
-  <% if @boleta_deposito.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@boleta_deposito.errors.count, "error") %> prohibited this boleta_deposito from being saved:</h2>
-
-      <ul>
-      <% @boleta_deposito.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="row">
     <form class="form-horizontal">
       <div class="field col-md-12">
@@ -64,10 +52,10 @@
     </div>
       <div class="col-md-10 ">
         <div class="actions">
-          <% if controller.action_name == 'new' or controller.action_name == 'index' %>
-            <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
-          <% elsif controller.action_name == 'edit' %>
-              <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
+          <% if controller.action_name == 'edit'  %>
+            <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
+          <% else %>
+              <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
           <% end %>
           <%= link_to 'Cancelar',  apertura_caja_boleta_depositos_path(@apertura_caja) , class: 'btn btn-primary margen' %>
         </div>

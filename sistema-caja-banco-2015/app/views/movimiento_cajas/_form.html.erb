@@ -1,16 +1,5 @@
 
 <%= nested_form_for [@movimiento_caja.apertura_caja, @movimiento_caja], validate: true do |f| %>
-  <% if @movimiento_caja.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@movimiento_caja.errors.count, "error") %> prohibited this movimiento_caja from being saved:</h2>
-
-      <ul>
-      <% @movimiento_caja.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="row">
     <form class="form-horizontal">
@@ -98,10 +87,10 @@
       
       <div class="col-md-10 ">
         <div class="actions">
-          <% if controller.action_name == 'new' or controller.action_name == 'index' %>
-            <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
-          <% elsif controller.action_name == 'edit' %>
-              <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
+          <% if controller.action_name == 'edit'  %>
+            <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
+          <% else %>
+              <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
           <% end %>
           <%= link_to 'Cancelar',  apertura_caja_movimiento_cajas_path(@apertura_caja) , class: 'btn btn-primary margen' %>
         </div>

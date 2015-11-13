@@ -7,7 +7,8 @@ class BoletaDeposito < ActiveRecord::Base
 
   validates :nro_boleta, :presence => {:message => "No puede estar en blanco"},
                          :numericality => {:only_double => true, :greater_than_or_equal_to => 0, :message => "Debe ser un numero"},
-                         :length => {minimum: 5, :message => "No es un numero valido"}
+                         :length => {minimum: 5, :message => "No es un numero valido"},
+                         :uniqueness => {:message: => "Esta boleta ya existe" }
                          
   validates :monto_efectivo,  :presence => {:message => "No puede estar en blanco"},
                          :numericality => {:only_double => true, :greater_than_or_equal_to => 0, :message => "Debe ser un numero"}
@@ -19,6 +20,16 @@ class BoletaDeposito < ActiveRecord::Base
 
   before_create :bc_boleta_deposito
   after_create :ac_boleta_deposito
+
+  validate :no_cero
+
+    def no_cero
+    errors.add(:monto_efectivo, "no puede ser cero") if cheques_vacio?
+  end
+
+  def cheques_vacio?
+    boleta_deposito_detalles.empty?
+  end
 
   protected
   	def bc_boleta_deposito

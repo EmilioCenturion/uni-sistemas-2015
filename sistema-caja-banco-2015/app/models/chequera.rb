@@ -8,8 +8,9 @@ class Chequera < ActiveRecord::Base
   end
   validates :nro_primero, :presence => {:message => "No puede estar en blanco"}, 
   						  
-  						  :numericality => {:only_integer => true, :message => "Solo se aceptan numeros"}
-  						  
+  						  :numericality => {:only_integer => true, :message => "Solo se aceptan numeros"},
+  						  :uniqueness => { :scope => :nro_ultimo, message: "Esta chequera ya existe" }
+
 
   validates :nro_ultimo, :presence => {:message => "No puede estar en blanco"}, 
   						  :numericality => {:only_integer => true, :message => "Solo se aceptan numeros"}

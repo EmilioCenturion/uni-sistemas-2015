@@ -14,6 +14,16 @@ class MovimientoCaja < ActiveRecord::Base
   before_create :bc_movimiento
   after_create :ac_movimiento
 
+validate :no_cero
+
+    def no_cero
+    errors.add(:monto_efectivo, "no puede ser cero") if cheques_vacio?
+  end
+
+  def cheques_vacio?
+    cheque_recibidos.empty?
+  end
+
 
 		def bc_movimiento
 			self.fecha = Time.now

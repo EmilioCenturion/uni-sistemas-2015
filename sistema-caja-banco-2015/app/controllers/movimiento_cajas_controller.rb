@@ -49,6 +49,8 @@ class MovimientoCajasController < ApplicationController
   # POST /movimiento_cajas
   # POST /movimiento_cajas.json
   def create
+     @motivo_movimiento_cajas = MotivoMovimientoCaja.all
+    @motivo_movimiento_caja = MotivoMovimientoCaja.new
     @apertura_caja = AperturaCaja.find(params[:apertura_caja_id])
     @movimiento_caja = @apertura_caja.movimiento_cajas.create(movimiento_caja_params)
     respond_to do |format|

@@ -1,15 +1,4 @@
 <%= form_for(@cheque_recibido) do |f| %>
-  <% if @cheque_recibido.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cheque_recibido.errors.count, "error") %> prohibited this cheque_recibido from being saved:</h2>
-
-      <ul>
-      <% @cheque_recibido.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= f.label :nro_cheque %><br>
