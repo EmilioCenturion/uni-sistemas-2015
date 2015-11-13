@@ -12,7 +12,7 @@
     </thead>
 
     <tbody>
-      <% @movimiento_cajas.each do |movimiento| %>
+      <% @apertura_caja.movimiento_cajas.each do |movimiento| %>
         <tr>
           <% motivo= MotivoMovimientoCaja.find(movimiento.motivo_movimiento_caja_id) %>
           <td><%= motivo.descripcion %></td>

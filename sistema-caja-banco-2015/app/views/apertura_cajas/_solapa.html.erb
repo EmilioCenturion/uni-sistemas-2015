@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs">
     <li role="presentation" class="active">
-      <%= link_to 'Caja', @apertura_caja %>
+      <%= link_to 'Movimientos', @apertura_caja %>
     </li>
     <% if controller.action_name == 'new' or @apertura_caja.cierre.nil? == false%>
         <li role="presentation">
@@ -11,10 +11,10 @@
         </li>        
     <% else %>
         <li role="presentation">
-          <%= link_to 'Movimientos de Caja', apertura_caja_movimiento_cajas_path(@apertura_caja) %>
+          <%= link_to 'Nuevo Movimiento', new_apertura_caja_movimiento_caja_path(@apertura_caja) %>
         </li>
         <li role="presentation">
-          <%= link_to 'Boletas de Deposito', apertura_caja_boleta_depositos_path(@apertura_caja) %>
+          <%= link_to 'Nueva Boleta', new_apertura_caja_boleta_deposito_path(@apertura_caja) %>
         </li>       
     <% end %>
 </ul>
