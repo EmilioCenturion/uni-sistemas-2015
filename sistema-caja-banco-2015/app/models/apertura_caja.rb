@@ -3,6 +3,7 @@ class AperturaCaja < ActiveRecord::Base
   belongs_to :user
   has_many :movimiento_cajas
   has_many :boleta_depositos
+  has_many :cheque_recibidos, :through => :movimiento_cajas
 
   validates :caja_id, :presence => {:message => "Debe seleccionar una caja"}
 

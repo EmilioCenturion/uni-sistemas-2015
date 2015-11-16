@@ -55,7 +55,8 @@ gem 'devise'
 gem 'jquery-turbolinks'
 
 # reportes en pdf
-
+gem "prawnto_2", :require => "prawnto"
+gem 'prawn-table'
 
 gem 'bootstrap-datepicker-rails'
 
