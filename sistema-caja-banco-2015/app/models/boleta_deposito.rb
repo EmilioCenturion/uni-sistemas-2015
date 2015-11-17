@@ -46,8 +46,12 @@ class BoletaDeposito < ActiveRecord::Base
   		if motivo_banco.nil? 
   			motivo_banco = MotivoMovimientoBanco.create(:descripcion => 'Boleta de deposito')
   		end
-  		MovimientoBanco.create(:cuenta_id => self.cuenta_id, :motivo_movimiento_banco_id => motivo_banco.id, :descripcion => "Boleta Nro: #{self.nro_boleta}", :es_ingreso => true, :monto_efectivo => self.monto_efectivo, :monto_cheque => self.monto_cheque, :fecha => Time.now)
-  		motivo = MotivoMovimientoCaja.find_by(:descripcion => 'Boleta de deposito')
+  		mov_banco = MovimientoBanco.create(:cuenta_id => self.cuenta_id, :motivo_movimiento_banco_id => motivo_banco.id, :descripcion => "Boleta Nro: #{self.nro_boleta}", :es_ingreso => true, :monto_efectivo => self.monto_efectivo, :monto_cheque => self.monto_cheque, :fecha => Time.now)
+  		self.boleta_deposito_detalles.each do |detalle|
+        MovimientoBancoDetalle.create(:movimiento_banco_id => mov_banco.id, :cheque_recibido_id => detalle.cheque_recibido_id)
+      end
+
+      motivo = MotivoMovimientoCaja.find_by(:descripcion => 'Boleta de deposito')
   		if motivo.nil? 
   			motivo = MotivoMovimientoCaja.create(:descripcion => 'Boleta de deposito')
   		end

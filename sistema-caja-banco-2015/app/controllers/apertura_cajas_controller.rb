@@ -16,7 +16,7 @@ class AperturaCajasController < ApplicationController
       format.html
       format.pdf do
         pdf = AperturaCajaPdf.new(@apertura_caja, view_context)
-        send_data pdf.render, filename: "apertura_caja_#{@apertura_caja.apertura}.pdf",
+        send_data pdf.render, filename: "libro_caja_#{@apertura_caja.apertura}.pdf",
                               type: "application/pdf",
                               disposition: "inline"
       end

@@ -27,13 +27,13 @@ class AperturaCajaPdf < Prawn::Document
   def inicio_caja
     text "Arqueo de Caja Nro. #{@apertura_caja.caja.nro_caja}", align: :center, size: 15, style: :bold
     move_down(5)
-    text "Saldo inicial en Efectivo: #{@apertura_caja.saldo_inicial_efectivo}", size: 10, style: :bold
-    text "Saldo inicial en Cheque: #{@apertura_caja.saldo_inicial_cheque}", size: 10, style: :bold
+    text "Saldo inicial en Efectivo: #{price(@apertura_caja.saldo_inicial_efectivo)}", size: 10, style: :bold
+    text "Saldo inicial en Cheque: #{price(@apertura_caja.saldo_inicial_cheque)}", size: 10, style: :bold
   end
 
   def cierre_caja
-    text "Saldo final en Efectivo: #{@apertura_caja.saldo_final_efectivo}", size: 10, style: :bold
-    text "Saldo final en Cheque: #{@apertura_caja.saldo_final_cheque}", size: 10, style: :bold
+    text "Saldo final en Efectivo: #{price(@apertura_caja.saldo_final_efectivo)}", size: 10, style: :bold
+    text "Saldo final en Cheque: #{price(@apertura_caja.saldo_final_cheque)}", size: 10, style: :bold
   end
   
   def movimientos_caja
@@ -49,7 +49,7 @@ class AperturaCajaPdf < Prawn::Document
 
   def movimiento_caja_rows
     [["Fecha", "Motivo","Tipo", "Monto"]] +
-    @apertura_caja.movimiento_cajas.map do |movimiento|
+    @apertura_caja.movimiento_cajas.order(:fecha).map do |movimiento|
       [fecha_format(movimiento.fecha), motivo(movimiento), tipo(movimiento.es_ingreso), sub_monto(movimiento)]
     end
   end
@@ -65,10 +65,10 @@ class AperturaCajaPdf < Prawn::Document
 
   def sub_monto_rows(movimiento)
     if movimiento.monto_efectivo > 0
-      [["Efectivo", movimiento.monto_efectivo]]
+      [["Efectivo", price(movimiento.monto_efectivo)]]
     end +
     movimiento.cheque_recibidos.map do |cheque|
-        ["Cheque Nro:#{cheque.nro_cheque}, Banco #{cheque.banco.nombre}, #{cheque.fecha}", cheque.monto]
+        ["Cheque Nro:#{cheque.nro_cheque}, Banco #{cheque.banco.nombre}, #{cheque.fecha}", price(cheque.monto)]
     end
   end
 
@@ -89,7 +89,7 @@ class AperturaCajaPdf < Prawn::Document
   end
 
   def price(num)
-    @view.number_to_currency(num)
+    @view.number_to_currency(num, :unit => "")
   end
   
 end
