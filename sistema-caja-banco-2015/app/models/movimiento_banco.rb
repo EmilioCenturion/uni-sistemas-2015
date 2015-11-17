@@ -2,6 +2,7 @@
 class MovimientoBanco < ActiveRecord::Base
   belongs_to :cuentum
   belongs_to :motivo_movimiento_banco
+  has_many :movimiento_banco_detalles
 
 
   validates :cuenta_id, :presence => {:message => "Seleccione una cuenta"}
@@ -25,6 +26,7 @@ class MovimientoBanco < ActiveRecord::Base
   def crear_movimiento
   	self.fecha = Time.now
   	saldo = Cuentum.find(self.cuenta_id).saldo
+    self.saldo_inicial = saldo
   	if self.es_ingreso
   		saldo= saldo + self.monto_efectivo + self.monto_cheque
   	else

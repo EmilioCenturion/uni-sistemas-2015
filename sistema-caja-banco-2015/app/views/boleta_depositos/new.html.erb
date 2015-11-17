@@ -33,6 +33,9 @@
           <% else %>
             <%= link_to 'Cerrar caja', edit_apertura_caja_path(@apertura_caja), :class => 'btn btn-primary', data: { confirm: 'Esta seguro que desea cerrar la caja?' }%>
           <%end%>
+          <%= link_to apertura_caja_path(@apertura_caja, format: "pdf"), :class => 'btn btn-default' , title: 'Libro de Caja', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+            <span class= "glyphicon glyphicon-print"></span>
+          <% end %>
         </div>
       </div>
     </form>
