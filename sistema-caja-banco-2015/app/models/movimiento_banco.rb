@@ -15,10 +15,13 @@ class MovimientoBanco < ActiveRecord::Base
                             :length => { in: 1..30 , message: "Debe tener entre 1 y 30 caracteres"},
                             :numericality => {:only_double => true, :message => "Debe ser un numero"}
 
-  validates :descripcion,  # :presence => {:message => "No puede estar en blanco"},
-  #                         :length => { in: 8..50 , message: "Debe tener entre 8 y 50 caracteres"},
-                           :format => {with: /[a-zA-ZÃ?ï¿½Ã?Â±Ã?Â¡Ã?Â©Ã?Â­Ã?Â³Ã?Âº]/, message: 'Solo permite letras'}
+  validate :saldo_mayor
 
+       def saldo_mayor
+        saldo = Cuentum.find(self.cuenta_id).saldo
+        monto_total = monto_efectivo + monto_cheque
+        errors.add(:monto_efectivo, "La suma de los montos supera el saldo que posee la cuenta") if es_ingreso == false and monto_total > saldo
+      end
 
   before_create :crear_movimiento
 
