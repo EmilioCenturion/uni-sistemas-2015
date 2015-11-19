@@ -18,6 +18,7 @@
 //= require jquery_nested_form
 //= require bootstrap-datepicker
 //= require rails.validations
+//= require jquery-ui
 //= require_tree .
 
 
@@ -25,7 +26,23 @@
 $(document).ready(function() {
 	
 	
-	$('.input-group.date').datepicker();
+	$('.input-group.date').datepicker({
+		closeText: 'Cerrar',
+		prevText: '<Ant',
+ 		nextText: 'Sig>',
+ 		currentText: 'Hoy',
+ 		monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+ 		monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+ 		dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+ 		dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+ 		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+ 		weekHeader: 'Sm',
+ 		dateFormat: 'dd/mm/yy',
+ 		firstDay: 1,
+ 		isRTL: false,
+ 		showMonthAfterYear: false,
+ 		yearSuffix: ''
+	});
 	
 
 	$("#btn1").click(function(){
@@ -83,4 +100,13 @@ jQuery(function ($) {
       return $(content).insertBefore(link);
     }
   };
+});
+
+$(document).on('nested:fieldAdded', function(event){
+  // this field was just inserted into your form
+  var field = event.field; 
+  // it's a jQuery object already! Now you can find date input
+  var dateField = field.find('.datepicker');
+  // and activate datepicker on it
+  dateField.datepicker();
 });

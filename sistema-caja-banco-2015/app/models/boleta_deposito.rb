@@ -24,7 +24,7 @@ class BoletaDeposito < ActiveRecord::Base
   validate :no_cero
 
     def no_cero
-    errors.add(:monto_efectivo, "no puede ser cero") if cheques_vacio?
+    errors.add(:monto_efectivo, "no puede ser cero") if cheques_vacio? and monto_efectivo == 0
   end
 
   def cheques_vacio?
@@ -56,6 +56,6 @@ class BoletaDeposito < ActiveRecord::Base
   			motivo = MotivoMovimientoCaja.create(:descripcion => 'Boleta de deposito')
   		end
   		cuenta = Cuentum.find(self.cuenta_id)
-  		mov_caja = MovimientoCaja.create(:apertura_caja_id => self.apertura_caja_id, :motivo_movimiento_caja_id => motivo.id, :descripcion => "Boleta Nro: #{self.nro_boleta}, Cuenta Nro: #{cuenta.nro_cuenta}", :es_ingreso => false, :monto_efectivo => self.monto_efectivo, :monto_cheque => self.monto_cheque, :fecha => Time.now) 	
+  		MovimientoCaja.create(:apertura_caja_id => self.apertura_caja_id, :motivo_movimiento_caja_id => motivo.id, :descripcion => "Boleta Nro: #{self.nro_boleta}, Cuenta Nro: #{cuenta.nro_cuenta}", :es_ingreso => false, :monto_efectivo => self.monto_efectivo, :monto_cheque => self.monto_cheque, :fecha => Time.now) 	
   	end
 end
