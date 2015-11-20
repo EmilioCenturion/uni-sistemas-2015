@@ -27,6 +27,10 @@ class MovimientoBancosController < ApplicationController
   # POST /movimiento_bancos
   # POST /movimiento_bancos.json
   def create
+
+    @motivo_movimiento_bancos = MotivoMovimientoBanco.all
+    @motivo_movimiento_banco = MotivoMovimientoBanco.new
+    @movimiento_bancos = MovimientoBanco.all
     @movimiento_banco = MovimientoBanco.new(movimiento_banco_params)
 
     respond_to do |format|

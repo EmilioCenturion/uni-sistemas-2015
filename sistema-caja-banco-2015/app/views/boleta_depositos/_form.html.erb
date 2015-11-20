@@ -13,9 +13,12 @@
           </div>
         </div>
         <div class="field col-md-4 form-group required">
-          <%= f.label :fecha, :class => 'control-label'%>
-          <%= f.date_select :fecha, :class => 'form-control' %>
+          <%= f.label :fecha, :class => 'col-md-3 control-label'%>
+          <div class="col-md-9">
+            <%= f.text_field :fecha, :class => 'input-group date form-control' %>
+          </div>
         </div>
+
       </div>
       <div class="field col-md-12">
         <div class="field col-md-4 form-group">
@@ -40,7 +43,7 @@
         <tbody>
           <%= f.fields_for :boleta_deposito_detalles, :wrapper => false do |detalle| %>
             <tr class="fields">
-              <td><%= detalle.collection_select :cheque_recibido_id, ChequeRecibido.where("depositado != 'true'"), :id, :name_cheque_recibido, {prompt: "Seleccione un cheque"} ,:class => 'btn btn-default'%></td>
+              <td><%= detalle.collection_select :cheque_recibido_id, ChequeRecibido.all, :id, :name_cheque_recibido, {prompt: "Seleccione un cheque"} ,:class => 'btn btn-default'%></td>
               <td><%= detalle.link_to_remove "X", :class => 'btn btn-danger'%></td>
             </tr>
           <% end %>
