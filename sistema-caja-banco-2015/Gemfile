@@ -58,5 +58,8 @@ gem 'jquery-turbolinks'
 gem "prawnto_2", :require => "prawnto"
 gem 'prawn-table'
 
+# calendario
 gem 'bootstrap-datepicker-rails'
 
+# css calendario
+gem 'jquery-ui-rails'

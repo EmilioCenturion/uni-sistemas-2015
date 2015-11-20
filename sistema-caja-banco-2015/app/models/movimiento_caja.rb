@@ -17,7 +17,7 @@ class MovimientoCaja < ActiveRecord::Base
 validate :no_cero
 
     def no_cero
-    errors.add(:monto_efectivo, "no puede ser cero") if cheques_vacio?
+    errors.add(:monto_efectivo, "no puede ser cero") if cheques_vacio? and monto_efectivo == 0
   end
 
   def cheques_vacio?

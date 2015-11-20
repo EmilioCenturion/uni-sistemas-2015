@@ -69,9 +69,14 @@
       </div>
     </div>
 
-  <div class="actions">
-    <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
+  <div class="col-md-10">
+    <div class="actions">
+      <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
+      <%= link_to "Cancelar", movimiento_bancos_path, :class => 'btn btn-primary margen'%>
+
+    </div>
   </div>
+
 </div>
 <% end %>
 
