@@ -25,7 +25,6 @@
 
 $(document).ready(function() {
 	
-	
 	$('.input-group.date').datepicker({
 		closeText: 'Cerrar',
 		prevText: '<Ant',
@@ -106,7 +105,7 @@ $(document).on('nested:fieldAdded', function(event){
   // this field was just inserted into your form
   var field = event.field; 
   // it's a jQuery object already! Now you can find date input
-  var dateField = field.find('.datepicker');
+  var dateField = field.find('.input-group.date');
   // and activate datepicker on it
   dateField.datepicker();
 });

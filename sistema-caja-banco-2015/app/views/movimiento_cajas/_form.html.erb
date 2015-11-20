@@ -72,7 +72,7 @@
               <td><%= cheque_recibidos_form.number_field :nro_cheque, :class => 'form-control'%></td>
               <td><%= cheque_recibidos_form.collection_select :banco_id, Banco.all, :id, :name_banco, {prompt: "Seleccione un banco"} ,:class => 'btn btn-default'%></td>
               <td><%= cheque_recibidos_form.text_field :monto, :class => 'form-control' %></td>
-              <td><%= f.date_select :fecha%></td>
+              <td><%= cheque_recibidos_form.date_select :fecha%></td>
               <td><%= cheque_recibidos_form.link_to_remove "X", :class => 'btn btn-danger'%></td>
             </tr>
           <% end %>
