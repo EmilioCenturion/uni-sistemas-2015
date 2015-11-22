@@ -63,3 +63,8 @@ gem 'bootstrap-datepicker-rails'
 
 # css calendario
 gem 'jquery-ui-rails'
+
+# auditoria
+gem 'audited-activerecord'
+
+gem 'cancan'
