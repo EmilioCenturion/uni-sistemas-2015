@@ -1,4 +1,5 @@
 class CuentaController < ApplicationController
+  load_and_authorize_resource
   before_action :set_cuentum, only: [:show, :edit, :update, :destroy]
 
   # GET /cuenta

@@ -66,3 +66,6 @@ gem 'jquery-ui-rails'
 
 # auditoria
 gem 'audited-activerecord'
+
+gem 'cancan'
+
