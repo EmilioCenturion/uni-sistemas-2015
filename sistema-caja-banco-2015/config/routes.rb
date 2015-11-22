@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'auditoria_logs/buscar'
+
   get 'welcome/index'
   
   resources :proveedors

@@ -1,0 +1,2 @@
+module AuditoriaLogsHelper
+end
