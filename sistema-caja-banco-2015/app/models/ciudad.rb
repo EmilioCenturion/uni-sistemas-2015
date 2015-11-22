@@ -1,4 +1,5 @@
 class Ciudad < ActiveRecord::Base
+	audited
 	has_many :bancos
 	def name_ciudad
 		"#{nombre}"

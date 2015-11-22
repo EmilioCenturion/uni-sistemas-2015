@@ -1,4 +1,5 @@
 class Chequera < ActiveRecord::Base
+  audited
   belongs_to :cuentum
   belongs_to :personal
   has_many :cheque_emitidos
