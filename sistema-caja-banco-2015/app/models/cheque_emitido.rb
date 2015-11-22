@@ -1,4 +1,5 @@
 class ChequeEmitido < ActiveRecord::Base
+  audited
   belongs_to :chequera
   belongs_to :proveedor
 

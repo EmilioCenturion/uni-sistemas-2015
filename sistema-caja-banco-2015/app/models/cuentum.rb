@@ -1,4 +1,5 @@
 class Cuentum < ActiveRecord::Base
+  audited
   belongs_to :banco
   has_many :credits
   has_many :cupon_emitidos, :through => :credits

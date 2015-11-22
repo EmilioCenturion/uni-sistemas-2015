@@ -1,4 +1,5 @@
 class AperturaCaja < ActiveRecord::Base
+  audited
   belongs_to :caja
   belongs_to :user
   has_many :movimiento_cajas

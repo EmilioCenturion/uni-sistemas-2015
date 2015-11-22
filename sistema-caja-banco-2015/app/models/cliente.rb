@@ -1,4 +1,5 @@
 class Cliente < ActiveRecord::Base
+  audited
   belongs_to :pai
   belongs_to :ciudad
 

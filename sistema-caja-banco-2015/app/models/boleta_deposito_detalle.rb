@@ -1,4 +1,5 @@
 class BoletaDepositoDetalle < ActiveRecord::Base
+  audited
   belongs_to :boleta_deposito
   has_one :cheque_recibido	
 

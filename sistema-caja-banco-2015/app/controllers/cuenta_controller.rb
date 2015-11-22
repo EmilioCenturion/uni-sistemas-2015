@@ -16,7 +16,7 @@ class CuentaController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = CuentumPdf.new(@cuentum, view_context)
+        pdf = CuentumPdf.new([@cuentum, current_user.username], view_context)
         send_data pdf.render, filename: "libro_banco_#{@cuentum.nro_cuenta}.pdf",
                               type: "application/pdf",
                               disposition: "inline"

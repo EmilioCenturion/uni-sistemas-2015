@@ -1,9 +1,10 @@
 class CuentumPdf < Prawn::Document
-  def initialize(cuentum, view)
+  def initialize(lista, view)
     super(top_margin: 70)
-    @cuentum = cuentum
+    @cuentum = lista[0]
+    @user = lista[1]
     @fecha = Time.now
-    @movimientos= MovimientoBanco.where(:cuenta_id => cuentum.id, :fecha => @fecha.beginning_of_day..@fecha.end_of_day)
+    @movimientos= MovimientoBanco.where(:cuenta_id => @cuentum.id, :fecha => @fecha.beginning_of_day..@fecha.end_of_day)
     move_down(20)
 
     
@@ -22,7 +23,7 @@ class CuentumPdf < Prawn::Document
       #header
       image "#{Rails.root}/cabecera.jpg", height: 50, width: 500, at: [bounds.left, bounds.top+50]
       #footer
-      number_pages "Usuario: xxxx", at: [bounds.left, -10]
+      number_pages "Usuario: #{@user}", at: [bounds.left, -10]
       number_pages "Pag. <page> de <total>", at: [200,-10]
       number_pages "Impreso el #{Time.now}", at: [bounds.right-200,-10], width: 200, align: :right
     end

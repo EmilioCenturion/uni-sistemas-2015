@@ -1,4 +1,5 @@
 class Caja < ActiveRecord::Base
+	audited
 	has_many :apertura_cajas
 	has_many :boleta_depositos, :through => :apertura_cajas, inverse_of: :boleta_depositos
 	has_many :movimiento_cajas, :through => :apertura_cajas, inverse_of: :movimiento_cajas

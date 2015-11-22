@@ -1,4 +1,5 @@
 class Credit < ActiveRecord::Base
+  audited
   belongs_to :cuentum
   belongs_to :personal
   def name_tarjeta
