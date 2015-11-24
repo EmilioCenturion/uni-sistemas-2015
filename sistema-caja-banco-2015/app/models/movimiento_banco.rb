@@ -1,5 +1,6 @@
 
 class MovimientoBanco < ActiveRecord::Base
+  audited
   belongs_to :cuentum
   belongs_to :motivo_movimiento_banco
   has_many :movimiento_banco_detalles

@@ -1,4 +1,5 @@
 class BoletaDeposito < ActiveRecord::Base
+  audited
   belongs_to :cuentum
   belongs_to :apertura_caja
   has_many :boleta_deposito_detalles

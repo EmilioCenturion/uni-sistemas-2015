@@ -1,4 +1,5 @@
 class ChequeRecibidosController < ApplicationController
+  load_and_authorize_resource
   before_action :set_cheque_recibido, only: [:show, :edit, :update, :destroy]
 
   # GET /cheque_recibidos

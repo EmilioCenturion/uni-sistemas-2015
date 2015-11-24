@@ -1,4 +1,5 @@
 class Pai < ActiveRecord::Base
+	audited
 	has_many :bancos
 	def name_pais
 		"#{nombre}"

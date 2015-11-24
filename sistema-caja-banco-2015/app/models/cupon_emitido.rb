@@ -1,4 +1,5 @@
 class CuponEmitido < ActiveRecord::Base
+  audited
   belongs_to :tarjeta
   belongs_to :proveedor
 

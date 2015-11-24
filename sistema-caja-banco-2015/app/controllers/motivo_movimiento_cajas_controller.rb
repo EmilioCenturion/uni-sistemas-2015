@@ -1,4 +1,5 @@
 class MotivoMovimientoCajasController < ApplicationController
+  load_and_authorize_resource
   before_action :set_motivo_movimiento_caja, only: [:show, :edit, :update, :destroy]
 
   # GET /motivo_movimiento_cajas

@@ -1,4 +1,5 @@
 class MovimientoBancosController < ApplicationController
+  load_and_authorize_resource
   before_action :set_movimiento_banco, only: [:show, :edit, :update, :destroy]
 
   # GET /movimiento_bancos

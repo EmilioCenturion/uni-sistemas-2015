@@ -8,11 +8,16 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-  	devise_parameter_sanitizer.for(:sign_up)  { |u| u.permit( :username, :email,:password, :password_confirmation , roles: [] ) }
+  	devise_parameter_sanitizer.for(:sign_up)  { |u| u.permit( :username, :email,:password, :password_confirmation , :apellido, :numero_ci, :direccion, :ciudad_id, :pai_id, :telefono, :celular, :estado, roles: [] ) }
   end 
 
   rescue_from CanCan::AccessDenied do |exception|
-  	flash[:error] = "Acceso Denegado."
-  	redirect_to root_url
+    redirect_to root_url, :alert => exception.message
+  end
+
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
   end
 end

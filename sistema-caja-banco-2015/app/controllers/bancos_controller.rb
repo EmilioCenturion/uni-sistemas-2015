@@ -1,4 +1,3 @@
-
 class BancosController < ApplicationController
   load_and_authorize_resource
   before_action :set_banco, only: [:show, :edit, :update, :destroy]
@@ -24,7 +23,7 @@ class BancosController < ApplicationController
   def new
     @banco = Banco.new
     @bancos = Banco.all
-     @pai = Pai.new
+    @pai = Pai.new
     @ciudad = Ciudad.new
   end
 
@@ -40,9 +39,9 @@ class BancosController < ApplicationController
   # POST /bancos
   # POST /bancos.json
   def create
-     @bancos = Banco.all
-      @pais = Pai.all
-     @ciudads = Ciudad.all
+    @bancos = Banco.all
+    @pais = Pai.all
+    @ciudads = Ciudad.all
     @banco = Banco.new(banco_params)
 
     respond_to do |format|

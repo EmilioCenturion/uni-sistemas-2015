@@ -1,4 +1,5 @@
 class Banco < ActiveRecord::Base
+	audited
 	belongs_to :pai
 	belongs_to :ciudad
 	def name_banco

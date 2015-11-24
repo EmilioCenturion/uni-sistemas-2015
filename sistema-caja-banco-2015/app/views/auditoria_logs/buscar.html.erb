@@ -1,0 +1,100 @@
+<div class="container white">
+	<h1>Auditoria</h1>
+	<%= form_tag({:controller => "auditoria_logs", :action => "buscar"}, :method => "get") do %>
+	  <div class="row">
+	    <form class="form-horizontal">
+	      <div class="field col-md-12 form-group">
+
+	        <div class="field col-md-5 form-group">
+	          <%= label_tag 'tabla', 'Tabla', :class => 'col-md-3 control-label'%>
+	          <div class="col-md-7">
+	            <%= select_tag 'tabla', options_for_select(Audited::Adapters::ActiveRecord::Audit.order(:auditable_type).pluck('auditable_type').uniq), prompt: "Seleccione una tabla", :class => 'form-control'%>
+	          </div>
+	        </div>
+
+	        <div class="field col-md-5 form-group">
+	          <%= label_tag 'usuario', 'Usuario' ,:class => 'col-md-3 control-label'%>
+	          <div class="col-md-7">
+	            <%= select_tag 'usuario', options_from_collection_for_select(User.all, "id", "username"), prompt: "Seleccione un usuario", :class => 'form-control'%>
+	          </div>
+	        </div>
+
+	        <div class="field col-md-5 form-group">
+	          <%= label_tag 'fecha_inicio', 'Desde' ,:class => 'col-md-3 control-label'%>
+	          <div class="input-group col-md-6">
+	            <%= text_field_tag 'fecha_inicio', '', :class => 'input-group date form-control' %>
+	            <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+	          </div>
+	        </div>
+
+	        <div class="field col-md-5 form-group">
+	          <%= label_tag 'fecha_fin', 'Hasta' ,:class => 'col-md-3 control-label'%>
+	          <div class="input-group col-md-6">
+	            <%= text_field_tag 'fecha_fin', '', :class => 'input-group date form-control' %>
+	            <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+	          </div>
+	        </div>
+
+	        <div class="col-md-10">
+	            <%= submit_tag "Buscar", :class => 'btn btn-primary margen'%>
+	            <%= link_to 'Limpiar',  auditoria_logs_buscar_path , class: 'btn btn-default margen' %>
+	        </div>
+	      </div>
+	    </form>
+	  </div>
+	<% end %>
+</div>
+<br>
+<div class="container white">
+<br>
+	<div id="resultados" class="col-md-12">
+		<table id="table_dos" class="table table-striped table-hover">
+		  	<thead>
+			  <tr>
+			    <th>Accion realizada</th>
+			    <th>Tabla</th>
+			    <th>Valor Anterior</th>
+			    <th>Valor Actual</th>
+			    <th>Usuario</th>
+			    <th>Fecha/Hora</th>
+			  </tr>
+		  	</thead>
+		  	<tbody>
+			  <% callback = {'create' => 'Crear', 'update' => 'Editar', 'destroy' => 'Eliminar'} %>
+
+			  <% @resultado.each do |audit| %>
+			      <tr>
+			        <td><%= callback[audit.action] %></td>
+			        <td><%= audit.auditable_type %></td>
+			        
+			        <!-- Valor anterior -->
+					<% aux = ""%>
+			        <%if audit.action == 'create'%>
+			        	<% aux = "-"%>
+			        <%else%>
+				        <% audit.old_attributes.each do |clave, valor|%>
+				        	<% aux+= "#{clave}: #{valor}, "%>
+				        <%end%>	
+				    <%end%>
+			        <td><%= aux %></td>
+			        
+			        <!-- Valor actual -->
+			        <% aux = ""%>
+			        <%if audit.action == 'destroy'%>
+			        	<% aux = "-"%>
+			        <%else%>
+				        <% audit.new_attributes.each do |clave, valor|%>
+			        		<% aux+= "#{clave}: #{valor}, "%>
+			        	<%end%>	
+				    <%end%>
+			        	
+			        <td><%= aux %></td>
+
+			        <td><%= User.find(audit.user_id).username %></td>
+			        <td><%= audit.created_at %></td>
+			      </tr>
+			  <% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

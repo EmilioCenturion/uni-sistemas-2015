@@ -1,4 +1,5 @@
 class AperturaCajasController < ApplicationController
+  load_and_authorize_resource
   before_action :set_apertura_caja, only: [:show, :edit, :update, :destroy]
 
   # GET /apertura_cajas

@@ -1,4 +1,5 @@
 class BoletaDepositosController < ApplicationController
+  load_and_authorize_resource
   before_action :set_boleta_deposito, only: [:show, :edit, :update, :destroy]
 
   # GET /boleta_depositos
