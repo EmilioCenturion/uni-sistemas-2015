@@ -1,0 +1,63 @@
+<%= form_for @configuracion, validate: true do |f| %>
+
+<form class="form-horizontal">
+    <div class="field col-md-12 form-group">
+      <div class="field col-md-6 form-group">
+    <%= f.label :nombre_empresa, 'Nombre de la Empresa', :class => 'col-md-6 control-label' %><br>
+    <div class="col-md-7">
+    <%= f.text_field :nombre_empresa, :maxlength => 36, :class => 'form-control' %>
+  </div>
+  </div>
+   <div class="field col-md-6 form-group">
+    <%= f.label :direccion, :class => 'col-md-6 control-label' %><br>
+    <div class="col-md-10">
+    <%= f.text_field :direccion, :maxlength => 50, :class => 'form-control' %>
+  </div>
+  </div>
+  </div>
+
+  <div class="field col-md-12 form-group">
+     <div class="field col-md-6 form-group">
+    <%= f.label :correo , :class => 'col-md-6 control-label' %><br>
+    <div class="col-md-8">
+    <%= f.text_field :correo, :maxlength => 42, :class => 'form-control' %>
+  </div>
+  </div>
+  <div class="field col-md-6 form-group ">
+    <%= f.label :telefono, :class => 'col-md-6 control-label' %><br>
+    <div class="col-md-7">
+    <%= f.text_field :telefono, :maxlength => 32, :class => 'form-control' %>
+  </div>
+  </div>
+  </div>
+
+  <div class="field col-md-12 form-group">
+     <div class="field col-md-6 form-group">
+    <%= f.label :logo_empresa, 'Logo de la Empresa', :class => 'col-md-6 control-label' %><br>
+    <div class="col-md-8">
+        <%= f.file_field :logo_empresa, :onchange => 'previewFile()'%>
+   <div> <br>
+   <img src= <%= Configuracion.first.logo_empresa %> height="40" >
+    </div>    
+  </div>
+  </div>
+     <div class="field col-md-3 form-group">
+    <%= f.label :tiempo_espera, 'Tiempo de espera', :class => 'col-md-12 control-label' %><br>
+    <div class="col-md-4">
+    <%= f.text_field :tiempo_espera, :maxlength => 4, :class => 'form-control' %>
+  </div>
+  </div>
+</div>
+   <div class="col-md-10">
+          <div class="actions">
+          <% if controller.action_name == 'edit'  %>
+            <%= f.submit "Guardar cambios", :class => 'btn btn-primary margen'%>
+          <% else %>
+              <%= f.submit "Guardar cambios", :class => 'btn btn-primary margen'%>
+          <% end %>
+           <%= link_to 'Cancelar',  bancos_path , class: 'btn btn-primary margen' %>
+        </div>
+        </div>
+  </div>
+<% end %>
+

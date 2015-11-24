@@ -144,3 +144,19 @@ $(document).on('nested:fieldAdded', function(event){
   // and activate datepicker on it
   dateField.datepicker();
 });
+
+function previewFile() {
+  var i = 0;
+  var preview = document.querySelector('img');
+  var file    = document.querySelector('input[type=file]').files[i];
+  var reader  = new FileReader();
+
+  reader.onloadend = function () {
+    preview.src = reader.result;
+  }
+
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+  }

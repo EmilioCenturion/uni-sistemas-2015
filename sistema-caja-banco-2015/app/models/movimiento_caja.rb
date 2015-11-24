@@ -8,7 +8,7 @@ class MovimientoCaja < ActiveRecord::Base
 
   validates :monto_efectivo,  :presence => {:message => "No puede estar en blanco"},
                             
-                              :numericality => {:only_double => true, :message => "Debe ser un numero"}
+                              :numericality => {:only_double => true, , :greater_than_or_equal_to => 0, :message => "Debe ser un numero"}
 
   accepts_nested_attributes_for :cheque_recibidos, allow_destroy: true
 

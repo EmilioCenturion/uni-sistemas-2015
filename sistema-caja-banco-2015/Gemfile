@@ -69,3 +69,4 @@ gem 'audited-activerecord'
 
 gem 'cancan'
 
+gem 'carrierwave'

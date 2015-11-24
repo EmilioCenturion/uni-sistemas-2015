@@ -8,7 +8,7 @@ class BoletaDeposito < ActiveRecord::Base
 
   validates :nro_boleta, :presence => {:message => "No puede estar en blanco"},
                          :numericality => {:only_double => true, :greater_than_or_equal_to => 0, :message => "Debe ser un numero"},
-                         :length => {minimum: 5, :message => "No es un numero valido"},
+            
                          :uniqueness => {:message => "Esta boleta ya existe" }
                          
   validates :monto_efectivo,  :presence => {:message => "No puede estar en blanco"},
@@ -25,7 +25,7 @@ class BoletaDeposito < ActiveRecord::Base
   validate :no_cero
 
     def no_cero
-    errors.add(:monto_efectivo, "no puede ser cero") if cheques_vacio? and monto_efectivo == 0
+    errors.add(:monto_efectivo, "No puede ser cero") if cheques_vacio? and monto_efectivo == 0
   end
 
   def cheques_vacio?

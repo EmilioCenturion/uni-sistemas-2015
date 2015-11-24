@@ -17,9 +17,7 @@ class Banco < ActiveRecord::Base
 					  
 	validates :telefono, 
 					   :presence => {:message => "No puede estar en blanco"}, 
-					   :length => {minimum: 6, :message => "No es un numero valido"},
-					   :format => { :multiline => true, with: /^([0-9]|-)*$/, message: "Solo permite numeros. (En caso de
-					   	ingresar mas telefonos separe con guiones)"},
+					   :format => { :multiline => true, with: /^([0-9])*$/, message: "Solo permite numeros"},
 
 					   :numericality => {:only_integer => true, :message => "Debe ser un numero"},
 					   :uniqueness => {:message => "Este numero ya existe, vuelva a intentarlo"}	

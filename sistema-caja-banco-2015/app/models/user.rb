@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
+  tiempo = Configuracion.first.tiempo_espera
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
     audited
   	has_many :apertura_cajas
   	devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :timeoutable, :timeout_in => tiempo.minutes
 
     ROLES = %i[administrador crear_banco]
 

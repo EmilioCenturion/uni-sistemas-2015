@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120014553) do
+ActiveRecord::Schema.define(version: 20151123195616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,17 +31,6 @@ ActiveRecord::Schema.define(version: 20151120014553) do
 
   add_index "apertura_cajas", ["caja_id"], name: "index_apertura_cajas_on_caja_id", using: :btree
   add_index "apertura_cajas", ["user_id"], name: "index_apertura_cajas_on_user_id", using: :btree
-
-  create_table "auditoria_logs", force: true do |t|
-    t.date     "fecha_inicio"
-    t.date     "fecha_fin"
-    t.string   "tabla"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "auditoria_logs", ["user_id"], name: "index_auditoria_logs_on_user_id", using: :btree
 
   create_table "audits", force: true do |t|
     t.integer  "auditable_id"
@@ -179,6 +168,18 @@ ActiveRecord::Schema.define(version: 20151120014553) do
 
   add_index "clientes", ["ciudad_id"], name: "index_clientes_on_ciudad_id", using: :btree
   add_index "clientes", ["pai_id"], name: "index_clientes_on_pai_id", using: :btree
+
+  create_table "configuracions", force: true do |t|
+    t.string   "nombre_empresa"
+    t.string   "direccion"
+    t.string   "correo"
+    t.string   "telefono"
+    t.string   "logo_empresa"
+    t.string   "cabecera_impresion"
+    t.integer  "tiempo_espera"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "credits", force: true do |t|
     t.integer  "nro_tarjeta"

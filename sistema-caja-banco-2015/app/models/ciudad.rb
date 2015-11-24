@@ -7,7 +7,7 @@ class Ciudad < ActiveRecord::Base
 
 		validates 	:nombre, 	:presence => {:message => "No puede estar en blanco"},
 							:uniqueness => {:message => "Ya existe esta Ciudad"},
-							:length => { in: 6..20 , message: "Debe tener entre 6 y 20 caracteres"},
+							:length => { in: 4..20 , message: "Debe tener entre 4 y 20 caracteres"},
 			  		   		:format => {with: /[a-zA-ZÃ�ï¿½Ã�Â±Ã�Â¡Ã�Â©Ã�Â­Ã�Â³Ã�Âº]/, message: 'Solo se permiten letras'}
 
 end

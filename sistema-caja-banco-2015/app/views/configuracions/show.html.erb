@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre empresa:</strong>
+  <%= @configuracion.nombre_empresa %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @configuracion.direccion %>
+</p>
+
+<p>
+  <strong>Correo:</strong>
+  <%= @configuracion.correo %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @configuracion.telefono %>
+</p>
+
+<p>
+  <strong>Logo empresa:</strong>
+  <%= @configuracion.logo_empresa %>
+</p>
+
+<p>
+  <strong>Cabecera impresion:</strong>
+  <%= @configuracion.cabecera_impresion %>
+</p>
+
+<p>
+  <strong>Tiempo espera:</strong>
+  <%= @configuracion.tiempo_espera %>
+</p>
+
+<%= link_to 'Edit', edit_configuracion_path(@configuracion) %> |
+<%= link_to 'Back', configuracions_path %>

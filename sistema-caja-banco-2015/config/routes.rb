@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :configuracions
+
   get 'auditoria_logs/buscar'
 
   get 'welcome/index'

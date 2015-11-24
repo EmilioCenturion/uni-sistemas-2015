@@ -6,7 +6,7 @@ class ChequeEmitido < ActiveRecord::Base
  	validates :chequera_id, :presence => {:message => "Seleccione una chequera"}
 
 	validates :nro_cheque, :presence => {:message => "No puede estar en blanco"},
-			  :numericality => {:only_integer => true, :message => "Debe ser un numero"}
+			  :numericality => {:only_integer => true, :greater_than_or_equal_to => 0, :message => "Debe ser un numero"}
 
 			  		   
 	validates :monto, 
@@ -16,7 +16,7 @@ class ChequeEmitido < ActiveRecord::Base
 
 
 	validates :concepto, :presence => {:message => "No puede estar en blanco"},
-						 :length => {in: 6..30, :message => "Debe estar entre 6 y 30 caracteres"}
+						 :length => {in: 4..30, :message => "Debe estar entre 4 y 30 caracteres"}
 			  		     
 
 	validates :proveedor_id, :presence => {:message => "Seleccione un proveedor"}
