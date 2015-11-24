@@ -1,4 +1,6 @@
+
 class MotivoMovimientoBancosController < ApplicationController
+  load_and_authorize_resource
   before_action :set_motivo_movimiento_banco, only: [:show, :edit, :update, :destroy]
 
   # GET /motivo_movimiento_bancos
@@ -75,3 +77,4 @@ class MotivoMovimientoBancosController < ApplicationController
       params.require(:motivo_movimiento_banco).permit(:descripcion)
     end
 end
+

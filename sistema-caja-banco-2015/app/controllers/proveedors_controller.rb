@@ -1,4 +1,5 @@
 class ProveedorsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_proveedor, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -45,3 +46,4 @@ class ProveedorsController < ApplicationController
       params.require(:proveedor).permit(:nombre, :representante, :ruc, :direccion, :telefono, :ciudad_id, :pai_id)
     end
 end
+

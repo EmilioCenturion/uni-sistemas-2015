@@ -1,4 +1,5 @@
 class AuditoriaLogsController < ApplicationController
+  load_and_authorize_resource
   def buscar
     tabla = params[:tabla];
     usuario = params[:usuario];

@@ -1,4 +1,5 @@
 class CreditsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_credit, only: [:show, :edit, :update, :destroy]
 
   # GET /credits
@@ -103,3 +104,4 @@ class CreditsController < ApplicationController
       params.require(:credit).permit(:nro_tarjeta, :cuentum_id, :personal_id, :estado)
     end
 end
+

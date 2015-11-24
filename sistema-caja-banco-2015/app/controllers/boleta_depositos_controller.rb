@@ -1,4 +1,5 @@
 class BoletaDepositosController < ApplicationController
+  load_and_authorize_resource
   before_action :set_boleta_deposito, only: [:show, :edit, :update, :destroy]
 
   # GET /boleta_depositos
@@ -103,3 +104,4 @@ class BoletaDepositosController < ApplicationController
       params.require(:boleta_deposito).permit(:nro_boleta, :monto_efectivo, :monto_cheque, :fecha, :cuenta_id, :apertura_caja_id, boleta_deposito_detalles_attributes: [:id, :cheque_recibido_id])
     end
 end
+

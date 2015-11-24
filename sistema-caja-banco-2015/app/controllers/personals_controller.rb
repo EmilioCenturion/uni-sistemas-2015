@@ -1,4 +1,5 @@
 class PersonalsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_personal, only: [:show, :edit, :update, :destroy]
 
   # GET /personals
@@ -72,3 +73,4 @@ class PersonalsController < ApplicationController
       params.require(:personal).permit(:nombre, :documento, :telefono, :email, :direccion, :pai_id, :ciudad_id)
     end
 end
+

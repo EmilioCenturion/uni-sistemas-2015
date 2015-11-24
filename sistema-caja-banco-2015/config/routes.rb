@@ -1,9 +1,10 @@
-Rails.application.routes.draw do
-  resources :configuracions
 
+Rails.application.routes.draw do
   get 'auditoria_logs/buscar'
 
   get 'welcome/index'
+
+  resources :usuarios
   
   resources :proveedors
 
@@ -100,3 +101,4 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+

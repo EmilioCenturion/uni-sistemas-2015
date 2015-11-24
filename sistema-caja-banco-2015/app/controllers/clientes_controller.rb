@@ -1,4 +1,5 @@
 class ClientesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_cliente, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -45,3 +46,4 @@ class ClientesController < ApplicationController
       params.require(:cliente).permit(:nombre, :representante, :ruc, :telefono, :email, :direccion, :pai_id, :ciudad_id)
     end
 end
+

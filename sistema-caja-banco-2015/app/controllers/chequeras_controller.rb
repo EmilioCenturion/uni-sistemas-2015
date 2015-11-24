@@ -1,4 +1,5 @@
 class ChequerasController < ApplicationController
+  load_and_authorize_resource
   before_action :set_chequera, only: [:show, :edit, :update, :destroy]
 
   # GET /chequeras

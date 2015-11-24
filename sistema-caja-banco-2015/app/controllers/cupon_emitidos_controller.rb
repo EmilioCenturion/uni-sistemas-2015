@@ -1,4 +1,5 @@
 class CuponEmitidosController < ApplicationController
+  load_and_authorize_resource
   before_action :set_cupon_emitido, only: [:show, :edit, :update, :destroy]
 
   # GET /cupon_emitidos
