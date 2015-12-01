@@ -19,7 +19,6 @@ class AperturaCajaPdf < Prawn::Document
         text "Telefono: #{Configuracion.first.telefono}", :size => 10, :style => :italic
         text "Email: #{Configuracion.first.correo}", :size => 10, :style => :italic
       end
-
       #footer
       number_pages "Usuario: #{@apertura_caja.user.username}", at: [bounds.left, -10]
       number_pages "Pag. <page> de <total>", at: [200,-10]
