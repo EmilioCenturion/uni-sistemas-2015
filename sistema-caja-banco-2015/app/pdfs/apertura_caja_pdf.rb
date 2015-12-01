@@ -13,7 +13,7 @@ class AperturaCajaPdf < Prawn::Document
 
     repeat :all do
       #header
-      image "#{Rails.root}/public/#{Configuracion.first.logo_empresa}", height: 50, width: 500, at: [bounds.left, bounds.top+50]
+      #image "#{Rails.root}/public/#{Configuracion.first.logo_empresa}", height: 50, width: 500, at: [bounds.left, bounds.top+50]
       #footer
       number_pages "Usuario: #{@apertura_caja.user.username}", at: [bounds.left, -10]
       number_pages "Pag. <page> de <total>", at: [200,-10]

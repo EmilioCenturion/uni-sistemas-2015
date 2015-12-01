@@ -1,0 +1,12 @@
+<div class="container white">
+  	<h1> Usuarios
+  		<%= link_to new_usuario_path, class: 'btn btn-primary', title: 'Nuevo Usuario', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+    		<span class= "glyphicon glyphicon-plus"></span>
+    	<% end %>
+  	</h1>
+
+  	<br>
+	<br>
+    	<%= render 'table' %>
+	</div>
+</div>

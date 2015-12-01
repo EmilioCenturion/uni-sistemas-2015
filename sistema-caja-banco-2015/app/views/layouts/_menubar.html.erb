@@ -15,14 +15,14 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       
       <ul class="nav navbar-nav col-md-8">
-        <li class="dropdown col-md-3">
+        <li class="dropdown col-md-2">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Caja <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/cajas">Cajas</a></li>
             <li><a href="/apertura_cajas/new">Aperturas</a></li>
           </ul>
         </li>
-        <li class="dropdown col-md-3">
+        <li class="dropdown col-md-2">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Banco <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/bancos">Bancos</a></li>
@@ -32,24 +32,27 @@
             <li><a href="/cupon_emitidos">Cupones Emitidos</a></li>
           </ul>
         </li>
-        <li class="dropdown col-md-3">
+        <li class="dropdown col-md-2">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Perfiles <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/usuarios/new">Crear Usuarios</a></li>
+            <li><a href="/usuarios">Usuarios</a></li>
           </ul>
         </li>
-        <li class="dropdown col-md-3">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuraciones <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-          </ul>
+        <li class="col-md-3">
+          <%= link_to 'Configuraciones', edit_configuracion_path(Configuracion.find(1)) %>
+        </li>
+        <li class="col-md-2">
+          <%= link_to 'Auditoria', auditoria_logs_buscar_path %>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right col-md-2">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= current_user.username %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete %></a></li>
+            <li>
+              <a href="#"><%= link_to 'Editar Perfil', edit_user_registration_path %></a>
+              <a href="#"><%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete %></a>
+            </li>
           </ul>
         </li>
       </ul>

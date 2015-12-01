@@ -36,9 +36,7 @@
     <%= f.label :logo_empresa, 'Logo de la Empresa', :class => 'col-md-6 control-label' %><br>
     <div class="col-md-8">
         <%= f.file_field :logo_empresa, :onchange => 'previewFile()'%>
-   <div> <br>
-   <img src= <%= Configuracion.first.logo_empresa %> height="40" >
-    </div>    
+     
   </div>
   </div>
      <div class="field col-md-3 form-group">

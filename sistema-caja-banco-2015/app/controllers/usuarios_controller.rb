@@ -1,10 +1,11 @@
 class UsuariosController < ApplicationController
-	 before_action :set_usuario, only: [:show, :edit, :update, :destroy]
+   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 
   # GET /usuarios
   # GET /usuarios.json
   def index
     @usuarios = User.all
+    @usuario = User.new
   end
 
   # GET /usuarios/1
@@ -19,6 +20,7 @@ class UsuariosController < ApplicationController
 
   # GET /usuarios/1/edit
   def edit
+    @user = User.find params[:id]
   end
 
   # POST /usuarios
@@ -42,7 +44,7 @@ class UsuariosController < ApplicationController
   def update
     respond_to do |format|
       if @usuario.update(usuario_params)
-        format.html { redirect_to @usuario, notice: 'usuario was successfully updated.' }
+        format.html { redirect_to usuarios_url, notice: 'usuario was successfully updated.' }
         format.json { render :show, status: :ok, location: @usuario }
       else
         format.html { render :edit }
@@ -69,9 +71,11 @@ class UsuariosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_params
-      params.require(:user).permit(:username, :email,:password, :password_confirmation , :apellido, :numero_ci, :direccion, :ciudad_id, :pai_id, :telefono, :celular, :estado, roles: [])
+      params.require(:user).permit(:username, :email, :password, :password_confirmation , :apellido, :numero_ci, :direccion, :ciudad_id, :pai_id, :telefono, :celular, :estado, roles: [])
     end
 end
+
+
 
 
 
