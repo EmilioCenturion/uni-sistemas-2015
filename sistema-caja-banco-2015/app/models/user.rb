@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 
   	def roles
     	ROLES.reject do |r|
-      	((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
+      	#((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
     	end
   	end
 

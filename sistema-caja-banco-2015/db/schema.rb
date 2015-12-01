@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123195616) do
+
+ActiveRecord::Schema.define(version: 20151130200711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +32,15 @@ ActiveRecord::Schema.define(version: 20151123195616) do
 
   add_index "apertura_cajas", ["caja_id"], name: "index_apertura_cajas_on_caja_id", using: :btree
   add_index "apertura_cajas", ["user_id"], name: "index_apertura_cajas_on_user_id", using: :btree
+
+  create_table "auditoria_logs", force: true do |t|
+    t.datetime "fecha_inicio"
+    t.datetime "fecha_fin"
+    t.integer  "usuario"
+    t.string   "tabla"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "audits", force: true do |t|
     t.integer  "auditable_id"
@@ -216,6 +226,16 @@ ActiveRecord::Schema.define(version: 20151123195616) do
 
   add_index "cupon_emitidos", ["proveedor_id"], name: "index_cupon_emitidos_on_proveedor_id", using: :btree
   add_index "cupon_emitidos", ["tarjeta_id"], name: "index_cupon_emitidos_on_tarjeta_id", using: :btree
+
+  create_table "libro_bancos", force: true do |t|
+    t.integer  "cuenta_id"
+    t.date     "fecha_inicio"
+    t.date     "fecha_fin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "libro_bancos", ["cuenta_id"], name: "index_libro_bancos_on_cuenta_id", using: :btree
 
   create_table "motivo_movimiento_bancos", force: true do |t|
     t.string   "descripcion"

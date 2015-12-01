@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cuenta_id: 
+  fecha_inicio: 2015-11-30
+  fecha_fin: 2015-11-30
+
+two:
+  cuenta_id: 
+  fecha_inicio: 2015-11-30
+  fecha_fin: 2015-11-30
