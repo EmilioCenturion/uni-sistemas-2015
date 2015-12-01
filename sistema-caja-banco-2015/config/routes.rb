@@ -1,5 +1,7 @@
 
 Rails.application.routes.draw do
+  resources :libro_bancos
+
   get 'auditoria_logs/buscar'
 
   get 'welcome/index'

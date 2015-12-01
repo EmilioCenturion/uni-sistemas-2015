@@ -28,9 +28,7 @@
                   <%= link_to cuentum, method: :delete, data: { confirm: 'Esta seguro?' }, class: 'btn btn-default', title: 'Eliminar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-trash"></span>
                   <% end %>
-                  <%= link_to cuentum_path([cuentum, current_user.username], format: "pdf"), :class => 'btn btn-default' , title: 'Libro de Banco', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
-                    <span class= "glyphicon glyphicon-print"></span>
-                  <% end %>
+                  
 
           </td>
         </tr>

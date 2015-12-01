@@ -1,0 +1,47 @@
+<%= form_for(@libro_banco) do |f| %>
+  <% if @libro_banco.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@libro_banco.errors.count, "error") %> prohibited this libro_banco from being saved:</h2>
+
+      <ul>
+      <% @libro_banco.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <form class="form-horizontal">
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-12 form-group">
+          <div class="field col-md-6 form-group required">
+            <%= f.label :cuenta_id, 'Nro. de Cuenta', :class => 'col-md-2'%>
+            <div class="col-md-5">
+              <%= f.collection_select :cuenta_id, Cuentum.all, :id, :nro_cuenta, {prompt: "Seleccione una cuenta"} , :class => 'btn btn-default', autofocus:true%>
+            </div>
+          </div>
+        </div>
+        
+        <div class="field col-md-5 form-group">
+          <%= f.label :fecha_inicio, 'Desde', :class => 'col-md-3'%>
+          <div class="input-group col-md-6">
+            <%= f.text_field :fecha_inicio, :class => 'input-group date form-control' %><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+          </div>
+        </div>
+        <div class="field col-md-5 form-group">
+          <%= f.label :fecha_fin, 'Hasta', :class => 'col-md-3'%>
+          <div class="input-group col-md-6">
+            <%= f.text_field :fecha_fin, :class => 'input-group date form-control' %><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="actions">
+            <%= f.submit "Imprimir", :class => 'btn btn-primary margen'%>
+            
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+<% end %>

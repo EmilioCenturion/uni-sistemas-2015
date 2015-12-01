@@ -13,13 +13,18 @@ class AperturaCajaPdf < Prawn::Document
 
     repeat :all do
       #header
-      image "#{Rails.root}/public/#{Configuracion.first.logo_empresa}", height: 50, width: 500, at: [bounds.left, bounds.top+50]
+      image "#{Rails.root}/public/#{Configuracion.first.logo_empresa}", height: 50, width: 100, at: [bounds.left, bounds.top+50]
+      bounding_box([bounds.left+130, bounds.top+40], :width => 200, :height => 100) do
+        text "Direccion: #{Configuracion.first.direccion}", :size => 10, :style => :italic
+        text "Telefono: #{Configuracion.first.telefono}", :size => 10, :style => :italic
+        text "Email: #{Configuracion.first.correo}", :size => 10, :style => :italic
+      end
+
       #footer
       number_pages "Usuario: #{@apertura_caja.user.username}", at: [bounds.left, -10]
       number_pages "Pag. <page> de <total>", at: [200,-10]
       number_pages "Impreso el #{Time.now}", at: [bounds.right-200,-10], width: 200, align: :right
     end
-
   end
 
   protected

@@ -1,10 +1,19 @@
-class CuentumPdf < Prawn::Document
+class LibroBancoPdf < Prawn::Document
   def initialize(lista, view)
     super(top_margin: 70)
-    @cuentum = lista[0]
-    @user = lista[1]
-    @fecha = Time.now
-    @movimientos= MovimientoBanco.where(:cuenta_id => @cuentum.id, :fecha => @fecha.beginning_of_day..@fecha.end_of_day)
+    libro = lista[0]
+    @cuentum = Cuentum.find(libro.cuenta_id)
+    @fecha_inicio = libro.fecha_inicio
+    @fecha_fin = libro.fecha_fin
+    if @fecha_inicio.present? and @fecha_fin.present?
+      @fecha_inicio = @fecha_inicio.beginning_of_day
+      @fecha_fin = @fecha_fin.end_of_day
+    else
+      @fecha_inicio = Time.now.beginning_of_day
+      @fecha_fin = Time.now.end_of_day
+    end
+    username = lista[1]
+    @movimientos= MovimientoBanco.where(:cuenta_id => @cuentum.id, :fecha => @fecha_inicio..@fecha_fin)
     move_down(20)
 
     
@@ -21,13 +30,19 @@ class CuentumPdf < Prawn::Document
 
     repeat :all do
       #header
-      image "#{Rails.root}/public/#{Configuracion.first.logo_empresa}", height: 50, width: 500, at: [bounds.left, bounds.top+50]
+      configuracion = Configuracion.first
+      image "#{Rails.root}/public/#{configuracion.logo_empresa}", height: 50, width: 100, at: [bounds.left, bounds.top+50]
+      bounding_box([bounds.left+130, bounds.top+40], :width => 200, :height => 100) do
+        text "Direccion: #{configuracion.direccion}", :size => 10, :style => :italic
+        text "Telefono: #{configuracion.telefono}", :size => 10, :style => :italic
+        text "Email: #{configuracion.correo}", :size => 10, :style => :italic
+      end
+
       #footer
-      number_pages "Usuario: #{@user}", at: [bounds.left, -10]
+      number_pages "Usuario: #{username}", at: [bounds.left, -10]
       number_pages "Pag. <page> de <total>", at: [200,-10]
       number_pages "Impreso el #{Time.now}", at: [bounds.right-200,-10], width: 200, align: :right
     end
-
   end
 
   protected
@@ -35,12 +50,14 @@ class CuentumPdf < Prawn::Document
   def sin_movimientos
     text "Arqueo de Cuenta Nro. #{@cuentum.nro_cuenta}", align: :center, size: 15, style: :bold
     move_down(15)
-    text "Sin Movimientos el dia #{fecha_format(@fecha)} - Saldo: #{@cuentum.saldo}", align: :center, size: 12, style: :bold    
+    text "Sin Movimientos entre el #{@fecha_inicio.to_date} y el #{@fecha_fin.to_date} - Saldo: #{@cuentum.saldo}", align: :center, size: 12, style: :bold    
   end
 
   def inicio_cuenta
     text "Arqueo de Cuenta Nro. #{@cuentum.nro_cuenta}", align: :center, size: 15, style: :bold
     move_down(5)
+    text "Desde: #{@fecha_inicio.to_date}", size: 10, style: :bold
+    text "Hasta: #{@fecha_fin.to_date}", size: 10, style: :bold
     text "Saldo inicial: #{@movimientos.first.saldo_inicial}", size: 10, style: :bold
   end
 
@@ -63,7 +80,7 @@ class CuentumPdf < Prawn::Document
 
   def movimiento_banco_rows
     [["Fecha", "Motivo","Tipo", "Monto"]] +
-    @movimientos.map do |movimiento|
+    @movimientos.order(:fecha).map do |movimiento|
       [fecha_format(movimiento.fecha), motivo(movimiento), tipo(movimiento.es_ingreso), sub_monto(movimiento)]
     end
   end
