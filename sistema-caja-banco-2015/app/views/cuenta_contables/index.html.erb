@@ -1,0 +1,31 @@
+<h1>Listing cuenta_contables</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tipo cuenta</th>
+      <th>Nivel cuenta</th>
+      <th>Codigo cuenta</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cuenta_contables.each do |cuenta_contable| %>
+      <tr>
+        <td><%= cuenta_contable.tipo_cuenta %></td>
+        <td><%= cuenta_contable.nivel_cuenta %></td>
+        <td><%= cuenta_contable.codigo_cuenta %></td>
+        <td><%= cuenta_contable.descripcion %></td>
+        <td><%= link_to 'Show', cuenta_contable %></td>
+        <td><%= link_to 'Edit', edit_cuenta_contable_path(cuenta_contable) %></td>
+        <td><%= link_to 'Destroy', cuenta_contable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cuenta contable', new_cuenta_contable_path %>

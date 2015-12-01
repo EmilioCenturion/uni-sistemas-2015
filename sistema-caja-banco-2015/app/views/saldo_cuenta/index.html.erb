@@ -1,0 +1,33 @@
+<h1>Listing saldo_cuenta</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Saldo debe</th>
+      <th>Saldo haber</th>
+      <th>Fecha</th>
+      <th>Cuenta contable</th>
+      <th>Periodo fiscal</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @saldo_cuenta.each do |saldo_cuentum| %>
+      <tr>
+        <td><%= saldo_cuentum.saldo_debe %></td>
+        <td><%= saldo_cuentum.saldo_haber %></td>
+        <td><%= saldo_cuentum.fecha %></td>
+        <td><%= saldo_cuentum.cuenta_contable %></td>
+        <td><%= saldo_cuentum.periodo_fiscal %></td>
+        <td><%= link_to 'Show', saldo_cuentum %></td>
+        <td><%= link_to 'Edit', edit_saldo_cuentum_path(saldo_cuentum) %></td>
+        <td><%= link_to 'Destroy', saldo_cuentum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Saldo cuentum', new_saldo_cuentum_path %>

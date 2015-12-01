@@ -1,0 +1,37 @@
+<%= form_for(@saldo_cuentum) do |f| %>
+  <% if @saldo_cuentum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@saldo_cuentum.errors.count, "error") %> prohibited this saldo_cuentum from being saved:</h2>
+
+      <ul>
+      <% @saldo_cuentum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :saldo_debe %><br>
+    <%= f.text_field :saldo_debe %>
+  </div>
+  <div class="field">
+    <%= f.label :saldo_haber %><br>
+    <%= f.text_field :saldo_haber %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha %><br>
+    <%= f.date_select :fecha %>
+  </div>
+  <div class="field">
+    <%= f.label :cuenta_contable_id %><br>
+    <%= f.text_field :cuenta_contable_id %>
+  </div>
+  <div class="field">
+    <%= f.label :periodo_fiscal_id %><br>
+    <%= f.text_field :periodo_fiscal_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

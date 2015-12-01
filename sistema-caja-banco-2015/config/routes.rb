@@ -1,5 +1,15 @@
 
 Rails.application.routes.draw do
+  resources :asiento_detalles
+
+  resources :asientos
+
+  resources :saldo_cuenta
+
+  resources :cuenta_contables
+
+  resources :periodo_fiscals
+
   resources :libro_bancos
 
   get 'auditoria_logs/buscar'

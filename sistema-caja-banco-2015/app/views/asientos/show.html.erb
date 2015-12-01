@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nro asiento:</strong>
+  <%= @asiento.nro_asiento %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @asiento.fecha %>
+</p>
+
+<p>
+  <strong>Periodo fiscal:</strong>
+  <%= @asiento.periodo_fiscal %>
+</p>
+
+<%= link_to 'Edit', edit_asiento_path(@asiento) %> |
+<%= link_to 'Back', asientos_path %>

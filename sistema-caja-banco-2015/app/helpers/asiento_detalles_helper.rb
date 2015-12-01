@@ -1,0 +1,2 @@
+module AsientoDetallesHelper
+end

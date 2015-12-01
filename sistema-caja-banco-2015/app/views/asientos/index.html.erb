@@ -1,0 +1,29 @@
+<h1>Listing asientos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nro asiento</th>
+      <th>Fecha</th>
+      <th>Periodo fiscal</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @asientos.each do |asiento| %>
+      <tr>
+        <td><%= asiento.nro_asiento %></td>
+        <td><%= asiento.fecha %></td>
+        <td><%= asiento.periodo_fiscal %></td>
+        <td><%= link_to 'Show', asiento %></td>
+        <td><%= link_to 'Edit', edit_asiento_path(asiento) %></td>
+        <td><%= link_to 'Destroy', asiento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Asiento', new_asiento_path %>

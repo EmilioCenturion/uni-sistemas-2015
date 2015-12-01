@@ -1,0 +1,33 @@
+<h1>Listing asiento_detalles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Asiento</th>
+      <th>Cuenta contable</th>
+      <th>Importe</th>
+      <th>Es credito</th>
+      <th>Concepto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @asiento_detalles.each do |asiento_detalle| %>
+      <tr>
+        <td><%= asiento_detalle.asiento %></td>
+        <td><%= asiento_detalle.cuenta_contable %></td>
+        <td><%= asiento_detalle.importe %></td>
+        <td><%= asiento_detalle.es_credito %></td>
+        <td><%= asiento_detalle.concepto %></td>
+        <td><%= link_to 'Show', asiento_detalle %></td>
+        <td><%= link_to 'Edit', edit_asiento_detalle_path(asiento_detalle) %></td>
+        <td><%= link_to 'Destroy', asiento_detalle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Asiento detalle', new_asiento_detalle_path %>

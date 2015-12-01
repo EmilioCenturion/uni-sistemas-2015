@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fecha inicio:</strong>
+  <%= @periodo_fiscal.fecha_inicio %>
+</p>
+
+<p>
+  <strong>Fecha fin:</strong>
+  <%= @periodo_fiscal.fecha_fin %>
+</p>
+
+<p>
+  <strong>Anho:</strong>
+  <%= @periodo_fiscal.anho %>
+</p>
+
+<p>
+  <strong>Activo:</strong>
+  <%= @periodo_fiscal.activo %>
+</p>
+
+<%= link_to 'Edit', edit_periodo_fiscal_path(@periodo_fiscal) %> |
+<%= link_to 'Back', periodo_fiscals_path %>

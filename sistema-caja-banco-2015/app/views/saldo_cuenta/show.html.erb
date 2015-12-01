@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Saldo debe:</strong>
+  <%= @saldo_cuentum.saldo_debe %>
+</p>
+
+<p>
+  <strong>Saldo haber:</strong>
+  <%= @saldo_cuentum.saldo_haber %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @saldo_cuentum.fecha %>
+</p>
+
+<p>
+  <strong>Cuenta contable:</strong>
+  <%= @saldo_cuentum.cuenta_contable %>
+</p>
+
+<p>
+  <strong>Periodo fiscal:</strong>
+  <%= @saldo_cuentum.periodo_fiscal %>
+</p>
+
+<%= link_to 'Edit', edit_saldo_cuentum_path(@saldo_cuentum) %> |
+<%= link_to 'Back', saldo_cuenta_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  saldo_debe: 9.99
+  saldo_haber: 9.99
+  fecha: 2015-12-01
+  cuenta_contable_id: 
+  periodo_fiscal_id: 
+
+two:
+  saldo_debe: 9.99
+  saldo_haber: 9.99
+  fecha: 2015-12-01
+  cuenta_contable_id: 
+  periodo_fiscal_id: 

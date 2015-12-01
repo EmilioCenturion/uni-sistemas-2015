@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  asiento_id: 
+  cuenta_contable_id: 
+  importe: 9.99
+  es_credito: false
+  concepto: MyString
+
+two:
+  asiento_id: 
+  cuenta_contable_id: 
+  importe: 9.99
+  es_credito: false
+  concepto: MyString

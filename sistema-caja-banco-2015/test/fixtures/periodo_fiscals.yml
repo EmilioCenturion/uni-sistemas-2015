@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha_inicio: 2015-12-01
+  fecha_fin: 2015-12-01
+  anho: MyString
+  activo: false
+
+two:
+  fecha_inicio: 2015-12-01
+  fecha_fin: 2015-12-01
+  anho: MyString
+  activo: false

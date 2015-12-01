@@ -1,0 +1,33 @@
+<%= form_for(@periodo_fiscal) do |f| %>
+  <% if @periodo_fiscal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@periodo_fiscal.errors.count, "error") %> prohibited this periodo_fiscal from being saved:</h2>
+
+      <ul>
+      <% @periodo_fiscal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fecha_inicio %><br>
+    <%= f.date_select :fecha_inicio %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_fin %><br>
+    <%= f.date_select :fecha_fin %>
+  </div>
+  <div class="field">
+    <%= f.label :anho %><br>
+    <%= f.text_field :anho %>
+  </div>
+  <div class="field">
+    <%= f.label :activo %><br>
+    <%= f.check_box :activo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

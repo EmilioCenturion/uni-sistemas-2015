@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Asiento:</strong>
+  <%= @asiento_detalle.asiento %>
+</p>
+
+<p>
+  <strong>Cuenta contable:</strong>
+  <%= @asiento_detalle.cuenta_contable %>
+</p>
+
+<p>
+  <strong>Importe:</strong>
+  <%= @asiento_detalle.importe %>
+</p>
+
+<p>
+  <strong>Es credito:</strong>
+  <%= @asiento_detalle.es_credito %>
+</p>
+
+<p>
+  <strong>Concepto:</strong>
+  <%= @asiento_detalle.concepto %>
+</p>
+
+<%= link_to 'Edit', edit_asiento_detalle_path(@asiento_detalle) %> |
+<%= link_to 'Back', asiento_detalles_path %>

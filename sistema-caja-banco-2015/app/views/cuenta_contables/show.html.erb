@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tipo cuenta:</strong>
+  <%= @cuenta_contable.tipo_cuenta %>
+</p>
+
+<p>
+  <strong>Nivel cuenta:</strong>
+  <%= @cuenta_contable.nivel_cuenta %>
+</p>
+
+<p>
+  <strong>Codigo cuenta:</strong>
+  <%= @cuenta_contable.codigo_cuenta %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @cuenta_contable.descripcion %>
+</p>
+
+<%= link_to 'Edit', edit_cuenta_contable_path(@cuenta_contable) %> |
+<%= link_to 'Back', cuenta_contables_path %>

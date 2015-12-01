@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nro_asiento: 1
+  fecha: 2015-12-01
+  periodo_fiscal_id: 
+
+two:
+  nro_asiento: 1
+  fecha: 2015-12-01
+  periodo_fiscal_id: 
