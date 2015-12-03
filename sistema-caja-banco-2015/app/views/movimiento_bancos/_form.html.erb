@@ -13,10 +13,11 @@
 
       <div class="field col-md-4 form-group required">
         <%= f.label :motivo_movimiento_banco_id, "Motivo", :class => 'control-label col-md-3' %>
-        <%= link_to "#motivo_movimiento_bancos", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
-              <span class="glyphicon glyphicon-plus"></span>
+        <% if can? :create, MovimientoBanco %>
+          <%= link_to "#motivo_movimiento_bancos", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-plus"></span>
             <% end %>
-
+        <% end %>
         <div class="col-md-7">
           <select id="motivo_movimiento_banco" name="movimiento_banco[motivo_movimiento_banco_id]" class="btn btn-default">
             <% @motivo_movimiento_bancos.each do |motivo_movimiento_banco| %>
@@ -71,9 +72,10 @@
 
   <div class="col-md-10">
     <div class="actions">
-      <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
-      <%= link_to "Cancelar", movimiento_bancos_path, :class => 'btn btn-primary margen'%>
-
+      <% if can? :create, MovimientoBanco %>
+        <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
+        <%= link_to "Cancelar", movimiento_bancos_path, :class => 'btn btn-primary margen'%>
+      <% end %>
     </div>
   </div>
 

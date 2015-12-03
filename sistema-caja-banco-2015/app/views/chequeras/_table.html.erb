@@ -21,14 +21,16 @@
           <td><%= personal.name_personal  %></td>
           <td><%= chequera.estado %></td>
           <td class="row">
+                <% if can? :edit, Chequera %>
                   <%= link_to edit_cuentum_chequera_path(chequera.cuentum, chequera), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-pencil"></span>
                   <% end %>
-
+                <% end %>
+                <% if can? :destroy, Chequera %>
                   <%= link_to [chequera.cuentum, chequera], method: :delete, data: { confirm: 'Esta seguro?' }, class: 'btn btn-default', title: 'Eliminar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-trash"></span>
                   <% end %>
-
+                <% end %>
           </td>
         </tr>
       <% end %>

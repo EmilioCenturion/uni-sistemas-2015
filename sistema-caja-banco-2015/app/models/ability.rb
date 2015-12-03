@@ -5,95 +5,142 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     user ||= User.new # guest user (not logged in)
+        
+        #Administrador
         if user.has_role? :administrador
             can :manage, :all
+        end
 
         #Roles para Banco
-        elsif user.has_role? :crear_banco
+        if user.has_role? :crear_banco
             can :create, Banco
             can :read, Banco
-        elsif user.has_role? :eliminar_banco
+        end
+
+        if user.has_role? :eliminar_banco
             can :destroy, Banco
             can :read, Banco
-        elsif user.has_role? :editar_banco
+        end
+
+        if user.has_role? :editar_banco
             can :edit, Banco
             can :read, Banco
-        elsif user.has_role? :ver_banco
+        end
+        if user.has_role? :ver_banco
             can :read, Banco
-        
+        end
+
         #Roles para Caja
-        elsif user.has_role? :crear_caja
+        if user.has_role? :crear_caja
             can :create, Caja
             can :read, Caja
-        elsif user.has_role? :ver_caja
+        end
+
+        if user.has_role? :ver_caja
             can :read, Caja
+        end
 
         #Roles Apertura Caja
-        elsif user.has_role? :crear_apertura
+        if user.has_role? :crear_apertura
             can :create, AperturaCaja
             can :read, AperturaCaja
             can :create, MovimientoCaja
             can :read, MovimientoCaja
             can :create, BoletaDeposito
             can :read, BoletaDeposito
-        elsif user.has_role? :ver_apertura
-            can :read, AperturaCaja
-            can :read, MovimientoCaja
-            can :read, BoletaDeposito
+        end
 
         #Roles para Cuentas
-        elsif user.has_role? :crear_cuenta
+        if user.has_role? :crear_cuenta
             can :create, Cuentum
             can :read, Cuentum
-        elsif user.has_role? :eliminar_cuenta
+        end
+
+        if user.has_role? :eliminar_cuenta
             can :destroy, Cuentum
             can :read, Cuentum
-        elsif user.has_role? :editar_cuenta
+        end
+
+        if user.has_role? :editar_cuenta
             can :edit, Cuentum
             can :read, Cuentum
-        elsif user.has_role? :ver_cuenta
+        end
+
+        if user.has_role? :ver_cuenta
             can :read, Cuentum
+        end
 
         #Roles para Tarjetas
-        elsif user.has_role? :crear_tarjeta
+        if user.has_role? :crear_tarjeta
             can :create, Credit
             can :read, Credit
-        elsif user.has_role? :eliminar_tarjeta
+            can :read, Cuentum
+        end
+
+        if user.has_role? :eliminar_tarjeta
             can :destroy, Credit
             can :read, Credit
-        elsif user.has_role? :editar_tarjeta
+            can :read, Cuentum
+        end
+
+        if user.has_role? :editar_tarjeta
             can :edit, Credit
             can :read, Credit
-        elsif user.has_role? :ver_tarjeta
+            can :read, Cuentum
+        end
+
+        if user.has_role? :ver_tarjeta
             can :read, Credit
+            can :read, Cuentum
+        end
 
         #Roles para Chequeras
-        elsif user.has_role? :crear_chequera
+        if user.has_role? :crear_chequera
             can :create, Chequera
             can :read, Chequera
-        elsif user.has_role? :eliminar_chequera
+            can :read, Cuentum
+
+        end
+
+        if user.has_role? :eliminar_chequera
             can :destroy, Chequera
             can :read, Chequera
-        elsif user.has_role? :editar_chequera
+            can :read, Cuentum
+        end
+
+        if user.has_role? :editar_chequera
             can :edit, Chequera
             can :read, Chequera
-        elsif user.has_role? :ver_chequera
+            can :read, Cuentum
+        end
+
+        if user.has_role? :ver_chequera
             can :read, Chequera
+            can :read, Cuentum
+        end
 
         #Roles para Movimiento Banco
-        elsif user.has_role? :crear_movimiento_banco
+        if user.has_role? :crear_movimiento_banco
             can :create, MovimientoBanco
             can :read, MovimientoBanco
-        elsif user.has_role? :ver_movimiento_banco
+        end
+
+        if user.has_role? :ver_movimiento_banco
             can :read, MovimientoBanco
+        end
 
         #Roles para Auditoria
-        elsif user.has_role? :auditar
-            can :manage, AuditoriaLog
-         
-        else
-            can :read, :all
+        if user.has_role? :auditar
+            can :manage, Audited::Adapters::ActiveRecord::Audit
         end
+
+        #Roles para Libro Banco
+        if user.has_role? :libro_banco
+            can :manage, LibroBanco
+            can :read, LibroBanco
+            can :create, LibroBanco
+        end
+
     #
     # The first argument to `can` is the action you are giving the user 
     # permission to do.
@@ -112,6 +159,6 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
-  end
+    end
 end
 

@@ -17,18 +17,21 @@
           <% banco = cuentum.banco%>
           <td><%= banco.name_banco  %></td>
           <td class="row">
+                <% if can? :read, Cuentum %>
                   <%= link_to cuentum, class: 'btn btn-default', title: 'Ver', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-eye-open"></span>
                   <% end %>
-
+                <% end %>
+                <% if can? :edit, Cuentum %>
                   <%= link_to edit_cuentum_path(cuentum), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-pencil"></span>
                   <% end %>
-
+                <% end %>
+                <% if can? :destroy, Cuentum %>
                   <%= link_to cuentum, method: :delete, data: { confirm: 'Esta seguro?' }, class: 'btn btn-default', title: 'Eliminar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-trash"></span>
                   <% end %>
-                  
+                <% end %>  
 
           </td>
         </tr>

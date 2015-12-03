@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125230730) do
+
+ActiveRecord::Schema.define(version: 20151203064839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,14 +33,47 @@ ActiveRecord::Schema.define(version: 20151125230730) do
   add_index "apertura_cajas", ["caja_id"], name: "index_apertura_cajas_on_caja_id", using: :btree
   add_index "apertura_cajas", ["user_id"], name: "index_apertura_cajas_on_user_id", using: :btree
 
+  create_table "asiento_detalles", force: true do |t|
+    t.integer  "asiento_id"
+    t.integer  "cuenta_contable_id"
+    t.decimal  "importe"
+    t.boolean  "es_credito"
+<<<<<<< HEAD
+=======
+    t.string   "concepto"
+>>>>>>> 579c501ee3b6cd4784a0fb451ffd5c7f578e86e0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "asiento_detalles", ["asiento_id"], name: "index_asiento_detalles_on_asiento_id", using: :btree
+  add_index "asiento_detalles", ["cuenta_contable_id"], name: "index_asiento_detalles_on_cuenta_contable_id", using: :btree
+
+  create_table "asientos", force: true do |t|
+    t.integer  "nro_asiento"
+    t.date     "fecha"
+<<<<<<< HEAD
+    t.string   "concepto"
+    t.integer  "periodo_fiscal_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "asientos", ["periodo_fiscal_id"], name: "index_asientos_on_periodo_fiscal_id", using: :btree
+
   create_table "auditoria_logs", force: true do |t|
     t.datetime "fecha_inicio"
     t.datetime "fecha_fin"
     t.integer  "usuario"
     t.string   "tabla"
+=======
+    t.integer  "periodo_fiscal_id"
+>>>>>>> 579c501ee3b6cd4784a0fb451ffd5c7f578e86e0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "asientos", ["periodo_fiscal_id"], name: "index_asientos_on_periodo_fiscal_id", using: :btree
 
   create_table "audits", force: true do |t|
     t.integer  "auditable_id"
@@ -184,7 +218,6 @@ ActiveRecord::Schema.define(version: 20151125230730) do
     t.string   "correo"
     t.string   "telefono"
     t.string   "logo_empresa"
-    t.string   "cabecera_impresion"
     t.integer  "tiempo_espera"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -211,6 +244,15 @@ ActiveRecord::Schema.define(version: 20151125230730) do
   end
 
   add_index "cuenta", ["banco_id"], name: "index_cuenta_on_banco_id", using: :btree
+
+  create_table "cuenta_contables", force: true do |t|
+    t.string   "tipo_cuenta"
+    t.integer  "nivel_cuenta"
+    t.integer  "codigo_cuenta"
+    t.string   "descripcion"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cupon_emitidos", force: true do |t|
     t.integer  "nro_cupon"
@@ -305,6 +347,15 @@ ActiveRecord::Schema.define(version: 20151125230730) do
     t.datetime "updated_at"
   end
 
+  create_table "periodo_fiscals", force: true do |t|
+    t.date     "fecha_inicio"
+    t.date     "fecha_fin"
+    t.string   "anho"
+    t.boolean  "activo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "personals", force: true do |t|
     t.string   "nombre"
     t.integer  "documento"
@@ -334,6 +385,19 @@ ActiveRecord::Schema.define(version: 20151125230730) do
 
   add_index "proveedors", ["ciudad_id"], name: "index_proveedors_on_ciudad_id", using: :btree
   add_index "proveedors", ["pai_id"], name: "index_proveedors_on_pai_id", using: :btree
+
+  create_table "saldo_cuenta", force: true do |t|
+    t.decimal  "saldo_debe"
+    t.decimal  "saldo_haber"
+    t.date     "fecha"
+    t.integer  "cuenta_contable_id"
+    t.integer  "periodo_fiscal_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "saldo_cuenta", ["cuenta_contable_id"], name: "index_saldo_cuenta_on_cuenta_contable_id", using: :btree
+  add_index "saldo_cuenta", ["periodo_fiscal_id"], name: "index_saldo_cuenta_on_periodo_fiscal_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

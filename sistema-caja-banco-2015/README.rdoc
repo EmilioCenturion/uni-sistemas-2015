@@ -77,6 +77,6 @@ rails g scaffold cuenta_contable tipo_cuenta nivel_cuenta:integer codigo_cuenta:
 
 rails g scaffold saldo_cuenta saldo_debe:decimal saldo_haber:decimal fecha:date cuenta_contable:references periodo_fiscal:references
 
-rails g scaffold asiento nro_asiento:integer fecha:date periodo_fiscal:references 
+rails g scaffold asiento nro_asiento:integer fecha:date periodo_fiscal:references concepto
 
-rails g scaffold asiento_detalle asiento:references cuenta_contable:references importe:decimal es_credito:boolean concepto
+rails g scaffold asiento_detalle asiento:references cuenta_contable:references importe:decimal es_credito:boolean 

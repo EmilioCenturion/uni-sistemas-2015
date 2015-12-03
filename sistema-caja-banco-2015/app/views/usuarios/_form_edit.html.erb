@@ -1,4 +1,4 @@
-<%= form_for @usuario, url: usuario_path, html: { method: :put } do |f| %>
+<%= form_for @usuario, validate: true, url: usuario_path, html: { method: :put } do |f| %>
 
     <div class="row">
 
@@ -73,73 +73,79 @@
 
         <div class="field col-md-12 form-group">
           <h3>Seleccionar Roles</h3>
-        </div>
-        
-        <div class="field col-md-12 form-group">
-          <div class="field col-md-3 form-group required">
-            <h4>Banco</h4>
-            <% for i in 1..4 %>
-            <% role = User::ROLES[i] %>
-              <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
-              <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
-            <% end %>
           </div>
-
-          <div class="field col-md-3 form-group required">
-            <h4>Caja</h4>
-            <% for i in 5..8 %>
-            <% role = User::ROLES[i] %>
-              <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
-              <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
-            <% end %>
-          </div>
-
-          <div class="field col-md-3 form-group required">
-            <h4>Cuenta</h4>
-            <% for i in 9..12 %>
-            <% role = User::ROLES[i] %>
-              <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
-              <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
-            <% end %>
-          </div>
-
-          <div class="field col-md-3 form-group required">
-            <h4>Tarjeta</h4>
-            <% for i in 13..16 %>
-            <% role = User::ROLES[i] %>
-              <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
-              <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
-            <% end %>
-          </div>
-
-          <div class="field col-md-3 form-group required">
-            <h4>Chequera</h4>
-            <% for i in 17..20 %>
-            <% role = User::ROLES[i] %>
-              <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
-              <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
-            <% end %>
-          </div>
-
-          <div class="field col-md-3 form-group required">
-            <h4>Movimiento Banco</h4>
-            <% for i in 21..22 %>
-            <% role = User::ROLES[i] %>
-              <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
-              <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
-            <% end %>
-          </div>
-
-          <div class="field col-md-3 form-group required">
-            <h4>Auditoria</h4>
-            <% role = User::ROLES[23] %>
-              <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
-              <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
-          </div>
-
-            <%= hidden_field_tag "user[roles][]", "" %>
-
           
+          <div class="field col-md-12 form-group">
+          <div class="col-md-12">
+            <div class="field col-md-3 form-group required">
+              <h4>Banco</h4>
+              <% for i in 1..4 %>
+              <% role = User::ROLES[i] %>
+                <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
+                <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
+              <% end %>
+              <% role = User::ROLES[24] %>
+                <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
+                <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
+            </div>
+
+            <div class="field col-md-3 form-group required">
+              <h4>Caja</h4>
+              <% for i in 5..7 %>
+              <% role = User::ROLES[i] %>
+                <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
+                <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
+              <% end %>
+            </div>
+
+            <div class="field col-md-3 form-group required">
+              <h4>Cuenta</h4>
+              <% for i in 9..12 %>
+              <% role = User::ROLES[i] %>
+                <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
+                <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
+              <% end %>
+            </div>
+
+            <div class="field col-md-3 form-group required">
+              <h4>Tarjeta</h4>
+              <% for i in 13..16 %>
+              <% role = User::ROLES[i] %>
+                <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
+                <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
+              <% end %>
+            </div>
+            </div>
+              
+             <div class="col-md-12"> 
+            <div class="field col-md-3 form-group required">
+              <h4>Chequera</h4>
+              <% for i in 17..20 %>
+              <% role = User::ROLES[i] %>
+                <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
+                <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
+              <% end %>
+            </div>
+
+            <div class="field col-md-3 form-group required">
+              <h4>Movimiento Banco</h4>
+              <% for i in 21..22 %>
+              <% role = User::ROLES[i] %>
+                <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
+                <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
+              <% end %>
+            </div>
+
+            <div class="field col-md-3 form-group required">
+              <h4>Auditoria</h4>
+              <% role = User::ROLES[23] %>
+                <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
+                <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
+            </div>
+
+            
+          </div>
+          <%= hidden_field_tag "user[roles][]", "" %>
         </div>
 
     <div class="col-md-10">

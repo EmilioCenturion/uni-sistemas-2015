@@ -99,6 +99,7 @@ es:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      email_format: "El formato es incorrecto. (Ej:banco@hotmail.com)" 
       accepted: debe ser aceptado
       blank: no puede estar en blanco
       present: debe estar en blanco
@@ -108,7 +109,7 @@ es:
       even: debe ser par
       exclusion: está reservado
       greater_than: debe ser mayor que %{count}
-      greater_than_or_equal_to: debe ser mayor que o igual a %{count}
+      greater_than_or_equal_to: debe ser mayor o igual a %{count}
       inclusion: no está incluido en la lista
       invalid: no es válido
       less_than: debe ser menor que %{count}

@@ -19,14 +19,16 @@
           <td><%= personal %></td>
           <td><%= credit.estado %></td>
           <td class="row">
+                <% if can? :edit, Credit %>
                   <%= link_to edit_cuentum_credit_path(credit.cuentum, credit), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-pencil"></span>
                   <% end %>
-
+                <% end %>
+                <% if can? :destroy, Credit %>
                   <%= link_to [credit.cuentum, credit], method: :delete, data: { confirm: 'Esta seguro?' }, class: 'btn btn-default', title: 'Eliminar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
                   <span class= "glyphicon glyphicon-trash"></span>
                   <% end %>
-
+                <% end %>
           </td>
         </tr>
       <% end %>

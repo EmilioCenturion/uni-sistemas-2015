@@ -33,4 +33,13 @@ class Banco < ActiveRecord::Base
 	validates :pai_id, :presence => {:message => "Tienes que seleccionar un pais"}
 	
 	validates :ciudad_id, :presence => {:message => "Tienes que seleccionar una ciudad"}
+
+	before_destroy :bd_puede_eliminar
+	
+	protected
+
+	def bd_puede_eliminar
+		Cuentum.where(:banco_id => self.id).empty?
+	end
+
 end
