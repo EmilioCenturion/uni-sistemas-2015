@@ -24,10 +24,17 @@ class Chequera < ActiveRecord::Base
   validate :mayor
   
   def mayor
-
   	if nro_primero > nro_ultimo
   		errors.add(:nro_primero, "El primer numero no puede ser superior al ultimo numero")
   	end	
+  end
+
+  before_destroy :bd_puede_eliminar
+  
+  protected
+
+  def bd_puede_eliminar
+    ChequeEmitido.where(:chequera_id => self.id).empty?
   end
 
 end

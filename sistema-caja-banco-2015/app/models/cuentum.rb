@@ -16,4 +16,13 @@ class Cuentum < ActiveRecord::Base
 
 
   validates :banco_id, :presence => {:message => "Tienes que seleccionar un banco"}
+
+  before_destroy :bd_puede_eliminar
+  
+  protected
+
+  def bd_puede_eliminar
+    Credit.where(:cuentum_id => self.id).empty? and Chequera.where(:cuentum_id => self.id).empty?
+  end
+
 end

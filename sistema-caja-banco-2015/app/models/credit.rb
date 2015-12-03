@@ -12,4 +12,12 @@ class Credit < ActiveRecord::Base
   validates :personal_id, :presence => {:message => "Tienes que seleccionar un encargado"}
   validates :estado, :presence => {:message => "Tienes que seleccionar un encargado"}
 
+  before_destroy :bd_puede_eliminar
+  
+  protected
+
+  def bd_puede_eliminar
+    CuponEmitido.where(:credit_id => self.id).empty?
+  end
+
 end

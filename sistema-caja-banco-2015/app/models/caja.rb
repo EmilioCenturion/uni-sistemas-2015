@@ -10,15 +10,19 @@ class Caja < ActiveRecord::Base
 		"Nro: #{nro_caja} - Efectivo: #{saldo_inicial_efectivo} - Cheque: #{saldo_inicial_cheque}"
 	end
 
-
-
+	before_destroy :bd_puede_eliminar
+	
 	protected
-		def set_nro_caja
-			if Caja.last.nil?
 
-				self.nro_caja = 1
-			else
-				self.nro_caja = Caja.last.nro_caja + 1
-			end
+	def bd_puede_eliminar
+		AperturaCaja.where(:caja_id => self.id).empty?
+	end
+	
+	def set_nro_caja
+		if Caja.last.nil?
+			self.nro_caja = 1
+		else
+			self.nro_caja = Caja.last.nro_caja + 1
 		end
+	end
 end

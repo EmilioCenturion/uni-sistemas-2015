@@ -11,6 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> fatimaTalavera-master
 ActiveRecord::Schema.define(version: 20151203064839) do
 
   # These are extensions that must be enabled in order to support this database
@@ -37,7 +41,14 @@ ActiveRecord::Schema.define(version: 20151203064839) do
     t.integer  "cuenta_contable_id"
     t.decimal  "importe"
     t.boolean  "es_credito"
+<<<<<<< HEAD
     t.string   "concepto"
+=======
+<<<<<<< HEAD
+=======
+    t.string   "concepto"
+>>>>>>> 579c501ee3b6cd4784a0fb451ffd5c7f578e86e0
+>>>>>>> fatimaTalavera-master
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -48,7 +59,27 @@ ActiveRecord::Schema.define(version: 20151203064839) do
   create_table "asientos", force: true do |t|
     t.integer  "nro_asiento"
     t.date     "fecha"
+<<<<<<< HEAD
     t.integer  "periodo_fiscal_id"
+=======
+<<<<<<< HEAD
+    t.string   "concepto"
+    t.integer  "periodo_fiscal_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "asientos", ["periodo_fiscal_id"], name: "index_asientos_on_periodo_fiscal_id", using: :btree
+
+  create_table "auditoria_logs", force: true do |t|
+    t.datetime "fecha_inicio"
+    t.datetime "fecha_fin"
+    t.integer  "usuario"
+    t.string   "tabla"
+=======
+    t.integer  "periodo_fiscal_id"
+>>>>>>> 579c501ee3b6cd4784a0fb451ffd5c7f578e86e0
+>>>>>>> fatimaTalavera-master
     t.datetime "created_at"
     t.datetime "updated_at"
   end

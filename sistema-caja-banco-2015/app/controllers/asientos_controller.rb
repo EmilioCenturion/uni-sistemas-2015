@@ -42,6 +42,6 @@ class AsientosController < ApplicationController
     end
 
     def asiento_params
-      params.require(:asiento).permit(:nro_asiento, :fecha, :periodo_fiscal_id)
+      params.require(:asiento).permit(:nro_asiento, :fecha, :periodo_fiscal_id, :concepto, asiento_detalles_attributes: [:id, :cuenta_contable_id, :importe, :es_credito])
     end
 end
