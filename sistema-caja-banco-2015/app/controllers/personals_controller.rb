@@ -1,5 +1,4 @@
 class PersonalsController < ApplicationController
-  load_and_authorize_resource
   before_action :set_personal, only: [:show, :edit, :update, :destroy]
 
   # GET /personals

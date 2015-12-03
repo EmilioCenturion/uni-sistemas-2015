@@ -27,14 +27,15 @@
       
       <div class="col-md-10">
         <div class="actions">
-         <% if controller.action_name == 'edit'  %>
-            <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
-          <% else %>
-              <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
+          <% if can? :create, Cuentum %>
+            <% if controller.action_name == 'edit'  %>
+              <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
+            <% else %>
+                <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
+            <% end %>
+            
+            <%= link_to 'Cancelar',  cuenta_path , class: 'btn btn-primary margen' %>
           <% end %>
-          
-          <%= link_to 'Cancelar',  cuenta_path , class: 'btn btn-primary margen' %>
-          
         </div>
       </div>
 

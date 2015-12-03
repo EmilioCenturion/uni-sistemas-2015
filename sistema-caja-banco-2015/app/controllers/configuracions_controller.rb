@@ -1,4 +1,5 @@
 class ConfiguracionsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_configuracion, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -27,8 +28,15 @@ class ConfiguracionsController < ApplicationController
   end
 
   def update
-    @configuracion.update(configuracion_params)
-    respond_with(@configuracion)
+    respond_to do |format|
+      if @configuracion.update(configuracion_params)
+        format.html { redirect_to root_url, notice: 'Editaste correctamente.' }
+        format.json { render :show, status: :ok, location: @configuracion }
+      else
+        format.html { render :edit }
+        format.json { render json: @configuracion.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy

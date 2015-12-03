@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-    ROLES = %i[administrador crear_banco eliminar_banco editar_banco ver_banco crear_caja ver_caja crear_apertura ver_apertura crear_cuenta eliminar_cuenta editar_cuenta ver_cuenta crear_tarjeta eliminar_tarjeta editar_tarjeta ver_tarjeta crear_chequera eliminar_chequera editar_chequera ver_chequera crear_movimiento_banco ver_movimiento_banco auditar]
+    ROLES = %i[administrador crear_banco eliminar_banco editar_banco ver_banco crear_caja ver_caja crear_apertura ver_apertura crear_cuenta eliminar_cuenta editar_cuenta ver_cuenta crear_tarjeta eliminar_tarjeta editar_tarjeta ver_tarjeta crear_chequera eliminar_chequera editar_chequera ver_chequera crear_movimiento_banco ver_movimiento_banco auditar libro_banco]
 
   validates :email, presence: true, on: :create
   

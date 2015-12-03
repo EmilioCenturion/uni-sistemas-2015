@@ -28,8 +28,10 @@
 
       <div  class="col-md-6 form-group required">
         <%= f.label :pais , :class => 'col-md-2 control-label'%>
-        <%= link_to "#modal-pais", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
+        <% if can? :create, Banco and can? :read, Banco %>
+          <%= link_to "#modal-pais", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
               <span class="glyphicon glyphicon-plus"></span>
+              <% end %>
             <% end %>
             <div  class="col-md-6">
               <select id="pais_ingreso" name="banco[pai_id]" class="btn btn-default">
@@ -53,9 +55,11 @@
 
       <div class="field col-md-6 form-group required">
         <%= f.label :ciudad , :class => 'col-md-2 control-label'%>
-        <%= link_to "#modal-ciudad", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
+        <% if can? :create, Banco and can? :read, Banco %>
+          <%= link_to "#modal-ciudad", "data-toggle" => "modal" , class: 'btn btn-primary' do %>
               <span class="glyphicon glyphicon-plus"></span>
             <% end %>
+        <% end %>
         <div class="col-md-6">
           <select id="ciudad_ingreso" name="banco[ciudad_id]" class="btn btn-default">
                  <% @ciudads.each do |ciudad| %>
@@ -77,12 +81,14 @@
     </div>
       <div class="col-md-10">
           <div class="actions">
-          <% if controller.action_name == 'edit'  %>
-            <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
-          <% else %>
-              <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
+          <% if can? :create, Banco and can? :read, Banco %>
+            <% if controller.action_name == 'edit'  %>
+              <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
+            <% else %>
+                <%= f.submit "Agregar", :class => 'btn btn-primary margen'%>
+            <% end %>
+             <%= link_to 'Cancelar',  bancos_path , class: 'btn btn-primary margen' %>
           <% end %>
-           <%= link_to 'Cancelar',  bancos_path , class: 'btn btn-primary margen' %>
         </div>
         </div>
      </form> 

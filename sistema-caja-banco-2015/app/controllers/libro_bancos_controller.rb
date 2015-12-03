@@ -1,4 +1,5 @@
 class LibroBancosController < ApplicationController
+  load_and_authorize_resource
   before_action :set_libro_banco, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

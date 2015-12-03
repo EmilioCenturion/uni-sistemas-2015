@@ -5,6 +5,7 @@ class AperturaCajasController < ApplicationController
   # GET /apertura_cajas
   # GET /apertura_cajas.json
   def index
+    @apertura_caja = AperturaCaja.new
     @apertura_cajas = AperturaCaja.all
   end
 
