@@ -9,12 +9,12 @@ class Chequera < ActiveRecord::Base
   end
   validates :nro_primero, :presence => {:message => "No puede estar en blanco"}, 
   						  
-  						  :numericality => {:only_integer => true, :greater_than_or_equal_to => 0, :message => "Solo se aceptan numeros"},
+  						  :numericality => {:only_integer => true, :greater_than => 0, :message => "Solo se aceptan numeros"},
   						  :uniqueness => { :scope => :nro_ultimo, message: "Esta chequera ya existe" }
 
 
   validates :nro_ultimo, :presence => {:message => "No puede estar en blanco"}, 
-  						  :numericality => {:only_integer => true, :greater_than_or_equal_to => 0, :message => "Solo se aceptan numeros"}
+  						  :numericality => {:only_integer => true, :greater_than => 0, :message => "Solo se aceptan numeros"}
 
  
   validates :personal_id, :presence => {:message => "Tienes que seleccionar un encargado"}

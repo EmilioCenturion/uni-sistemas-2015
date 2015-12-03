@@ -10,7 +10,7 @@
           </div>
       </div>
 
-      <div class="field col-md-4">
+      <div class="field col-md-4 required">
           <%= f.label :banco, :class => 'col-md-3 control-label'%>
           <div class="col-md-9">
             <%= f.collection_select :banco_id, Banco.all, :id, :name_banco, {prompt: "Seleccione un banco"} ,:class => 'btn btn-default'%>

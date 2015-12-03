@@ -6,8 +6,7 @@ class Credit < ActiveRecord::Base
    "#{self.cuentum.banco.nombre} - cta.#{self.cuentum.nro_cuenta} - nro.#{ nro_tarjeta}"
   end
   validates :nro_tarjeta, :presence => {:message => "No puede estar en blanco"}, 
-  						  :numericality => {:only_integer => true, :message => "Solo se aceptan numeros"},
-  						  :format => {:multiline => true, with: /^\d*$/, message: 'No puede ser negativo'},
+  						  :numericality => {:only_integer => true, :greater_than => 0, :message => "Solo se aceptan numeros"},
                 :uniqueness => { :scope => :cuentum_id, message: "Esta tarjeta ya existe" }
 
   validates :personal_id, :presence => {:message => "Tienes que seleccionar un encargado"}

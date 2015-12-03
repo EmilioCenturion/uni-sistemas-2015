@@ -11,8 +11,7 @@ class Cuentum < ActiveRecord::Base
 
 
   validates :nro_cuenta, :presence => {:message => "No puede estar en blanco"},
-                :numericality => {:only_integer => true, :message => "Solo se aceptan numeros"},
-                :format => {:multiline => true, with: /^\d*$/, message: 'No puede ser negativo'},
+                         :numericality => {:only_integer => true, :greater_than => 0, :message => "Debe ser un numero"},
                :uniqueness => { :scope => :banco_id, message: "Esta cuenta ya existe en la base de datos" }
 
 
