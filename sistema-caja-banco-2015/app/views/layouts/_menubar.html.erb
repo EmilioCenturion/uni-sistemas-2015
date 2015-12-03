@@ -8,44 +8,68 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Caja y Bancos</a>
+      <a class="navbar-brand" href="/"><%= Configuracion.first.nombre_empresa%></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       
       <ul class="nav navbar-nav col-md-8">
-        <li class="dropdown col-md-2">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Caja <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/cajas">Cajas</a></li>
-            <li><a href="/apertura_cajas/new">Aperturas</a></li>
-          </ul>
-        </li>
-        <li class="dropdown col-md-2">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Banco <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/bancos">Bancos</a></li>
-            <li><a href="/cuenta">Cuentas</a></li>
-            <li><a href="/movimiento_bancos">Movimientos de Banco</a></li>
-            <li><a href="/cheque_emitidos">Cheques Emitidos</a></li>
-            <li><a href="/cupon_emitidos">Cupones Emitidos</a></li>
-          </ul>
-        </li>
-        <li class="dropdown col-md-2">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Perfiles <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/usuarios">Usuarios</a></li>
-          </ul>
-        </li>
-        <li class="col-md-3">
-          <%= link_to 'Configuraciones', edit_configuracion_path(Configuracion.find(1)) %>
-        </li>
-        <li class="col-md-2">
-          <%= link_to 'Auditoria', auditoria_logs_buscar_path %>
-        </li>
+        <% if can? :read, Caja or can? :read, AperturaCaja %>
+          <li class="dropdown pull-left col-md-2">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Caja <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <% if can? :read, Caja %>
+                <li><a href="/cajas">Cajas</a></li>
+              <% end %>
+              <% if can? :read, AperturaCaja %>
+                <li><a href="/apertura_cajas/new">Aperturas</a></li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+
+        <% if can? :read, Banco or can? :read, Cuentum or can? :read, MovimientoBanco or can? :manage, LibroBanco %>
+          <li class="dropdown pull-left col-md-2">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Banco <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <% if can? :read, Banco %>
+                <li><a href="/bancos">Bancos</a></li>
+              <% end %>
+              <% if can? :read, Cuentum %>
+                <li><a href="/cuenta">Cuentas</a></li>
+              <% end %>
+              <% if can? :read, MovimientoBanco %>
+                <li><a href="/movimiento_bancos">Movimientos de Banco</a></li>
+              <% end %>
+              <% if can? :manage, LibroBanco %>
+                <li><a href="/libro_bancos/new">Libro Banco</a></li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+
+        <% if can? :manage, User %>
+          <li class="pull-left col-md-2">
+            <%= link_to 'Perfiles', usuarios_path %>
+          </li>
+        <% end %>
+
+        <% if can? :manage, Configuracion %>
+          <li class="pull-left col-md-3">
+            <%= link_to 'Configuraciones', edit_configuracion_path(Configuracion.find(1)) %>
+          </li>
+        <% end %>
+        
+        <% if can? :manage, Audited::Adapters::ActiveRecord::Audit %>
+          <li class="pull-left col-md-2">
+            <%= link_to 'Auditoria', auditoria_logs_buscar_path %>
+          </li>
+        <% end %>
+
       </ul>
-      <ul class="nav navbar-nav navbar-right col-md-2">
+    
+      <ul class="nav navbar-nav pull-right col-md-2">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= current_user.username %> <span class="caret"></span></a>
           <ul class="dropdown-menu">

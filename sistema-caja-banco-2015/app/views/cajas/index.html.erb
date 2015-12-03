@@ -3,8 +3,10 @@
     <br>
     <%= render 'table' %>
     <br>
-    <%= form_for(@caja) do |f| %>
-      <%= f.submit "Nueva caja", :class => 'btn btn-primary margen', data: { confirm: 'Desea crear una nueva caja?' }%>
+    <% if can? :create, Caja and  can? :read, Caja %>
+    	<%= form_for(@caja) do |f| %>
+      		<%= f.submit "Nueva caja", :class => 'btn btn-primary margen', data: { confirm: 'Desea crear una nueva caja?' }%>
+      	<% end %>
     <% end %>
 </div>
 

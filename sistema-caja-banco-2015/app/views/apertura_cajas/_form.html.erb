@@ -32,11 +32,13 @@
         </div>
          </div>
         <div class="actions col-md-10 form-group">
-          <% if controller.action_name == 'new' %>
-            <%= f.submit "Abrir caja", :class => 'btn btn-primary margen'%>
-          <% end %>
+        <% if can? :create, AperturaCaja and can? :create, MovimientoCaja and can? :create, BoletaDeposito %>
+            <% if controller.action_name == 'new' %>
+              <%= f.submit "Abrir caja", :class => 'btn btn-primary margen'%>
+            <% end %>
           
-          <%= link_to 'Cancelar',  new_apertura_caja_path , class: 'btn btn-primary margen' %>
+            <%= link_to 'Cancelar',  new_apertura_caja_path , class: 'btn btn-primary margen' %>
+          <% end %>
         </div>
       </div>
     </form>

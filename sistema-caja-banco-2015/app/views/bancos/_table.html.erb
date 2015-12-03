@@ -3,6 +3,7 @@
           <thead>
             <tr>
               <th>Nombre</th>
+              <th>Sucursal</th>
               <th>Direccion</th>
               <th>Telefono</th>
               <th>Correo</th>
@@ -16,6 +17,7 @@
             <% @bancos.each do |banco| %>
               <tr>
                 <td><%= banco.nombre %></td>
+                <td><%= banco.sucursal %></td>
                 <td><%= banco.direccion %></td>
                 <td><%= banco.telefono %></td>
                 <td><%= banco.correo %></td>
@@ -24,11 +26,15 @@
                 <% pais = banco.pai %>
                 <td><%= pais.name_pais  %></td>
                 <td class="row">
-                  <%= link_to edit_banco_path(banco), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
-                  <span class= "glyphicon glyphicon-pencil"></span>
+                  <% if can? :edit, Banco and can? :read, Banco %>
+                    <%= link_to edit_banco_path(banco), class: 'btn btn-default', title: 'Editar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                    <span class= "glyphicon glyphicon-pencil"></span>
+                    <% end %>
                   <% end %>
-                  <%= link_to banco, method: :delete, data: { confirm: 'Esta seguro que desea eliminar este registro?' }, class: 'btn btn-default', title: 'Eliminar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
-                  <span class= "glyphicon glyphicon-trash"></span>
+                  <% if can? :destroy, Banco and can? :read, Banco %>
+                    <%= link_to banco, method: :delete, data: { confirm: 'Esta seguro que desea eliminar este registro?' }, class: 'btn btn-default', title: 'Eliminar', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' do %>
+                    <span class= "glyphicon glyphicon-trash"></span>
+                    <% end %>
                   <% end %>
                 </td>
               </tr>
