@@ -17,6 +17,7 @@ class MovimientoCaja < ActiveRecord::Base
 
   validate :no_cero
 
+
   protected
 
 		#validate :saldo_mayor
@@ -29,6 +30,12 @@ class MovimientoCaja < ActiveRecord::Base
 	    	cheque_recibidos.empty?
 	    end
 
+
+      #  def saldo_mayor
+      #   saldo = AperturaCaja.find(self.apertura_caja_id).saldo_final_efectivo + AperturaCaja.find(self.apertura_caja_id).saldo_final_cheque
+      #   monto_total = monto_efectivo + monto_cheque
+      #   errors.add(:monto_efectivo, "El monto del movimiento supera al monto total en caja") if es_ingreso == false and monto_total > saldo
+      # end
 
 
 		def bc_movimiento

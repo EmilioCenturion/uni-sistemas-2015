@@ -39,14 +39,14 @@
             </div>
           </div>
 
-          <div class="field col-md-3 form-group required">
+          <div class="field col-md-3 form-group ">
             <%= f.label :pai_id,  "Pais", :class => 'col-md-3 control-label' %>
             <div class="col-md-9">
               <%= f.collection_select :pai_id, Pai.all, :id, :nombre, {prompt: "Seleccione un Pais"} , :class => 'btn btn-default'%>
             </div>
           </div>
 
-          <div class="field col-md-4 form-group required">
+          <div class="field col-md-4 form-group ">
             <%= f.label :ciudad_id, "Ciudad", :class => 'col-md-4 control-label' %>
             <div class="col-md-6">
               <%= f.collection_select :ciudad_id, Ciudad.all, :id, :nombre, {prompt: "Seleccione una Ciudad"} , :class => 'btn btn-default'%>
@@ -57,16 +57,16 @@
         <div class="field col-md-12 form-group">
 
           <div class="field col-md-4 form-group required">
-            <%= f.label :telefono, :class => 'col-md-3 control-label' %>
-            <div class="col-md-9">
-              <%= f.text_field :telefono, :class => 'form-control' %>
-            </div>
-          </div>
-
-          <div class="field col-md-4 form-group required">
             <%= f.label :celular, :class => 'col-md-3 control-label' %>
             <div class="col-md-9">
               <%= f.text_field :celular, :class => 'form-control' %>
+            </div>
+          </div>
+
+          <div class="field col-md-4 form-group">
+            <%= f.label :telefono, :class => 'col-md-3 control-label' %>
+            <div class="col-md-9">
+              <%= f.text_field :telefono, :class => 'form-control' %>
             </div>
           </div>
         </div>
@@ -78,6 +78,12 @@
           <div class="field col-md-12 form-group">
           <div class="col-md-12">
             <div class="field col-md-3 form-group required">
+            <% if can? :manage, :all %>
+              <h4>Administrador</h4>
+              <% role = User::ROLES[0] %>
+                <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
+                <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
+            <% else %>
               <h4>Banco</h4>
               <% for i in 1..4 %>
               <% role = User::ROLES[i] %>
@@ -142,12 +148,12 @@
                 <%= check_box_tag  "user[roles][#{role}]", role, @usuario.roles.include?(role), {:name => "user[roles][]"}%>
                 <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
             </div>
-
+          <% end %>
             
           </div>
           <%= hidden_field_tag "user[roles][]", "" %>
         </div>
-
+      
     <div class="col-md-10">
       <div class="actions">
         <%= f.submit "Guardar", :class => 'btn btn-primary margen'%>
