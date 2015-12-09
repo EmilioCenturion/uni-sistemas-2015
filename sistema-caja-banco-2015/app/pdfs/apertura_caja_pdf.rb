@@ -68,9 +68,7 @@ class AperturaCajaPdf < Prawn::Document
   end
 
   def sub_monto_rows(movimiento)
-    if movimiento.monto_efectivo > 0
-      [["Efectivo", price(movimiento.monto_efectivo)]]
-    end +
+    [["Efectivo", price(movimiento.monto_efectivo)]]+
     movimiento.cheque_recibidos.map do |cheque|
         ["Cheque Nro:#{cheque.nro_cheque}, Banco #{cheque.banco.nombre}, #{cheque.fecha}", price(cheque.monto)]
     end

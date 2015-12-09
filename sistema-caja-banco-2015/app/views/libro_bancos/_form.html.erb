@@ -1,4 +1,4 @@
-<%= form_for(@libro_banco) do |f| %>
+<%= form_for @libro_banco, validate: true do |f| %>
   <% if @libro_banco.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@libro_banco.errors.count, "error") %> prohibited this libro_banco from being saved:</h2>
@@ -16,7 +16,7 @@
       <div class="field col-md-12 form-group">
         <div class="field col-md-12 form-group">
           <div class="field col-md-6 form-group required">
-            <%= f.label :cuenta_id, 'Nro. de Cuenta', :class => 'col-md-2'%>
+            <%= f.label :cuenta_id, 'Nro. de Cuenta', :class => 'col-md-2 control-label'%>
             <div class="col-md-5">
               <%= f.collection_select :cuenta_id, Cuentum.all, :id, :nro_cuenta, {prompt: "Seleccione una cuenta"} , :class => 'btn btn-default', autofocus:true%>
             </div>
@@ -38,6 +38,7 @@
         <div class="col-md-10">
           <div class="actions">
             <%= f.submit "Imprimir", :class => 'btn btn-primary margen'%>
+            <%= link_to "Salir", root_path, :class => 'btn btn-primary margen'%>
             
           </div>
         </div>

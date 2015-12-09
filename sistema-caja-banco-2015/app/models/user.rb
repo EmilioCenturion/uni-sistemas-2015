@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :username, :apellido,  :presence => {:message => "No puede estar en blanco"},
                                    :format => {with: /[a-zA-ZÃ�ï¿½Ã�Â±Ã�Â¡Ã�Â©Ã�Â­Ã�Â³Ã�Âº]/, message: 'Solo permite letras'}
 
-  validates :numero_ci, :telefono, :celular,   :presence => {:message => "No puede estar en blanco"},
+  validates :numero_ci, :celular,   :presence => {:message => "No puede estar en blanco"},
                           :format => { :multiline => true, with: /^([0-9])*$/, message: "Solo permite numeros"}      
 
   validates :direccion, :presence => {:message => "No puede estar en blanco"}

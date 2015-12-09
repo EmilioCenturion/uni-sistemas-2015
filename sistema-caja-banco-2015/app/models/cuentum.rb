@@ -22,7 +22,7 @@ class Cuentum < ActiveRecord::Base
   protected
 
   def bd_puede_eliminar
-    Credit.where(:cuentum_id => self.id).empty? and Chequera.where(:cuentum_id => self.id).empty?
+    Credit.where(:cuentum_id => self.id).empty? and Chequera.where(:cuentum_id => self.id).empty? and MovimientoBanco.where(:cuenta_id => self.id).empty?
   end
 
 end
