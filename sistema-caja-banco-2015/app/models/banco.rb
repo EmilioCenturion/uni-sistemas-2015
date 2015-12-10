@@ -17,6 +17,7 @@ class Banco < ActiveRecord::Base
 					  
 	validates :telefono, 
 					   :presence => {:message => "No puede estar en blanco"}, 
+					   :length => { in: 9..12 , message: "Debe tener entre 9 y 12 caracteres"},
 					   :format => { :multiline => true, with: /^([0-9])*$/, message: "Solo permite numeros"},
 
 					   :numericality => {:only_integer => true, :message => "Debe ser un numero"},

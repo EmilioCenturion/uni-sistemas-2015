@@ -30,7 +30,7 @@ class MotivoMovimientoBancosController < ApplicationController
 
     respond_to do |format|
       if @motivo_movimiento_banco.save
-        format.html { redirect_to @motivo_movimiento_banco, notice: 'Motivo movimiento banco was successfully created.' }
+        format.html { redirect_to @motivo_movimiento_banco, success: 'Creaste un motivo correctamente.' }
         format.json { render :show, status: :created, location: @motivo_movimiento_banco }
         format.js   { render action: 'show', status: :created, location: @motivo_movimiento_banco }
       else
@@ -46,7 +46,7 @@ class MotivoMovimientoBancosController < ApplicationController
   def update
     respond_to do |format|
       if @motivo_movimiento_banco.update(motivo_movimiento_banco_params)
-        format.html { redirect_to @motivo_movimiento_banco, notice: 'Motivo movimiento banco was successfully updated.' }
+        format.html { redirect_to @motivo_movimiento_banco, success: 'Editaste un motivo correctamente.' }
         format.json { render :show, status: :ok, location: @motivo_movimiento_banco }
       else
         format.html { render :edit }
@@ -58,10 +58,14 @@ class MotivoMovimientoBancosController < ApplicationController
   # DELETE /motivo_movimiento_bancos/1
   # DELETE /motivo_movimiento_bancos/1.json
   def destroy
-    @motivo_movimiento_banco.destroy
     respond_to do |format|
-      format.html { redirect_to motivo_movimiento_bancos_url, notice: 'Motivo movimiento banco was successfully destroyed.' }
-      format.json { head :no_content }
+      if @motivo_movimiento_banco.destroy
+        format.html { redirect_to motivo_movimiento_bancos_url, success: 'Eliminaste un motivo correctamente.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to motivo_movimiento_bancos_url, danger: 'Se ha producido un error al eliminar.' }
+        format.json { head :no_content }
+      end
     end
   end
 

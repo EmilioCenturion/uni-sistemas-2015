@@ -51,7 +51,7 @@ class ChequerasController < ApplicationController
     respond_to do |format|
       if @chequera.save
         #1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
-        format.html { redirect_to( cuentum_chequeras_url, :notice => 'Comment was successfully created.') }
+        format.html { redirect_to( cuentum_chequeras_url, :success => 'Creaste una chequera correctamente.') }
         #the key :location is associated to an array in order to build the correct route to the nested resource comment
         format.xml  { render :xml => @chequera, :status => :created, :location => [@chequera.cuentum, @chequera] }
       else
@@ -70,7 +70,7 @@ class ChequerasController < ApplicationController
     respond_to do |format|
       if @chequera.update(chequera_params)
         #1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
-        format.html { redirect_to(cuentum_chequeras_url, :notice => 'Comment was successfully updated.') }
+        format.html { redirect_to(cuentum_chequeras_url, :success => 'Editaste una chequera correctamente.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -84,12 +84,16 @@ class ChequerasController < ApplicationController
   def destroy
     @cuentum = Cuentum.find(params[:cuentum_id])
     @chequera = @cuentum.chequeras.find(params[:id])
-    @chequera.destroy
 
     respond_to do |format|
-      #1st argument reference the path /posts/:post_id/comments/
-      format.html { redirect_to(cuentum_chequeras_url) }
-      format.xml  { head :ok }
+      if @chequera.destroy
+        #1st argument reference the path /posts/:post_id/comments/
+        format.html { redirect_to(cuentum_chequeras_url, :success => 'Eliminaste una chequera correctamente.')}
+        format.xml  { head :ok }
+      else
+        format.html { redirect_to(cuentum_chequeras_url, :success => 'Se ha producido un error al eliminar.') }
+        format.xml  { head :ok }
+      end
     end
   end
 

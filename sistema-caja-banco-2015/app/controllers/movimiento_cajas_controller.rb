@@ -57,7 +57,7 @@ class MovimientoCajasController < ApplicationController
     respond_to do |format|
       if @movimiento_caja.save
         #1st argument of redirect_to is an array, in order to build the correct route to the nested resource movimiento_caja
-        format.html { redirect_to(new_apertura_caja_movimiento_caja_url, :notice => 'movimiento_caja was successfully created.') }
+        format.html { redirect_to(new_apertura_caja_movimiento_caja_url, :success => 'Creaste un movimiento correctamente.') }
         #the key :location is associated to an array in order to build the correct route to the nested resource movimiento_caja
         format.xml  { render :xml => @movimiento_caja, :status => :created, :location => [@movimiento_caja.apertura_caja, @movimiento_caja] }
       else
@@ -76,7 +76,7 @@ class MovimientoCajasController < ApplicationController
     respond_to do |format|
       if @movimiento_caja.update_attributes(params[:movimiento_caja])
         #1st argument of redirect_to is an array, in order to build the correct route to the nested resource movimiento_caja
-        format.html { redirect_to([@movimiento_caja.apertura_caja, @movimiento_caja], :notice => 'movimiento_caja was successfully updated.') }
+        format.html { redirect_to([@movimiento_caja.apertura_caja, @movimiento_caja], :success => 'Editaste un movimiento correctamente.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

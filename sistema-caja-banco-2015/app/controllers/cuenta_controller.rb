@@ -35,7 +35,7 @@ class CuentaController < ApplicationController
 
     respond_to do |format|
       if @cuentum.save
-        format.html { redirect_to @cuentum, notice: 'Cuentum was successfully created.' }
+        format.html { redirect_to @cuentum, success: 'Creaste una cuenta correctamente.' }
         format.json { render :show, status: :created, location: @cuentum }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class CuentaController < ApplicationController
   def update
     respond_to do |format|
       if @cuentum.update(cuentum_params)
-        format.html { redirect_to cuenta_url, notice: 'Cuentum was successfully updated.' }
+        format.html { redirect_to cuenta_url, success: 'Editaste una cuenta correctamente.' }
         format.json { render :show, status: :ok, location: @cuentum }
       else
         format.html { render :edit }
@@ -61,10 +61,14 @@ class CuentaController < ApplicationController
   # DELETE /cuenta/1
   # DELETE /cuenta/1.json
   def destroy
-    @cuentum.destroy
     respond_to do |format|
-      format.html { redirect_to cuenta_url, notice: 'Cuentum was successfully destroyed.' }
-      format.json { head :no_content }
+      if @cuentum.destroy
+        format.html { redirect_to cuenta_url, success: 'Eliminaste una cuenta correctamente.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to cuenta_url, danger: 'Se ha producido un error al eliminar.' }
+        format.json { head :no_content }
+      end
     end
   end
 

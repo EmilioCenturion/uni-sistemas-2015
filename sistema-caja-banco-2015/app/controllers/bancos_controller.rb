@@ -46,7 +46,7 @@ class BancosController < ApplicationController
 
     respond_to do |format|
       if @banco.save
-        format.html { redirect_to bancos_url, notice: 'Creaste un nuevo banco correctamente.' }
+        format.html { redirect_to bancos_url, success: 'Creaste un nuevo banco correctamente.' }
         format.json { render :show, status: :created, location: @banco }
       else
         format.html { render :new}
@@ -60,10 +60,10 @@ class BancosController < ApplicationController
   def update
     respond_to do |format|
       if @banco.update(banco_params)
-        format.html { redirect_to bancos_url, notice: 'Editaste un banco correctamente.' }
+        format.html { redirect_to bancos_url, success: 'Editaste un banco correctamente.' }
         format.json { render :show, status: :ok, location: @banco }
       else
-        format.html { render :edit }
+        format.html { render :edit}
         format.json { render json: @banco.errors, status: :unprocessable_entity }
       end
     end
@@ -72,10 +72,14 @@ class BancosController < ApplicationController
   # DELETE /bancos/1
   # DELETE /bancos/1.json
   def destroy
-    @banco.destroy
     respond_to do |format|
-      format.html { redirect_to bancos_url, notice: 'Eliminaste un banco correctamente.' }
-      format.json { head :no_content }
+      if @banco.destroy
+        format.html { redirect_to bancos_url, success: 'Eliminaste un banco correctamente.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to bancos_url, danger: 'Se ha producido un error al eliminar.' }
+        format.json { head :no_content }
+      end
     end
   end
 

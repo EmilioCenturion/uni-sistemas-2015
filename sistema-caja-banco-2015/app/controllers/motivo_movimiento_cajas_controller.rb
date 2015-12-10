@@ -29,7 +29,7 @@ class MotivoMovimientoCajasController < ApplicationController
 
     respond_to do |format|
       if @motivo_movimiento_caja.save
-        format.html { redirect_to @motivo_movimiento_caja, notice: 'Motivo movimiento caja was successfully created.' }
+        format.html { redirect_to @motivo_movimiento_caja, success: 'Creaste un motivo correctamente.' }
         format.json { render :show, status: :created, location: @motivo_movimiento_caja }
         format.js   { render action: 'show', status: :created, location: @motivo_movimiento_caja }
       else
@@ -45,7 +45,7 @@ class MotivoMovimientoCajasController < ApplicationController
   def update
     respond_to do |format|
       if @motivo_movimiento_caja.update(motivo_movimiento_caja_params)
-        format.html { redirect_to @motivo_movimiento_caja, notice: 'Motivo movimiento caja was successfully updated.' }
+        format.html { redirect_to @motivo_movimiento_caja, success: 'Editaste un motivo correctamente.' }
         format.json { render :show, status: :ok, location: @motivo_movimiento_caja }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class MotivoMovimientoCajasController < ApplicationController
   def destroy
     @motivo_movimiento_caja.destroy
     respond_to do |format|
-      format.html { redirect_to motivo_movimiento_cajas_url, notice: 'Motivo movimiento caja was successfully destroyed.' }
+      format.html { redirect_to motivo_movimiento_cajas_url, success: 'Eliminaste un motivo correctamenteed.' }
       format.json { head :no_content }
     end
   end
