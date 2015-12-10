@@ -30,7 +30,7 @@ class ConfiguracionsController < ApplicationController
   def update
     respond_to do |format|
       if @configuracion.update(configuracion_params)
-        format.html { redirect_to root_url, notice: 'Editaste correctamente.' }
+        format.html { redirect_to root_url, success: 'Las configuraciones se editaron correctamente.' }
         format.json { render :show, status: :ok, location: @configuracion }
       else
         format.html { render :edit }

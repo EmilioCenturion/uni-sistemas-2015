@@ -51,7 +51,7 @@ class BoletaDepositosController < ApplicationController
     respond_to do |format|
       if @boleta_deposito.save
         #1st argument of redirect_to is an array, in order to build the correct route to the nested resource boleta_deposito
-        format.html { redirect_to(new_apertura_caja_boleta_deposito_url, :notice => 'boleta_deposito was successfully created.') }
+        format.html { redirect_to(new_apertura_caja_boleta_deposito_url, :success => 'Creaste una deposito correctamente.') }
         #the key :location is associated to an array in order to build the correct route to the nested resource boleta_deposito
         format.xml  { render :xml => @boleta_deposito, :status => :created, :location => [@boleta_deposito.apertura_caja, @boleta_deposito] }
       else
@@ -70,7 +70,7 @@ class BoletaDepositosController < ApplicationController
     respond_to do |format|
       if @boleta_deposito.update_attributes(params[:boleta_deposito])
         #1st argument of redirect_to is an array, in order to build the correct route to the nested resource boleta_deposito
-        format.html { redirect_to([@boleta_deposito.apertura_caja, @boleta_deposito], :notice => 'boleta_deposito was successfully updated.') }
+        format.html { redirect_to([@boleta_deposito.apertura_caja, @boleta_deposito], :success => 'Editaste un deposito correctamente.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

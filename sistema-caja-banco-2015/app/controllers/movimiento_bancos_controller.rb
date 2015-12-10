@@ -36,7 +36,7 @@ class MovimientoBancosController < ApplicationController
 
     respond_to do |format|
       if @movimiento_banco.save
-        format.html { redirect_to movimiento_bancos_url, notice: 'Movimiento banco was successfully created.' }
+        format.html { redirect_to movimiento_bancos_url, success: 'Creaste un movimiento correctamente.' }
         format.json { render :show, status: :created, location: @movimiento_banco }
       else
         format.html { render :new }
@@ -51,7 +51,7 @@ class MovimientoBancosController < ApplicationController
   def update
     respond_to do |format|
       if @movimiento_banco.update(movimiento_banco_params)
-        format.html { redirect_to @movimiento_banco, notice: 'Movimiento banco was successfully updated.' }
+        format.html { redirect_to @movimiento_banco, success: 'Editaste un movimiento correctamente.' }
         format.json { render :show, status: :ok, location: @movimiento_banco }
       else
         format.html { render :edit }
@@ -65,7 +65,7 @@ class MovimientoBancosController < ApplicationController
   def destroy
     @movimiento_banco.destroy
     respond_to do |format|
-      format.html { redirect_to movimiento_bancos_url, notice: 'Movimiento banco was successfully destroyed.' }
+      format.html { redirect_to movimiento_bancos_url, success: 'Eliminaste un movimiento correctamenteed.' }
       format.json { head :no_content }
     end
   end

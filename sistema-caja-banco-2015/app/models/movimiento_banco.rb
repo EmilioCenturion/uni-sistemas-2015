@@ -9,11 +9,11 @@ class MovimientoBanco < ActiveRecord::Base
   validates :cuenta_id, :presence => {:message => "Seleccione una cuenta"}
 
   validates :monto_efectivo,  :presence => {:message => "No puede estar en blanco"},
-                              :length => { in: 1..30 , message: "Debe tener entre 1 y 30 caracteres"},
+                              :length => { in: 1..10 , message: "Debe tener entre 1 y 10 caracteres"},
                               :numericality => {:only_double => true, :greater_than_or_equal_to => 0, :message => "Debe ser un numero"}
 
   validates :monto_cheque,  :presence => {:message => "No puede estar en blanco"},
-                            :length => { in: 1..30 , message: "Debe tener entre 1 y 30 caracteres"},
+                            :length => { in: 1..10 , message: "Debe tener entre 1 y 10 caracteres"},
                             :numericality => {:only_double => true, :message => "Debe ser un numero"}
 
   validate :saldo_mayor

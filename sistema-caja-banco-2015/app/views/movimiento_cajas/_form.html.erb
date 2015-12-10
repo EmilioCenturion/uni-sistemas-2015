@@ -39,7 +39,7 @@
         <div class="field col-md-6 form-group required">
           <%= f.label :monto_efectivo,'Efectivo' , :class => 'col-md-3 control-label'%>
           <div class="col-md-8">
-            <%= f.text_field :monto_efectivo, :maxlength => 35, :class => 'form-control'%>
+            <%= f.text_field :monto_efectivo, :maxlength => 10, :class => 'form-control'%>
           </div>
         </div>
       
@@ -68,10 +68,10 @@
         <tbody>
           <%= f.fields_for :cheque_recibidos, :wrapper => false do |cheque_recibidos_form| %>
             <tr class="fields">
-              <td><%= cheque_recibidos_form.collection_select :cliente_id, Cliente.all, :id, :name_cliente, {prompt: "Seleccione un cliente"} ,:class => 'btn btn-default'%></td>
-              <td><%= cheque_recibidos_form.number_field :nro_cheque, :class => 'form-control'%></td>
+              <td><%= cheque_recibidos_form.collection_select :cliente_id, Cliente.all, :id, :name_cliente, {prompt: "Seleccione un cliente"} ,:class => 'btn btn-default'%></div></td>
+              <td><%= cheque_recibidos_form.number_field :nro_cheque, :maxlength => 10, :class => 'form-control'%></td>
               <td><%= cheque_recibidos_form.collection_select :banco_id, Banco.all, :id, :name_banco, {prompt: "Seleccione un banco"} ,:class => 'btn btn-default'%></td>
-              <td><%= cheque_recibidos_form.text_field :monto, :class => 'form-control' %></td>
+              <td><%= cheque_recibidos_form.text_field :monto, :maxlength => 10, :class => 'form-control' %></td>
               <td><%= cheque_recibidos_form.date_select :fecha%></td>
               <td><%= cheque_recibidos_form.link_to_remove "X", :class => 'btn btn-danger'%></td>
             </tr>
