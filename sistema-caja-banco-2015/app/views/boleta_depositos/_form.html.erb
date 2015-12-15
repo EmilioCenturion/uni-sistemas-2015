@@ -1,10 +1,12 @@
 <%= nested_form_for [@boleta_deposito.apertura_caja, @boleta_deposito], validate: true do |f| %>
   <div class="row">
     <form class="form-horizontal">
-      <div class="field col-md-12">
+      <div class="field col-md-12 form-group">
         <div class="field col-md-4 form-group required">
-          <%= f.label :cuenta_id, 'Cuenta',:class => ' control-label'%>
-          <%= f.collection_select :cuenta_id, Cuentum.all, :id, :nro_cuenta, {prompt: "Seleccione una cuenta"} ,:class => 'btn btn-default', autofocus:true%>
+          <%= f.label :cuenta_id, 'Cuenta',:class => 'col-md-3 control-label'%>
+          <div class="field col-md-8">
+            <%= f.collection_select :cuenta_id, Cuentum.all, :id, :nro_cuenta, {prompt: "Seleccione una cuenta"} ,:class => 'btn btn-default', autofocus:true%>
+          </div>
         </div>
         <div class="field col-md-4 form-group required">
           <%= f.label :nro_boleta, 'Boleta Nro', :class => 'col-md-4 control-label'%>
@@ -12,6 +14,7 @@
             <%= f.text_field :nro_boleta, :maxlength => 10, :class => 'form-control' %>
           </div>
         </div>
+
         <div class="field col-md-4 form-group required">
           <%= f.label :fecha, :class => 'col-md-3 control-label'%>
           <div class="input-group col-md-9">
@@ -19,12 +22,12 @@
             <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
           </div>
         </div>
-
       </div>
-      <div class="field col-md-12">
-        <div class="field col-md-4 form-group">
-          <%= f.label :monto_efectivo, 'Efectivo' ,  :class => 'col-md-3'%>
-          <div class="field col-md-8">
+
+      <div class="field col-md-12 form-group">
+        <div class="field col-md-6 form-group">
+          <%= f.label :monto_efectivo, 'Efectivo' ,  :class => 'col-md-2'%>
+          <div class="field col-md-4">
             <%= f.text_field :monto_efectivo, :maxlength => 10,  :class => 'form-control '%>
           </div>
         </div>

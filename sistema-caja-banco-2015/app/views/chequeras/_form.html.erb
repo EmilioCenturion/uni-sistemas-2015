@@ -5,14 +5,14 @@
       <div class="field col-md-12 form-group">
           <div class="field col-md-6 form-group required">
               <%= f.label :primer_numero, :class => 'col-md-3 control-label'%>
-              <div class="col-md-5">
+              <div class="col-md-4">
                 <%= f.text_field :nro_primero , autofocus:true, :maxlength => 10, :class => 'form-control'%>
               </div>
           </div>
 
-          <div class="field col-md-4 form-group required">
-              <%= f.label :ultimo_numero, :class => 'col-md-5 control-label'%>
-              <div class="col-md-7">
+          <div class="field col-md-6 form-group required">
+              <%= f.label :ultimo_numero, :class => 'col-md-3 control-label'%>
+              <div class="col-md-4">
                 <%= f.text_field :nro_ultimo, :maxlength => 10, :class => 'form-control'%>
               </div>
           </div>
@@ -24,16 +24,20 @@
       <div class="field col-md-12 form-group">
           <div class="field col-md-6 form-group required">
               <%= f.label :encargado, :class => 'col-md-3 control-label'%>
-              <%= f.collection_select :personal_id, Personal.all, :id, :name_personal, {prompt: "Seleccione un encargado"} ,:class => 'btn btn-default col-md-5'%>
+              <div class="field col-md-9">
+                <%= f.collection_select :personal_id, Personal.all, :id, :name_personal, {prompt: "Seleccione un encargado"} ,:class => 'btn btn-default'%>
+              </div>
           </div>
 
-          <div class="field col-md-4 form-group required">
-              <%= f.label :estado, :class => 'col-md-5 control-label'%>
+          <div class="field col-md-6 form-group required">
+              <%= f.label :estado, :class => 'col-md-3 control-label'%>
+              <div class="field col-md-9">
               <select name="chequera[estado]" class="btn btn-default col-md-5">
                 <option value="Activo" selected="selected">Activo</option>
                 <option value="Inactivo">Inactivo</option>
               </select>
           </div>
+        </div>
 
       </div>
      
