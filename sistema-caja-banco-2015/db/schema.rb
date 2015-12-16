@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203064839) do
+ActiveRecord::Schema.define(version: 20151201195625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,29 +31,6 @@ ActiveRecord::Schema.define(version: 20151203064839) do
 
   add_index "apertura_cajas", ["caja_id"], name: "index_apertura_cajas_on_caja_id", using: :btree
   add_index "apertura_cajas", ["user_id"], name: "index_apertura_cajas_on_user_id", using: :btree
-
-  create_table "asiento_detalles", force: true do |t|
-    t.integer  "asiento_id"
-    t.integer  "cuenta_contable_id"
-    t.decimal  "importe"
-    t.boolean  "es_credito"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "asiento_detalles", ["asiento_id"], name: "index_asiento_detalles_on_asiento_id", using: :btree
-  add_index "asiento_detalles", ["cuenta_contable_id"], name: "index_asiento_detalles_on_cuenta_contable_id", using: :btree
-
-  create_table "asientos", force: true do |t|
-    t.integer  "nro_asiento"
-    t.date     "fecha"
-    t.string   "concepto"
-    t.integer  "periodo_fiscal_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "asientos", ["periodo_fiscal_id"], name: "index_asientos_on_periodo_fiscal_id", using: :btree
 
   create_table "audits", force: true do |t|
     t.integer  "auditable_id"
@@ -201,6 +178,7 @@ ActiveRecord::Schema.define(version: 20151203064839) do
     t.integer  "tiempo_espera"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cabecera_impresion"
   end
 
   create_table "credits", force: true do |t|
