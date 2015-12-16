@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20151203064839) do
     t.integer  "cuenta_contable_id"
     t.decimal  "importe"
     t.boolean  "es_credito"
+    t.string   "concepto"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,13 +48,21 @@ ActiveRecord::Schema.define(version: 20151203064839) do
   create_table "asientos", force: true do |t|
     t.integer  "nro_asiento"
     t.date     "fecha"
-    t.string   "concepto"
     t.integer  "periodo_fiscal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "asientos", ["periodo_fiscal_id"], name: "index_asientos_on_periodo_fiscal_id", using: :btree
+
+  create_table "auditoria_logs", force: true do |t|
+    t.datetime "fecha_inicio"
+    t.datetime "fecha_fin"
+    t.integer  "usuario"
+    t.string   "tabla"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "audits", force: true do |t|
     t.integer  "auditable_id"

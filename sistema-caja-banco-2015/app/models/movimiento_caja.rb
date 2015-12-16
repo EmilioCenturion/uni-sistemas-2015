@@ -62,18 +62,5 @@ class MovimientoCaja < ActiveRecord::Base
 			AperturaCaja.update(self.apertura_caja_id, saldo_final_efectivo: saldo_efectivo)
 			AperturaCaja.update(self.apertura_caja_id, saldo_final_cheque: saldo_cheque)
 
-			if Asiento.last.nil? 
-		      nro = 1
-		    else
-		      nro = Asiento.last.nro_asiento + 1    
-		    end  
-		    periodo = PeriodoFiscal.find_by(:activo => 'true')
-		    asiento = Asiento.create(nro_asiento: nro, fecha: DateTime.now, periodo_fiscal_id: periodo.id, concepto: "#{self.motivo_movimiento_caja.descripcion}, #{self.descripcion}")
-		    if self.monto_efectivo > 0
-		      AsientoDetalle.create(asiento_id: asiento.id, cuenta_contable_id: 5, es_credito: self.es_ingreso, importe: self.monto_efectivo)
-		    end
-		    if self.monto_cheque > 0
-		      AsientoDetalle.create(asiento_id: asiento.id, cuenta_contable_id: 6, es_credito: self.es_ingreso, importe: self.monto_cheque)
-		    end
 		end
 end
