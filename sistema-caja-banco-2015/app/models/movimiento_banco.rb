@@ -19,7 +19,6 @@ class MovimientoBanco < ActiveRecord::Base
   validate :saldo_mayor
 
   before_create :bc_movimiento
-  after_create :ac_movimiento
 
   def saldo_mayor
     saldo = Cuentum.find(self.cuenta_id).saldo
@@ -41,18 +40,5 @@ class MovimientoBanco < ActiveRecord::Base
   	Cuentum.update(self.cuenta_id, :saldo => saldo)
   end
 
-  def ac_movimiento
-    if Asiento.last.nil? 
-      nro = 1
-    else
-      nro = Asiento.last.nro_asiento + 1    
-    end  
-    periodo = PeriodoFiscal.find_by(:activo => 'true')
-    cuenta = Cuentum.find(self.cuenta_id)
-    banco = Banco.find(cuenta.banco_id)
-    asiento = Asiento.create(nro_asiento: nro, fecha: DateTime.now, periodo_fiscal_id: periodo.id, concepto: "#{banco.nombre}, Cta. #{cuenta.nro_cuenta}, #{self.motivo_movimiento_banco.descripcion}, #{self.descripcion}")
-    monto = self.monto_efectivo + self.monto_cheque
-    AsientoDetalle.create(asiento_id: asiento.id, cuenta_contable_id: 8, es_credito: self.es_ingreso, importe: monto)
-  end
 end
 

@@ -58,5 +58,23 @@ class BoletaDeposito < ActiveRecord::Base
   		end
   		cuenta = Cuentum.find(self.cuenta_id)
   		MovimientoCaja.create(:apertura_caja_id => self.apertura_caja_id, :motivo_movimiento_caja_id => motivo.id, :descripcion => "Boleta Nro: #{self.nro_boleta}, Cuenta Nro: #{cuenta.nro_cuenta}", :es_ingreso => false, :monto_efectivo => self.monto_efectivo, :monto_cheque => self.monto_cheque, :fecha => Time.now) 	
+      
+      #para asientos automáticos, sale caja y entra banco
+      if Asiento.last.nil? 
+        nro = 1
+      else
+        nro = Asiento.last.nro_asiento + 1    
+      end  
+      periodo = PeriodoFiscal.find_by(:activo => 'true')
+      cuenta = Cuentum.find(self.cuenta_id)
+      banco = Banco.find(cuenta.banco_id)
+      asiento = Asiento.create(nro_asiento: nro, fecha: DateTime.now, periodo_fiscal_id: periodo.id)
+      monto = self.monto_efectivo + self.monto_cheque
+      apertura = self.apertura_caja
+      #sale caja
+      AsientoDetalle.create(asiento_id: asiento.id, cuenta_contable_id: 5, es_credito: 'false', importe: monto, concepto: "Nro. #{apertura.caja.nro_caja}, Deposito Nro. #{self.nro_boleta}")
+      #entra banco
+      AsientoDetalle.create(asiento_id: asiento.id, cuenta_contable_id: 8, es_credito: 'true', importe: monto, concepto: "#{banco.nombre}, Cta. #{cuenta.nro_cuenta}, Deposito Nro. #{self.nro_boleta}")
+      
   	end
 end
