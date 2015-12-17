@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
+  get 'welcome/manual'
+
   resources :configuracions
 
   resources :usuarios

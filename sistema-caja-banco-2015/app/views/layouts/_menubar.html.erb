@@ -62,7 +62,7 @@
         <% end %>
         
         <% if can? :manage, Audited::Adapters::ActiveRecord::Audit %>
-          <li class="pull-left col-md-2">
+          <li class="pull-left col-md-1">
             <%= link_to 'Auditoria', auditoria_logs_buscar_path %>
           </li>
         <% end %>
