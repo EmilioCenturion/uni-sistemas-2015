@@ -1,0 +1,2 @@
+GENERA; 13;
+GUARDAR; 8,2;

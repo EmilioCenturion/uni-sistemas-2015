@@ -1,0 +1,57 @@
+1
+ Manual de Usuario 
+ manual_de_usuario_.htm
+2
+ 1. Botones Principales
+ 1__botones_principales.htm
+3
+ 2. Ingreso al Sistema 
+ 2__ingreso_al_sistema_.htm
+4
+ 3. Menu Bar
+ 3__menu_bar.htm
+5
+ 3.1 Nombre de la empresa y boton Home 
+ 3_1_nombre_de_la_empresa_y_boton_home_.htm
+6
+ 3.2 Caja
+ 3_2_caja.htm
+7
+ 3.2.1 Cajas
+ 3_2_1_cajas.htm
+8
+ 3.2.2 Aperturas
+ 3_2_2_aperturas.htm
+9
+ 3.3 Banco
+ 3_3_banco.htm
+10
+ 3.3.1 Bancos
+ 3_3_1_bancos.htm
+11
+ 3.3.2 Cuentas
+ 3_3_2_cuentas.htm
+12
+ 3.3.3 Movimientos de Banco
+ 3_3_3_movimientos_de_banco.htm
+13
+ 3.3.4 Libro Banco
+ 3_3_4_libro_banco.htm
+14
+ 3.4 Perfiles
+ 3_4_perfiles.htm
+15
+ 3.5 Configuraciones
+ 3_5_configuraciones.htm
+16
+ 3.6 Auditoria
+ 3_6_auditoria.htm
+17
+ 3.7 Usuario
+ 3_7_usuario.htm
+18
+ 3.7.1 Editar Perfil
+ 3_7_1_editar_perfil.htm
+19
+ 3.7.2 Cerrar Sesión
+ 3_7_2_cerrar_sesion.htm
